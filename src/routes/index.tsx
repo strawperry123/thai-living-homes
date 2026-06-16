@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useMemo, useState } from "react";
 import heroImg from "@/assets/hero.jpg";
 import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
@@ -71,6 +72,96 @@ const properties = [
     size: "165 SQM",
     tag: "Skyline View",
   },
+  {
+    img: property1,
+    location: "Phrom Phong, Bangkok",
+    locationTc: "曼谷 鵬蓬",
+    name: "Emporium Garden Suite",
+    price: "฿35,800,000",
+    beds: "2 BEDROOMS",
+    size: "138 SQM",
+    tag: "Branded Residence",
+  },
+  {
+    img: property2,
+    location: "Asoke, Bangkok",
+    locationTc: "曼谷 阿索克",
+    name: "Asoke Grand Tower",
+    price: "฿22,500,000",
+    beds: "2 BEDROOMS",
+    size: "98 SQM",
+    tag: "High Floor",
+  },
+  {
+    img: property3,
+    location: "Ekkamai, Bangkok",
+    locationTc: "曼谷 伊卡邁",
+    name: "Ekkamai Loft Residence",
+    price: "฿18,900,000",
+    beds: "2 BEDROOMS",
+    size: "92 SQM",
+    tag: "Designer Loft",
+  },
+  {
+    img: property1,
+    location: "Ari, Bangkok",
+    locationTc: "曼谷 阿黎",
+    name: "Ari Hillside Villa",
+    price: "฿52,000,000",
+    beds: "4 BEDROOMS",
+    size: "320 SQM",
+    tag: "Private Pool",
+  },
+  {
+    img: property2,
+    location: "Chidlom, Bangkok",
+    locationTc: "曼谷 奇隆",
+    name: "Langsuan Park View",
+    price: "฿38,500,000",
+    beds: "3 BEDROOMS",
+    size: "175 SQM",
+    tag: "Park Frontage",
+  },
+  {
+    img: property3,
+    location: "Silom, Bangkok",
+    locationTc: "曼谷 是隆",
+    name: "Silom Heritage Suite",
+    price: "฿15,800,000",
+    beds: "1 BEDROOM",
+    size: "72 SQM",
+    tag: "Heritage Building",
+  },
+  {
+    img: property1,
+    location: "Ratchada, Bangkok",
+    locationTc: "曼谷 拉差達",
+    name: "Ratchada Sky Loft",
+    price: "฿9,800,000",
+    beds: "1 BEDROOM",
+    size: "55 SQM",
+    tag: "Investment",
+  },
+  {
+    img: property2,
+    location: "Sukhumvit 31, Bangkok",
+    locationTc: "曼谷 素坤逸",
+    name: "Sukhumvit Private Mansion",
+    price: "฿68,000,000",
+    beds: "4 BEDROOMS",
+    size: "410 SQM",
+    tag: "Single House",
+  },
+  {
+    img: property3,
+    location: "Sathorn, Bangkok",
+    locationTc: "曼谷 沙吞",
+    name: "Sathorn Riverside Duplex",
+    price: "฿58,000,000",
+    beds: "3 BEDROOMS",
+    size: "265 SQM",
+    tag: "Duplex",
+  },
 ];
 
 const whyUs = [
@@ -82,6 +173,19 @@ const whyUs = [
 ];
 
 function Index() {
+  const PAGE_SIZE = 6;
+  const [page, setPage] = useState(1);
+  const totalPages = Math.ceil(properties.length / PAGE_SIZE);
+  const pagedProperties = useMemo(
+    () => properties.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE),
+    [page],
+  );
+  const goToPage = (p: number) => {
+    setPage(Math.min(Math.max(1, p), totalPages));
+    if (typeof document !== "undefined") {
+      document.getElementById("properties")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
       {/* Navigation */}
@@ -248,7 +352,7 @@ function Index() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-10">
-            {properties.map((p) => (
+            {pagedProperties.map((p) => (
               <article key={p.name} className="group cursor-pointer">
                 <div className="overflow-hidden relative">
                   <img
@@ -281,6 +385,47 @@ function Index() {
                 </div>
               </article>
             ))}
+          </div>
+
+          {/* Pagination */}
+          <div className="mt-20 flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-border pt-8">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-foreground/55">
+              Showing {(page - 1) * PAGE_SIZE + 1}–
+              {Math.min(page * PAGE_SIZE, properties.length)} of {properties.length}
+              <span className="font-serif-tc text-brand-clay/80 ml-3 normal-case tracking-normal">
+                · 共 {properties.length} 件房源
+              </span>
+            </p>
+            <nav className="flex items-center gap-2" aria-label="Pagination">
+              <button
+                onClick={() => goToPage(page - 1)}
+                disabled={page === 1}
+                className="px-5 py-2 text-[10px] uppercase tracking-[0.25em] border border-border text-brand-ink hover:border-brand-forest hover:text-brand-forest transition-colors disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-border disabled:hover:text-brand-ink"
+              >
+                Prev
+              </button>
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+                <button
+                  key={n}
+                  onClick={() => goToPage(n)}
+                  aria-current={page === n ? "page" : undefined}
+                  className={`w-10 h-10 text-[11px] tracking-[0.15em] font-display transition-colors ${
+                    page === n
+                      ? "bg-brand-forest text-brand-cream"
+                      : "border border-border text-brand-ink hover:border-brand-forest hover:text-brand-forest"
+                  }`}
+                >
+                  {String(n).padStart(2, "0")}
+                </button>
+              ))}
+              <button
+                onClick={() => goToPage(page + 1)}
+                disabled={page === totalPages}
+                className="px-5 py-2 text-[10px] uppercase tracking-[0.25em] border border-border text-brand-ink hover:border-brand-forest hover:text-brand-forest transition-colors disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-border disabled:hover:text-brand-ink"
+              >
+                Next
+              </button>
+            </nav>
           </div>
         </div>
       </section>
