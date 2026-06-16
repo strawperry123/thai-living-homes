@@ -352,7 +352,7 @@ function Index() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-10">
-            {properties.map((p) => (
+            {pagedProperties.map((p) => (
               <article key={p.name} className="group cursor-pointer">
                 <div className="overflow-hidden relative">
                   <img
@@ -385,6 +385,47 @@ function Index() {
                 </div>
               </article>
             ))}
+          </div>
+
+          {/* Pagination */}
+          <div className="mt-20 flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-border pt-8">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-foreground/55">
+              Showing {(page - 1) * PAGE_SIZE + 1}–
+              {Math.min(page * PAGE_SIZE, properties.length)} of {properties.length}
+              <span className="font-serif-tc text-brand-clay/80 ml-3 normal-case tracking-normal">
+                · 共 {properties.length} 件房源
+              </span>
+            </p>
+            <nav className="flex items-center gap-2" aria-label="Pagination">
+              <button
+                onClick={() => goToPage(page - 1)}
+                disabled={page === 1}
+                className="px-5 py-2 text-[10px] uppercase tracking-[0.25em] border border-border text-brand-ink hover:border-brand-forest hover:text-brand-forest transition-colors disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-border disabled:hover:text-brand-ink"
+              >
+                Prev
+              </button>
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+                <button
+                  key={n}
+                  onClick={() => goToPage(n)}
+                  aria-current={page === n ? "page" : undefined}
+                  className={`w-10 h-10 text-[11px] tracking-[0.15em] font-display transition-colors ${
+                    page === n
+                      ? "bg-brand-forest text-brand-cream"
+                      : "border border-border text-brand-ink hover:border-brand-forest hover:text-brand-forest"
+                  }`}
+                >
+                  {String(n).padStart(2, "0")}
+                </button>
+              ))}
+              <button
+                onClick={() => goToPage(page + 1)}
+                disabled={page === totalPages}
+                className="px-5 py-2 text-[10px] uppercase tracking-[0.25em] border border-border text-brand-ink hover:border-brand-forest hover:text-brand-forest transition-colors disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-border disabled:hover:text-brand-ink"
+              >
+                Next
+              </button>
+            </nav>
           </div>
         </div>
       </section>
