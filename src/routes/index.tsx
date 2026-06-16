@@ -173,6 +173,19 @@ const whyUs = [
 ];
 
 function Index() {
+  const PAGE_SIZE = 6;
+  const [page, setPage] = useState(1);
+  const totalPages = Math.ceil(properties.length / PAGE_SIZE);
+  const pagedProperties = useMemo(
+    () => properties.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE),
+    [page],
+  );
+  const goToPage = (p: number) => {
+    setPage(Math.min(Math.max(1, p), totalPages));
+    if (typeof document !== "undefined") {
+      document.getElementById("properties")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
       {/* Navigation */}
