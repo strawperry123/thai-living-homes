@@ -33,6 +33,8 @@ const navItems = [
   { label: "Contact", tc: "聯絡" },
 ];
 
+const lineAddUrl = "https://line.me/R/ti/p/@256ttfky";
+
 const services = [
   { n: "01", en: "Property Sales", tc: "新案銷售", desc: "Curated access to Thailand's premium new developments." },
   { n: "02", en: "Resale Homes", tc: "二手買賣", desc: "Expert negotiation for the secondary market." },
@@ -207,9 +209,20 @@ function Index() {
               </a>
             ))}
           </div>
-          <button className="text-[11px] uppercase tracking-[0.25em] text-brand-forest font-medium">
-            EN / 繁中
-          </button>
+          <div className="flex items-center gap-3">
+            <button className="hidden sm:inline-flex text-[11px] uppercase tracking-[0.25em] text-brand-forest font-medium">
+              EN / 繁中
+            </button>
+            <a
+              href={lineAddUrl}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Add KHANTHAROS PROPERTY on LINE"
+              className="inline-flex h-10 items-center justify-center bg-[#06C755] px-5 text-[11px] uppercase tracking-[0.22em] font-semibold text-white transition-colors hover:bg-[#05b34d]"
+            >
+              LINE
+            </a>
+          </div>
         </div>
       </nav>
 
