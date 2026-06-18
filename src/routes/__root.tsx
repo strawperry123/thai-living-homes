@@ -12,6 +12,23 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
+const mainNavItems = [
+  { href: "/#", en: "Home", tc: "首頁" },
+  { href: "/#client-journey", en: "Client Journey", tc: "客戶故事" },
+  { href: "/#mandate", en: "Mandate", tc: "委託" },
+  { href: "/#faq", en: "Common Question", tc: "常見問題" },
+  { href: "/#about", en: "About Us", tc: "關於我們" },
+];
+
+const serviceNavItems = [
+  { href: "/#property-management", en: "Property Management", tc: "房源管理" },
+  { href: "/#resell", en: "Resell", tc: "中古房" },
+  { href: "/#rental", en: "Rental", tc: "出租" },
+  { href: "/#presell", en: "PreSell", tc: "預售/新成屋" },
+];
+
+const lineAddUrl = "https://line.me/R/ti/p/@256ttfky";
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -123,11 +140,82 @@ function RootShell({ children }: { children: ReactNode }) {
   );
 }
 
+function SiteNavigation() {
+  return (
+    <nav className="fixed top-0 inset-x-0 z-[60] bg-background/95 backdrop-blur-xl border-b border-border/60">
+      <div className="max-w-7xl mx-auto px-5 md:px-8 h-20 flex items-center justify-between gap-4">
+        <a href="/#" className="flex flex-col leading-none shrink-0" aria-label="KHANTHAROS PROPERTY home">
+          <span className="font-display text-lg md:text-xl tracking-[0.2em] font-medium text-brand-ink">
+            KHANTHAROS
+          </span>
+          <span className="text-[10px] tracking-[0.35em] uppercase text-brand-clay mt-1">
+            Property · 泰式安居
+          </span>
+        </a>
+
+        <div className="hidden xl:flex items-center gap-5 text-[10px] uppercase tracking-[0.16em] font-medium">
+          {mainNavItems.slice(0, 2).map((item) => (
+            <a key={item.en} href={item.href} className="text-brand-ink/80 hover:text-brand-forest transition-colors whitespace-nowrap">
+              {item.en}
+              <span className="ml-2 font-serif-tc text-brand-clay/75 normal-case tracking-normal">{item.tc}</span>
+            </a>
+          ))}
+
+          <div className="relative group">
+            <a href="/#services" className="text-brand-ink/80 hover:text-brand-forest transition-colors whitespace-nowrap py-8 inline-flex">
+              Service
+              <span className="ml-2 font-serif-tc text-brand-clay/75 normal-case tracking-normal">服務項目</span>
+            </a>
+            <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute left-1/2 top-full w-72 -translate-x-1/2 border border-border bg-background shadow-xl transition-all duration-200">
+              {serviceNavItems.map((item) => (
+                <a
+                  key={item.en}
+                  href={item.href}
+                  className="block px-5 py-4 border-b border-border/60 last:border-b-0 text-brand-ink hover:bg-brand-cream hover:text-brand-forest transition-colors"
+                >
+                  <span className="block text-[10px] uppercase tracking-[0.18em]">{item.en}</span>
+                  <span className="mt-1 block font-serif-tc text-sm tracking-normal text-brand-clay">{item.tc}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {mainNavItems.slice(2).map((item) => (
+            <a key={item.en} href={item.href} className="text-brand-ink/80 hover:text-brand-forest transition-colors whitespace-nowrap">
+              {item.en}
+              <span className="ml-2 font-serif-tc text-brand-clay/75 normal-case tracking-normal">{item.tc}</span>
+            </a>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-3 shrink-0">
+          <a
+            href="/#services"
+            className="hidden sm:inline-flex xl:hidden text-[10px] uppercase tracking-[0.18em] text-brand-ink/80 hover:text-brand-forest transition-colors"
+          >
+            Menu
+          </a>
+          <a
+            href={lineAddUrl}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Add KHANTHAROS PROPERTY on LINE"
+            className="inline-flex h-10 items-center justify-center bg-[#06C755] px-4 md:px-5 text-[11px] uppercase tracking-[0.18em] font-semibold text-white transition-colors hover:bg-[#05b34d]"
+          >
+            LINE
+          </a>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
 
   return (
     <QueryClientProvider client={queryClient}>
+      <SiteNavigation />
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
     </QueryClientProvider>
