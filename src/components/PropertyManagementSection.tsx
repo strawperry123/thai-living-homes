@@ -3,10 +3,22 @@ import { useState, type FormEvent } from "react";
 const googleSheetWebhookUrl = import.meta.env.VITE_GOOGLE_SHEET_WEBHOOK_URL || "";
 
 const ownerChallenges = [
-  "人在海外或工作太忙，沒有時間處理房子的日常狀況。",
-  "想出租，但不知道租金怎麼抓、照片怎麼拍、廣告怎麼上。",
-  "租客入住後，水電、維修、管理處通知都需要有人協助。",
-  "退租時需要點交、清潔、押金結算，也希望有人把關。",
+  {
+    en: "You live overseas or are too busy to handle daily property issues.",
+    tc: "人在海外或工作太忙，沒有時間處理房子的日常狀況。",
+  },
+  {
+    en: "You want to lease the unit but are unsure about pricing, photos, or listing channels.",
+    tc: "想出租，但不知道租金怎麼抓、照片怎麼拍、廣告怎麼上。",
+  },
+  {
+    en: "After a tenant moves in, bills, repairs, and building notices still need follow-up.",
+    tc: "租客入住後，水電、維修、管理處通知都需要有人協助。",
+  },
+  {
+    en: "Move-out inspections, cleaning, and deposit settlement need someone on the ground.",
+    tc: "退租時需要點交、清潔、押金結算，也希望有人把關。",
+  },
 ];
 
 const managementStages = [
@@ -14,41 +26,41 @@ const managementStages = [
     title: "Before Leasing",
     tc: "出租前準備",
     items: [
-      "檢查屋況，提供租金與出租準備建議。",
-      "協助整理照片、刊登資訊，讓房源更容易被看見。",
-      "巡查空屋狀況，確認漏水、異味、灰塵與基本設備。",
-      "協調清潔、冷氣保養、維修與大樓管理處事項。",
+      { en: "Review the unit condition and suggest a practical rental range.", tc: "檢查屋況，提供租金與出租準備建議。" },
+      { en: "Prepare photos and listing details so the property is easier to market.", tc: "協助整理照片、刊登資訊，讓房源更容易被看見。" },
+      { en: "Check empty-unit basics such as leakage, odor, dust, and appliances.", tc: "巡查空屋狀況，確認漏水、異味、灰塵與基本設備。" },
+      { en: "Coordinate cleaning, air-conditioner service, repairs, and juristic office matters.", tc: "協調清潔、冷氣保養、維修與大樓管理處事項。" },
     ],
   },
   {
     title: "During Tenancy",
     tc: "出租期間管理",
     items: [
-      "協助租客入住前確認家具、電表、水表與設備狀態。",
-      "協助租金收款確認，並把付款狀況回報屋主。",
-      "作為屋主與租客、大樓管理處、合作仲介之間的溝通窗口。",
-      "處理維修、網路、帳單與日常突發問題，讓屋主不用遠端奔波。",
+      { en: "Record furniture, meter readings, and key handover before move-in.", tc: "協助租客入住前確認家具、電表、水表與設備狀態。" },
+      { en: "Follow rental payment status and update the owner clearly.", tc: "協助租金收款確認，並把付款狀況回報屋主。" },
+      { en: "Act as the contact point between owner, tenant, building office, and agents.", tc: "作為屋主與租客、大樓管理處、合作仲介之間的溝通窗口。" },
+      { en: "Handle repairs, internet, bills, and daily issues without long-distance stress.", tc: "處理維修、網路、帳單與日常突發問題，讓屋主不用遠端奔波。" },
     ],
   },
   {
     title: "After Move-Out",
     tc: "退租後處理",
     items: [
-      "協助退租點交，確認設備、家具與屋況是否需要修繕。",
-      "計算最後水電費與相關費用，協助押金結算。",
-      "安排清潔與必要維修，讓房子能盡快重新出租。",
-      "協助大樓管理處退租登記與後續文件處理。",
+      { en: "Inspect the unit after move-out and note repairs or missing items.", tc: "協助退租點交，確認設備、家具與屋況是否需要修繕。" },
+      { en: "Calculate final utilities and help with deposit settlement.", tc: "計算最後水電費與相關費用，協助押金結算。" },
+      { en: "Arrange cleaning and repairs so the unit can return to market faster.", tc: "安排清潔與必要維修，讓房子能盡快重新出租。" },
+      { en: "Assist with building office move-out procedures and documents.", tc: "協助大樓管理處退租登記與後續文件處理。" },
     ],
   },
 ];
 
 const includedServices = [
-  "鑰匙與屋況管理",
-  "租客與仲介溝通",
-  "管理費、水電與帳單提醒",
-  "維修與清潔協調",
-  "入住與退租點交",
-  "每月狀況回報",
+  { en: "Key & Unit Care", tc: "鑰匙與屋況管理" },
+  { en: "Tenant & Agent Communication", tc: "租客與仲介溝通" },
+  { en: "CAM, Utility & Bill Reminders", tc: "管理費、水電與帳單提醒" },
+  { en: "Repair & Cleaning Coordination", tc: "維修與清潔協調" },
+  { en: "Move-In & Move-Out Checks", tc: "入住與退租點交" },
+  { en: "Monthly Owner Updates", tc: "每月狀況回報" },
 ];
 
 function encodeForm(form: HTMLFormElement) {
@@ -95,11 +107,11 @@ export function PropertyManagementSection() {
             <h2 className="font-display text-4xl md:text-6xl leading-[1.08] tracking-tight text-brand-ink text-balance">
               Let your Thailand home stay cared for, even when you are away.
             </h2>
-            <p className="mt-6 font-serif-tc text-xl leading-loose text-brand-forest/85">
-              房子交給我們照看，出租、維修、租客溝通與退租點交，都有人在泰國幫您處理。
-            </p>
             <p className="mt-6 text-sm md:text-base leading-relaxed text-foreground/70">
-              我們協助海外屋主把房產管理變得簡單一點。從出租前的整理與行銷，到租客入住後的日常問題，再到退租後的清潔、維修和結算，我們用固定回報和清楚流程，讓您不需要隔著時差處理每個細節。
+              We help overseas owners manage leasing, repairs, tenant communication, and move-out checks with clear updates and local follow-up.
+            </p>
+            <p className="mt-5 font-serif-tc text-lg leading-loose text-brand-forest/85">
+              房子交給我們照看，出租、維修、租客溝通與退租點交，都有人在泰國幫您處理。
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-3">
               <a
@@ -122,8 +134,9 @@ export function PropertyManagementSection() {
           <div className="lg:col-span-7 space-y-14">
             <div className="grid sm:grid-cols-2 gap-px bg-border">
               {ownerChallenges.map((item) => (
-                <div key={item} className="bg-brand-cream p-8">
-                  <p className="font-serif-tc text-base leading-loose text-brand-ink">{item}</p>
+                <div key={item.en} className="bg-brand-cream p-8">
+                  <p className="text-sm leading-relaxed text-brand-ink/75">{item.en}</p>
+                  <p className="mt-3 font-serif-tc text-base leading-loose text-brand-forest">{item.tc}</p>
                 </div>
               ))}
             </div>
@@ -133,9 +146,12 @@ export function PropertyManagementSection() {
                 <article key={stage.title} className="bg-background p-8">
                   <p className="text-[10px] uppercase tracking-[0.28em] text-brand-clay font-medium">{stage.title}</p>
                   <h3 className="mt-2 font-serif-tc text-2xl text-brand-forest">{stage.tc}</h3>
-                  <ul className="mt-8 space-y-4 text-sm leading-relaxed text-foreground/70">
+                  <ul className="mt-8 space-y-5 text-sm leading-relaxed text-foreground/70">
                     {stage.items.map((item) => (
-                      <li key={item} className="border-t border-border pt-4">{item}</li>
+                      <li key={item.en} className="border-t border-border pt-4">
+                        <span className="block text-brand-ink/80">{item.en}</span>
+                        <span className="mt-2 block font-serif-tc text-brand-forest/85">{item.tc}</span>
+                      </li>
                     ))}
                   </ul>
                 </article>
@@ -148,8 +164,9 @@ export function PropertyManagementSection() {
               </p>
               <div className="mt-8 grid sm:grid-cols-2 gap-4">
                 {includedServices.map((service) => (
-                  <div key={service} className="border border-brand-cream/15 px-5 py-4 font-serif-tc text-sm text-brand-cream/85">
-                    {service}
+                  <div key={service.en} className="border border-brand-cream/15 px-5 py-4">
+                    <span className="block text-[11px] uppercase tracking-[0.16em] text-brand-sand/85">{service.en}</span>
+                    <span className="mt-2 block font-serif-tc text-sm text-brand-cream/85">{service.tc}</span>
                   </div>
                 ))}
               </div>
@@ -163,7 +180,10 @@ export function PropertyManagementSection() {
                 <h3 className="mt-4 font-display text-3xl md:text-4xl text-brand-ink tracking-tight">
                   Tell us about your property
                 </h3>
-                <p className="mt-4 font-serif-tc text-base leading-loose text-foreground/65">
+                <p className="mt-4 text-sm leading-relaxed text-foreground/65">
+                  Leave your contact details and property information. Our advisor will review your needs and follow up with you.
+                </p>
+                <p className="mt-2 font-serif-tc text-base leading-loose text-brand-forest/80">
                   留下您的聯絡方式與物件狀況，我們會再與您確認託管需求。
                 </p>
               </div>
@@ -208,7 +228,7 @@ export function PropertyManagementSection() {
                 </label>
                 <label className="md:col-span-2 flex gap-3 text-sm leading-relaxed text-foreground/70">
                   <input required type="checkbox" name="agreement" value="Agreed" className="mt-1 h-4 w-4 accent-brand-forest" />
-                  <span>我同意 KHANTHAROS PROPERTY 使用以上資料與我聯絡，並了解送出後將由顧問回覆。</span>
+                  <span>I agree that KHANTHAROS PROPERTY may contact me about this request. 我同意 KHANTHAROS PROPERTY 使用以上資料與我聯絡。</span>
                 </label>
                 <div className="md:col-span-2 flex flex-col sm:flex-row sm:items-center gap-4">
                   <button
