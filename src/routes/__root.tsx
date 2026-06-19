@@ -24,10 +24,15 @@ const serviceNavItems = [
   { href: "/property-management", en: "Property Management", tc: "房源管理" },
   { href: "/#resell", en: "Resell", tc: "中古房" },
   { href: "/#rental", en: "Rental", tc: "出租" },
-  { href: "/#presell", en: "PreSell", tc: "預售/新成屋" },
+  { href: "/presell", en: "PreSell", tc: "預售/新成屋" },
 ];
 
-const lineAddUrl = "https://line.me/R/ti/p/@256ttfky";
+const topSocialLinks = [
+  { label: "LINE", href: "https://lin.ee/W1y4D20", tone: "line" },
+  { label: "WA", href: "https://wa.me/66985973849", tone: "plain" },
+  { label: "IG", href: "https://www.instagram.com/khantharos_thai_property/", tone: "plain" },
+  { label: "FB", href: "https://www.facebook.com/KhantharosProperty/", tone: "plain" },
+];
 
 function NotFoundComponent() {
   return (
@@ -188,22 +193,29 @@ function SiteNavigation() {
           ))}
         </div>
 
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="flex items-center gap-2 shrink-0">
           <a
             href="/#services"
             className="hidden sm:inline-flex xl:hidden text-[10px] uppercase tracking-[0.18em] text-brand-ink/80 hover:text-brand-forest transition-colors"
           >
             Menu
           </a>
-          <a
-            href={lineAddUrl}
-            target="_blank"
-            rel="noreferrer"
-            aria-label="Add KHANTHAROS PROPERTY on LINE"
-            className="inline-flex h-10 items-center justify-center bg-[#06C755] px-4 md:px-5 text-[11px] uppercase tracking-[0.18em] font-semibold text-white transition-colors hover:bg-[#05b34d]"
-          >
-            LINE
-          </a>
+          {topSocialLinks.map((item) => (
+            <a
+              key={item.label}
+              href={item.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={`${item.label} KHANTHAROS PROPERTY`}
+              className={`inline-flex h-10 min-w-10 items-center justify-center px-3 text-[10px] uppercase tracking-[0.14em] font-semibold transition-colors ${
+                item.tone === "line"
+                  ? "bg-[#06C755] text-white hover:bg-[#05b34d]"
+                  : "border border-border text-brand-ink hover:border-brand-forest hover:text-brand-forest"
+              }`}
+            >
+              {item.label}
+            </a>
+          ))}
         </div>
       </div>
     </nav>
