@@ -414,6 +414,31 @@ function MediaGallery({ title, items, fit = "cover" }: { title: string; items?: 
   );
 }
 
+function TextColumns({ transport, lifestyle }: { transport: string[]; lifestyle: string[] }) {
+  const groups = [
+    { title: "Transport", subtitle: "交通", items: transport },
+    { title: "Lifestyle", subtitle: "生活機能", items: lifestyle },
+  ];
+
+  return (
+    <section className="mt-10 grid lg:grid-cols-2 gap-6">
+      {groups.map((group) => (
+        <div key={group.title} className="border border-border bg-background p-6 md:p-8">
+          <p className="text-[10px] uppercase tracking-[0.32em] text-brand-clay font-medium">{group.title}</p>
+          <p className="mt-1 font-serif-tc text-xl text-brand-forest">{group.subtitle}</p>
+          <div className="mt-5 grid gap-4">
+            {group.items.map((item) => (
+              <div key={item} className="whitespace-pre-line border border-border bg-brand-cream/35 p-4 text-sm leading-loose text-foreground/70">
+                {bilingual(item)}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </section>
+  );
+}
+
 function ProjectAbout({ project }: { project: Project }) {
   return (
     <section className="mt-10 border border-border bg-background p-6 md:p-8">
@@ -634,6 +659,7 @@ export function PreSellSection() {
 
               <ProjectAbout project={selectedProject} />
               <ProjectFaq project={selectedProject} />
+              <TextColumns transport={selectedProject.transport} lifestyle={selectedProject.lifestyle} />
               <MediaGallery title="Project Images · 建案圖片" items={selectedProject.gallery} />
               <MediaGallery title="Floor Plan Images · 樓層平面圖" items={selectedProject.floorPlanImages} fit="contain" />
               <MediaGallery title="Unit Layout Images · 單位格局圖" items={selectedProject.unitPlanImages} fit="contain" />
