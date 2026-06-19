@@ -9,11 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as MandateRouteImport } from './routes/mandate'
 import { Route as PropertyManagementRouteImport } from './routes/property-management'
 
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -36,12 +42,14 @@ const PropertyManagementRoute = PropertyManagementRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
+  '/about': typeof AboutRoute
   '/': typeof IndexRoute
   '/faq': typeof FaqRoute
   '/mandate': typeof MandateRoute
   '/property-management': typeof PropertyManagementRoute
 }
 export interface FileRoutesByTo {
+  '/about': typeof AboutRoute
   '/': typeof IndexRoute
   '/faq': typeof FaqRoute
   '/mandate': typeof MandateRoute
@@ -49,6 +57,7 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
+  '/about': typeof AboutRoute
   '/': typeof IndexRoute
   '/faq': typeof FaqRoute
   '/mandate': typeof MandateRoute
@@ -56,13 +65,14 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/faq' | '/mandate' | '/property-management'
+  fullPaths: '/about' | '/' | '/faq' | '/mandate' | '/property-management'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/faq' | '/mandate' | '/property-management'
-  id: '__root__' | '/' | '/faq' | '/mandate' | '/property-management'
+  to: '/about' | '/' | '/faq' | '/mandate' | '/property-management'
+  id: '__root__' | '/about' | '/' | '/faq' | '/mandate' | '/property-management'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
+  AboutRoute: typeof AboutRoute
   IndexRoute: typeof IndexRoute
   FaqRoute: typeof FaqRoute
   MandateRoute: typeof MandateRoute
@@ -71,6 +81,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -103,6 +120,7 @@ declare module '@tanstack/react-router' {
 }
 
 const rootRouteChildren: RootRouteChildren = {
+  AboutRoute: AboutRoute,
   IndexRoute: IndexRoute,
   FaqRoute: FaqRoute,
   MandateRoute: MandateRoute,
