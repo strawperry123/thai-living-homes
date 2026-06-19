@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FaqRouteImport } from './routes/faq'
+import { Route as MandateRouteImport } from './routes/mandate'
 import { Route as PropertyManagementRouteImport } from './routes/property-management'
 
 const IndexRoute = IndexRouteImport.update({
@@ -23,6 +24,11 @@ const FaqRoute = FaqRouteImport.update({
   path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MandateRoute = MandateRouteImport.update({
+  id: '/mandate',
+  path: '/mandate',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PropertyManagementRoute = PropertyManagementRouteImport.update({
   id: '/property-management',
   path: '/property-management',
@@ -32,30 +38,34 @@ const PropertyManagementRoute = PropertyManagementRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/faq': typeof FaqRoute
+  '/mandate': typeof MandateRoute
   '/property-management': typeof PropertyManagementRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/faq': typeof FaqRoute
+  '/mandate': typeof MandateRoute
   '/property-management': typeof PropertyManagementRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/faq': typeof FaqRoute
+  '/mandate': typeof MandateRoute
   '/property-management': typeof PropertyManagementRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/faq' | '/property-management'
+  fullPaths: '/' | '/faq' | '/mandate' | '/property-management'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/faq' | '/property-management'
-  id: '__root__' | '/' | '/faq' | '/property-management'
+  to: '/' | '/faq' | '/mandate' | '/property-management'
+  id: '__root__' | '/' | '/faq' | '/mandate' | '/property-management'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   FaqRoute: typeof FaqRoute
+  MandateRoute: typeof MandateRoute
   PropertyManagementRoute: typeof PropertyManagementRoute
 }
 
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FaqRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/mandate': {
+      id: '/mandate'
+      path: '/mandate'
+      fullPath: '/mandate'
+      preLoaderRoute: typeof MandateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/property-management': {
       id: '/property-management'
       path: '/property-management'
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   FaqRoute: FaqRoute,
+  MandateRoute: MandateRoute,
   PropertyManagementRoute: PropertyManagementRoute,
 }
 export const routeTree = rootRouteImport
