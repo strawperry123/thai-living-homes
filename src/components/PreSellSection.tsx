@@ -339,6 +339,67 @@ function PlanPreview({ title, items }: { title: string; items: string[] }) {
   );
 }
 
+function ProjectAbout({ project }: { project: Project }) {
+  return (
+    <section className="mt-10 border border-border bg-background p-6 md:p-8">
+      <p className="text-[10px] uppercase tracking-[0.32em] text-brand-clay font-medium">About This Project · 關於本案</p>
+      <div className="mt-5 grid lg:grid-cols-12 gap-8">
+        <div className="lg:col-span-7">
+          <h4 className="font-display text-3xl text-brand-ink leading-tight">{project.name}</h4>
+          <p className="mt-5 font-serif-tc text-base leading-loose text-foreground/70">
+            {project.description} KHANTHAROS 會從地段、交通、生活機能、房型規劃與未來轉售出租條件整理重點，協助客戶判斷是否符合自住、收租或資產配置需求。
+          </p>
+        </div>
+        <div className="lg:col-span-5 grid gap-3">
+          {[project.developer, project.area, project.status].map((item) => (
+            <div key={item} className="border border-border bg-brand-cream/45 px-5 py-4 text-sm leading-relaxed text-brand-ink">
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ProjectFaq({ project }: { project: Project }) {
+  const faqs = [
+    {
+      question: "這個建案適合哪一類買方？",
+      answer: `${project.name} 適合重視 ${project.area} 區域條件、希望比較自住舒適度與出租潛力的買方。實際是否適合，仍會依預算、持有時間與租金目標進一步評估。`,
+    },
+    {
+      question: "產權與銷售狀態是什麼？",
+      answer: `目前頁面整理的產權資訊為：${project.ownership}。建案狀態為：${project.status}。正式購買前仍需以開發商最新銷售資料與合約文件為準。`,
+    },
+    {
+      question: "有哪些房型或格局可以參考？",
+      answer: `目前整理的房型方向為：${project.size}。下方會持續補入樓層平面圖與單位格局圖，方便直接在本網站比較。`,
+    },
+    {
+      question: "交通與生活機能如何？",
+      answer: `${project.transport[0]}；生活機能方面，${project.lifestyle[0]}。我們會依客戶需求補充通勤、學校、醫院、商場與出租客群分析。`,
+    },
+  ];
+
+  return (
+    <section className="mt-8 border border-border bg-background p-6 md:p-8">
+      <p className="text-[10px] uppercase tracking-[0.32em] text-brand-clay font-medium">Common Questions · 常見問題</p>
+      <div className="mt-5 grid gap-4">
+        {faqs.map((faq) => (
+          <details key={faq.question} className="group border border-border bg-brand-cream/35 p-5">
+            <summary className="cursor-pointer list-none font-serif-tc text-lg text-brand-ink flex items-center justify-between gap-4">
+              <span>{faq.question}</span>
+              <span className="text-brand-clay transition-transform group-open:rotate-45">+</span>
+            </summary>
+            <p className="mt-4 text-sm leading-loose text-foreground/70">{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function ProjectCard({ project, index, isActive, onSelect }: { project: Project; index: number; isActive: boolean; onSelect: () => void }) {
   return (
     <article className="group bg-background">
@@ -488,6 +549,9 @@ export function PreSellSection() {
                   </div>
                 ))}
               </div>
+
+              <ProjectAbout project={selectedProject} />
+              <ProjectFaq project={selectedProject} />
 
               <div className="mt-10 grid lg:grid-cols-2 gap-8">
                 <div className="space-y-8">
