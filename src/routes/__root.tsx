@@ -17,7 +17,7 @@ const mainNavItems = [
   { href: "/#client-journey", en: "Client Journey", tc: "客戶故事" },
   { href: "/mandate", en: "Mandate", tc: "委託" },
   { href: "/faq", en: "Common Question", tc: "常見問題" },
-  { href: "/#about", en: "About Us", tc: "關於我們" },
+  { href: "/about", en: "About Us", tc: "關於我們" },
 ];
 
 const serviceNavItems = [
