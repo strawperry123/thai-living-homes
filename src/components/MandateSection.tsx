@@ -29,7 +29,7 @@ const mandateSteps = [
   },
 ];
 
-const propertyLocations = ["Thailand", "Taiwan", "Malaysia", "Dubai", "Abu Dhabi", "Vietnam", "Japan", "United Kingdom", "Other"];
+const propertyLocations = ["Bangkok", "Phuket", "Others"];
 const propertyTypes = ["Condominium 公寓", "Villa 別墅", "Land 土地", "Commercial 商用", "Factory 廠房", "Other 其他"];
 
 function encodeForm(form: HTMLFormElement) {
