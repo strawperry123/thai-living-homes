@@ -155,7 +155,7 @@ export function AboutSection() {
               <p className="font-serif-tc">實地看屋請提前預約</p>
               <p>Consultation: +66 985973849 / +66 624892930</p>
               <p>Viewing Hours: Monday to Saturday, 10:00-18:00</p>
-              <p>Email: khantharos.adm@gmal.com</p>
+              <p>Email: khantharos.adm@gmail.com</p>
             </address>
             <div className="mt-10 flex flex-wrap gap-3">
               {socialLinks.map((link) => (
