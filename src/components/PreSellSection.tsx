@@ -257,43 +257,17 @@ function ProjectCard({ project, index, isActive, onSelect }: { project: Project;
 
 function DetailHero({ project }: { project: Project }) {
   const cover = project.gallery?.[0]?.src || property1;
-  const stats = [
-    ["Status", project.status],
-    ["Tower", project.size.split(";")[0]],
-    ["Units", project.size.split(";")[1] || project.size],
-    ["Parking", project.size.split(";")[2] || "Project parking plan"],
-    ["Ownership", project.ownership],
-    ["Developer", project.developer],
-  ];
 
   return (
     <section className="bg-background border border-border overflow-hidden">
-      <div className="grid lg:grid-cols-12">
-        <div className="lg:col-span-7 p-6 md:p-9">
-          <div className="inline-flex bg-brand-forest text-brand-cream px-4 py-2 text-[10px] uppercase tracking-[0.28em] font-semibold">{project.status.split(" · ")[0]}</div>
-          <h3 className="mt-6 font-display text-4xl md:text-6xl text-brand-ink leading-[1.02]">{project.name}</h3>
-          <p className="mt-4 whitespace-pre-line text-sm leading-loose text-foreground/70">{bilingual(project.address)}</p>
-          <div className="mt-4 flex flex-wrap gap-3 text-sm text-brand-forest">
-            <span>{project.developer.split(" · ")[0]}</span>
-            <span>BTS / MRT city access</span>
-            <span>Rama 4 corridor</span>
-          </div>
-        </div>
-        <div className="lg:col-span-5 bg-brand-cream/75 p-6 md:p-8 border-t lg:border-t-0 lg:border-l border-border">
-          <p className="text-[10px] uppercase tracking-[0.32em] text-brand-clay font-medium">Project Snapshot</p>
-          <h4 className="mt-2 font-serif-tc text-2xl text-brand-forest">建案速覽</h4>
-          <div className="mt-6 grid grid-cols-2 gap-px bg-border">
-            {stats.map(([label, value]) => (
-              <div key={label} className="bg-background p-4 min-h-24">
-                <p className="text-[10px] uppercase tracking-[0.18em] text-brand-clay">{label}</p>
-                <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-brand-ink">{bilingual(value)}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-6 grid sm:grid-cols-2 gap-3">
-            <a href={lineUrl} target="_blank" rel="noreferrer" className="bg-[#06C755] px-5 py-4 text-center text-[11px] uppercase tracking-[0.2em] font-semibold text-white">LINE</a>
-            <a href={whatsappUrl} target="_blank" rel="noreferrer" className="bg-brand-forest px-5 py-4 text-center text-[11px] uppercase tracking-[0.2em] font-semibold text-brand-cream">WhatsApp</a>
-          </div>
+      <div className="p-6 md:p-9">
+        <div className="inline-flex bg-brand-forest text-brand-cream px-4 py-2 text-[10px] uppercase tracking-[0.28em] font-semibold">{project.status.split(" · ")[0]}</div>
+        <h3 className="mt-6 font-display text-4xl md:text-6xl text-brand-ink leading-[1.02]">{project.name}</h3>
+        <p className="mt-4 max-w-4xl whitespace-pre-line text-sm leading-loose text-foreground/70">{bilingual(project.address)}</p>
+        <div className="mt-4 flex flex-wrap gap-3 text-sm text-brand-forest">
+          <span>{project.developer.split(" · ")[0]}</span>
+          <span>BTS / MRT city access</span>
+          <span>Rama 4 corridor</span>
         </div>
       </div>
       <div className="grid lg:grid-cols-3 gap-px bg-border">
