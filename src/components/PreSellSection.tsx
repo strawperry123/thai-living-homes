@@ -6,6 +6,7 @@ import property3 from "@/assets/property-3.jpg";
 const lineUrl = "https://lin.ee/W1y4D20";
 const whatsappUrl = "https://wa.me/66985973849";
 const driveImage = (id: string) => `https://drive.google.com/thumbnail?id=${id}&sz=w1600`;
+const bilingual = (text: string) => text.split(" · ").join("\n");
 
 const images = [property1, property2, property3];
 
@@ -64,7 +65,7 @@ const bangkokProjects: Project[] = [
     size: "1 building, 39 storeys; 1,237 residential units, 2 shops; approx. 496 parking lots · 1 棟 39 層，共 1,237 戶住宅、2 間商鋪，約 496 個車位",
     address: "Rama 4 Road, Khlong Toei, Bangkok 10110 · 曼谷 Khlong Toei 區 Rama 4 路 10110",
     mapQuery: "Life Rama 4 Asoke Rama 4 Road Khlong Toei Bangkok",
-    description: "Life Rama 4 - Asoke is a 39-storey city condominium by AP ME 12 on Rama 4 Road, Khlong Toei. The project combines a large residential scale, parking podium, upper-floor gardens, pool, fitness, steam and sauna facilities, with practical access to Rama 4, Asoke and the Khlong Toei business corridor. 本案位於曼谷 Rama 4 Road、Khlong Toei 區，由 AP ME 12 開發，為 39 層高樓層公寓。建案規劃住宅、商鋪、停車樓層、高樓層花園、泳池、健身房、蒸氣室與桑拿，適合重視市中心交通、出租需求與生活機能的買方。",
+    description: "Life Rama 4 - Asoke is a 39-storey city condominium by AP ME 12 on Rama 4 Road, Khlong Toei. The project combines a large residential scale, parking podium, upper-floor gardens, pool, fitness, steam and sauna facilities, with practical access to Rama 4, Asoke and the Khlong Toei business corridor.\n\n本案位於曼谷 Rama 4 Road、Khlong Toei 區，由 AP ME 12 開發，為 39 層高樓層公寓。建案規劃住宅、商鋪、停車樓層、高樓層花園、泳池、健身房、蒸氣室與桑拿，適合重視市中心交通、出租需求與生活機能的買方。",
     highlights: [
       "Project land area: 5-2-7.5 Rai · 基地面積 5-2-7.5 Rai",
       "1,237 residential units plus 2 shops · 1,237 戶住宅加 2 間商鋪",
@@ -104,14 +105,25 @@ const bangkokProjects: Project[] = [
       { title: "33rd-35th Lower · 33-35 樓下層", src: driveImage("1p09MVy1u2SZBpfzJ9HlvESoeC6UKAdxB"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
       { title: "33rd-35th Upper · 33-35 樓上層", src: driveImage("1IUcpXR3gesfJocEJfvhGl0WOquArsCIY"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
       { title: "36th Lower · 36 樓下層", src: driveImage("1m_9IbLm9UHaKkaS_x9eFhxaKzud2CtCv"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
+      { title: "36th Upper · 36 樓上層", src: driveImage("1D7mWwr3Vb6Bt5mlJi-VHMcfXKOGLCt9g"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
       { title: "37th Floor · 37 樓平面圖", src: driveImage("1DLUX1mBqntpgfKtRaUm9jDYGO2N79FPu"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
     ],
     unitPlanImages: [
-      { title: "Type C · C 戶型", src: driveImage("1T4e5g942FzNsXnPV2d77wsf49NBs7INX"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
-      { title: "Type D · D 戶型", src: driveImage("1e_d9Ar1wQ6u6OueuqdyQDxU73Iuj-4ys"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
-      { title: "Type E · E 戶型", src: driveImage("1ChM9zmR7hWR4hHdvAlKGy6KWybOcBsig"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
-      { title: "Type F · F 戶型", src: driveImage("1JCASApDRukyq958Vm9zlByV0g-usp8af"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
-      { title: "Type K · K 戶型", src: driveImage("10JPoC6kQZsD1v0Xh3ygqWA4TojfIQQ6z"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+      { title: "Type C - L33-14-C4M · C 戶型 L33-14-C4M", src: driveImage("1T4e5g942FzNsXnPV2d77wsf49NBs7INX"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+      { title: "Type D - D12M-43 · D 戶型 D12M-43", src: driveImage("1KQ0x4EVXyT4dy9hqr6Pc9oEbs3opsZp6"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+      { title: "Type D - L33-15/17/19/21-D13 · D 戶型 L33-15/17/19/21-D13", src: driveImage("1e_d9Ar1wQ6u6OueuqdyQDxU73Iuj-4ys"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+      { title: "Type D - L33-16/18/20/22-D13M · D 戶型 L33-16/18/20/22-D13M", src: driveImage("14XhhxLkCE44D66oNy_rBlENmA1KZ-f-D"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+      { title: "Type D - L33-23-D14 · D 戶型 L33-23-D14", src: driveImage("1k4rOBWxjxF9_dK5CSuPiMRRCA54qLkjO"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+      { title: "Type D - L33-26-D15M · D 戶型 L33-26-D15M", src: driveImage("11Q5RAZrRR01ST0J-4AeSVpiuB4gbEadq"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+      { title: "Type D - L33-27-D15 · D 戶型 L33-27-D15", src: driveImage("1CVEI6G83Va9QhWPfeuBS6Pqia3mL8VPv"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+      { title: "Type D - L33-28-D16 · D 戶型 L33-28-D16", src: driveImage("1FoRiH002j6i2MBPgX3zsbnyDWGAZclUG"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+      { title: "Type D - L33-29-D17 · D 戶型 L33-29-D17", src: driveImage("17doy55zUg4YKmjgYjPfUqRZoooYhSE-U"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+      { title: "Type E - L33-04/06/08-E6M · E 戶型 L33-04/06/08-E6M", src: driveImage("1ChM9zmR7hWR4hHdvAlKGy6KWybOcBsig"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+      { title: "Type E - L33-09-E7 · E 戶型 L33-09-E7", src: driveImage("134J9hDUkXYk3qiJzNVZMryhmQSR_iKFB"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+      { title: "Type E - L33-42/44-E8 · E 戶型 L33-42/44-E8", src: driveImage("1s5KFtA29-dfN1tQkCaf0kHJ6Xup23SjR"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+      { title: "Type E - L33-43-E8M · E 戶型 L33-43-E8M", src: driveImage("1yGHlwsGayar1VTsF7NrGyYt9bkZiw4P6"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+      { title: "Type F - L33-37/39-F5M · F 戶型 L33-37/39-F5M", src: driveImage("1JCASApDRukyq958Vm9zlByV0g-usp8af"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+      { title: "Type K - L33-40-K2 · K 戶型 L33-40-K2", src: driveImage("10JPoC6kQZsD1v0Xh3ygqWA4TojfIQQ6z"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
     ],
   },
   {
@@ -374,30 +386,12 @@ const phuketProjects: Project[] = [
   },
 ];
 
-function PlanPreview({ title, items }: { title: string; items: string[] }) {
-  return (
-    <div className="border border-border bg-background p-5">
-      <p className="text-[10px] uppercase tracking-[0.22em] text-brand-clay font-medium">{title}</p>
-      <div className="mt-4 grid gap-3">
-        {items.map((item, index) => (
-          <div key={item} className="flex items-center gap-3 border border-border bg-brand-cream/40 p-3">
-            <div className="h-12 w-12 shrink-0 border border-brand-clay/40 bg-background flex items-center justify-center font-display text-brand-clay">
-              {String(index + 1).padStart(2, "0")}
-            </div>
-            <p className="font-serif-tc text-sm leading-relaxed text-foreground/70">{item}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 function MediaGallery({ title, items, fit = "cover" }: { title: string; items?: ProjectMedia[]; fit?: "cover" | "contain" }) {
   if (!items?.length) return null;
 
   return (
     <section className="mt-10 border border-border bg-background p-6 md:p-8">
-      <p className="text-[10px] uppercase tracking-[0.32em] text-brand-clay font-medium">{title}</p>
+      <p className="whitespace-pre-line text-[10px] uppercase tracking-[0.32em] text-brand-clay font-medium">{bilingual(title)}</p>
       <div className="mt-5 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {items.map((item) => (
           <figure key={item.src} className="border border-border bg-brand-cream/35 overflow-hidden">
@@ -410,8 +404,8 @@ function MediaGallery({ title, items, fit = "cover" }: { title: string; items?: 
               />
             </div>
             <figcaption className="p-4">
-              <p className="font-serif-tc text-base text-brand-ink leading-tight">{item.title}</p>
-              {item.note && <p className="mt-2 text-xs uppercase tracking-[0.16em] text-brand-clay">{item.note}</p>}
+              <p className="whitespace-pre-line font-serif-tc text-base text-brand-ink leading-relaxed">{bilingual(item.title)}</p>
+              {item.note && <p className="mt-2 whitespace-pre-line text-xs uppercase tracking-[0.16em] text-brand-clay">{bilingual(item.note)}</p>}
             </figcaption>
           </figure>
         ))}
@@ -423,18 +417,23 @@ function MediaGallery({ title, items, fit = "cover" }: { title: string; items?: 
 function ProjectAbout({ project }: { project: Project }) {
   return (
     <section className="mt-10 border border-border bg-background p-6 md:p-8">
-      <p className="text-[10px] uppercase tracking-[0.32em] text-brand-clay font-medium">About This Project · 關於本案</p>
+      <p className="text-[10px] uppercase tracking-[0.32em] text-brand-clay font-medium">About This Project</p>
+      <p className="mt-1 font-serif-tc text-xl text-brand-forest">關於本案</p>
       <div className="mt-5 grid lg:grid-cols-12 gap-8">
         <div className="lg:col-span-7">
           <h4 className="font-display text-3xl text-brand-ink leading-tight">{project.name}</h4>
-          <p className="mt-5 font-serif-tc text-base leading-loose text-foreground/70">
-            {project.description} KHANTHAROS reviews location, transportation, lifestyle, layout planning and future rental or resale conditions before recommending a project. KHANTHAROS 會從地段、交通、生活機能、房型規劃與未來轉售出租條件整理重點，協助客戶判斷是否符合自住、收租或資產配置需求。
+          <p className="mt-5 whitespace-pre-line font-serif-tc text-base leading-loose text-foreground/70">
+            {bilingual(project.description)}
           </p>
+          <div className="mt-6 space-y-3 border-t border-border pt-5 text-sm leading-loose text-foreground/70">
+            <p>KHANTHAROS reviews location, transportation, lifestyle, layout planning, and future rental or resale conditions before recommending a project.</p>
+            <p className="font-serif-tc">KHANTHAROS 會從地段、交通、生活機能、房型規劃與未來轉售出租條件整理重點，協助客戶判斷是否符合自住、收租或資產配置需求。</p>
+          </div>
         </div>
         <div className="lg:col-span-5 grid gap-3">
           {[project.developer, project.area, project.status].map((item) => (
-            <div key={item} className="border border-border bg-brand-cream/45 px-5 py-4 text-sm leading-relaxed text-brand-ink">
-              {item}
+            <div key={item} className="whitespace-pre-line border border-border bg-brand-cream/45 px-5 py-4 text-sm leading-relaxed text-brand-ink">
+              {bilingual(item)}
             </div>
           ))}
         </div>
@@ -447,33 +446,34 @@ function ProjectFaq({ project }: { project: Project }) {
   const faqs = [
     {
       question: "Who is this project suitable for? · 這個建案適合哪一類買方？",
-      answer: `${project.name} is suitable for buyers who value the ${project.area} location and want to compare lifestyle comfort with rental potential. ${project.name} 適合重視 ${project.area} 區域條件、希望比較自住舒適度與出租潛力的買方。實際是否適合，仍會依預算、持有時間與租金目標進一步評估。`,
+      answer: `${project.name} is suitable for buyers who value the ${project.area} location and want to compare lifestyle comfort with rental potential.\n\n${project.name} 適合重視 ${project.area} 區域條件、希望比較自住舒適度與出租潛力的買方。實際是否適合，仍會依預算、持有時間與租金目標進一步評估。`,
     },
     {
       question: "What is the ownership and sales status? · 產權與銷售狀態是什麼？",
-      answer: `Ownership information: ${project.ownership}. Current project status: ${project.status}. 目前頁面整理的產權資訊為：${project.ownership}。建案狀態為：${project.status}。正式購買前仍需以開發商最新銷售資料與合約文件為準。`,
+      answer: `Ownership information: ${project.ownership}. Current project status: ${project.status}.\n\n目前頁面整理的產權資訊為：${project.ownership}。建案狀態為：${project.status}。正式購買前仍需以開發商最新銷售資料與合約文件為準。`,
     },
     {
       question: "What layouts are available for reference? · 有哪些房型或格局可以參考？",
-      answer: `Current layout summary: ${project.size}. 目前整理的房型方向為：${project.size}。下方會持續補入樓層平面圖與單位格局圖，方便直接在本網站比較。`,
+      answer: `Current layout summary: ${project.size}.\n\n目前整理的房型方向為：${project.size}。下方會持續補入樓層平面圖與單位格局圖，方便直接在本網站比較。`,
     },
     {
       question: "How are the transportation and lifestyle facilities? · 交通與生活機能如何？",
-      answer: `${project.transport[0]} ${project.lifestyle[0]} 我們也會依客戶需求補充通勤、學校、醫院、商場與出租客群分析。`,
+      answer: `${project.transport[0]}\n\n${project.lifestyle[0]}\n\n我們也會依客戶需求補充通勤、學校、醫院、商場與出租客群分析。`,
     },
   ];
 
   return (
     <section className="mt-8 border border-border bg-background p-6 md:p-8">
-      <p className="text-[10px] uppercase tracking-[0.32em] text-brand-clay font-medium">Common Questions · 常見問題</p>
+      <p className="text-[10px] uppercase tracking-[0.32em] text-brand-clay font-medium">Common Questions</p>
+      <p className="mt-1 font-serif-tc text-xl text-brand-forest">常見問題</p>
       <div className="mt-5 grid gap-4">
         {faqs.map((faq) => (
           <details key={faq.question} className="group border border-border bg-brand-cream/35 p-5">
             <summary className="cursor-pointer list-none font-serif-tc text-lg text-brand-ink flex items-center justify-between gap-4">
-              <span>{faq.question}</span>
+              <span className="whitespace-pre-line">{bilingual(faq.question)}</span>
               <span className="text-brand-clay transition-transform group-open:rotate-45">+</span>
             </summary>
-            <p className="mt-4 text-sm leading-loose text-foreground/70">{faq.answer}</p>
+            <p className="mt-4 whitespace-pre-line text-sm leading-loose text-foreground/70">{bilingual(faq.answer)}</p>
           </details>
         ))}
       </div>
@@ -494,15 +494,15 @@ function ProjectCard({ project, index, isActive, onSelect }: { project: Project;
             loading="lazy"
             className="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-[1000ms] ease-out"
           />
-          <div className="absolute left-4 top-4 bg-brand-cream/95 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-brand-forest font-medium">
-            {project.type}
+          <div className="absolute left-4 top-4 bg-brand-cream/95 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-brand-forest font-medium whitespace-pre-line">
+            {bilingual(project.type)}
           </div>
         </div>
         <div className={`border border-t-0 p-6 transition-colors ${isActive ? "border-brand-forest bg-brand-cream" : "border-border"}`}>
-          <p className="text-[10px] uppercase tracking-[0.25em] text-brand-clay font-medium">{project.area}</p>
+          <p className="whitespace-pre-line text-[10px] uppercase tracking-[0.25em] text-brand-clay font-medium">{bilingual(project.area)}</p>
           <h3 className="mt-3 font-display text-2xl text-brand-ink leading-tight">{project.name}</h3>
-          <p className="mt-4 font-serif-tc text-sm leading-loose text-foreground/65">
-            {project.description}
+          <p className="mt-4 whitespace-pre-line font-serif-tc text-sm leading-loose text-foreground/65">
+            {bilingual(project.description)}
           </p>
           <div className="mt-6 text-[10px] uppercase tracking-[0.22em] text-brand-forest font-medium">
             {isActive ? "Details Open · 詳情已展開" : "View Details · 查看詳情"}
@@ -601,10 +601,11 @@ export function PreSellSection() {
             <section className="mt-12 border border-border bg-brand-cream p-8 md:p-10">
               <div className="grid lg:grid-cols-12 gap-10">
                 <div className="lg:col-span-5">
-                  <p className="text-[10px] uppercase tracking-[0.35em] text-brand-clay font-medium">Selected Project · 建案詳情</p>
+                  <p className="text-[10px] uppercase tracking-[0.35em] text-brand-clay font-medium">Selected Project</p>
+                  <p className="mt-1 font-serif-tc text-xl text-brand-forest">建案詳情</p>
                   <h3 className="mt-4 font-display text-4xl text-brand-ink leading-tight">{selectedProject.name}</h3>
-                  <p className="mt-3 font-serif-tc text-xl text-brand-forest">{selectedProject.area}</p>
-                  <p className="mt-6 text-sm leading-relaxed text-foreground/70">{selectedProject.description}</p>
+                  <p className="mt-3 whitespace-pre-line font-serif-tc text-xl text-brand-forest">{bilingual(selectedProject.area)}</p>
+                  <p className="mt-6 whitespace-pre-line text-sm leading-loose text-foreground/70">{bilingual(selectedProject.description)}</p>
                 </div>
                 <div className="lg:col-span-7 grid sm:grid-cols-2 gap-px bg-border">
                   {[
@@ -616,8 +617,8 @@ export function PreSellSection() {
                     ["Project Type · 建案類型", selectedProject.type],
                   ].map(([label, value]) => (
                     <div key={label} className="bg-background p-5">
-                      <p className="text-[10px] uppercase tracking-[0.22em] text-brand-clay font-medium">{label}</p>
-                      <p className="mt-3 text-sm leading-relaxed text-brand-ink">{value}</p>
+                      <p className="whitespace-pre-line text-[10px] uppercase tracking-[0.22em] text-brand-clay font-medium">{bilingual(label)}</p>
+                      <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-brand-ink">{bilingual(value)}</p>
                     </div>
                   ))}
                 </div>
@@ -625,8 +626,8 @@ export function PreSellSection() {
 
               <div className="mt-8 grid md:grid-cols-3 gap-4">
                 {selectedProject.highlights.map((item) => (
-                  <div key={item} className="border border-border bg-background px-5 py-4 font-serif-tc text-sm leading-loose text-foreground/70">
-                    {item}
+                  <div key={item} className="whitespace-pre-line border border-border bg-background px-5 py-4 font-serif-tc text-sm leading-loose text-foreground/70">
+                    {bilingual(item)}
                   </div>
                 ))}
               </div>
@@ -637,17 +638,6 @@ export function PreSellSection() {
               <MediaGallery title="Floor Plan Images · 樓層平面圖" items={selectedProject.floorPlanImages} fit="contain" />
               <MediaGallery title="Unit Layout Images · 單位格局圖" items={selectedProject.unitPlanImages} fit="contain" />
 
-              <div className="mt-10 grid lg:grid-cols-2 gap-8">
-                <div className="space-y-8">
-                  <PlanPreview title="Floor Plan · 樓層平面圖" items={selectedProject.floorPlans} />
-                  <PlanPreview title="Unit Layout · 單位格局圖" items={selectedProject.unitLayouts} />
-                </div>
-                <div className="space-y-8">
-                  <PlanPreview title="Transport · 交通" items={selectedProject.transport} />
-                  <PlanPreview title="Lifestyle · 生活機能" items={selectedProject.lifestyle} />
-                </div>
-              </div>
-
               <div className="mt-10 overflow-hidden border border-border bg-background">
                 <iframe
                   title={`${selectedProject.name} map`}
@@ -656,15 +646,6 @@ export function PreSellSection() {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
-              </div>
-
-              <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                <a href={lineUrl} target="_blank" rel="noreferrer" className="inline-flex justify-center bg-[#06C755] px-7 py-4 text-[11px] uppercase tracking-[0.22em] font-semibold text-white hover:bg-[#05b34d] transition-colors">
-                  Ask on LINE · LINE 諮詢
-                </a>
-                <a href={whatsappUrl} target="_blank" rel="noreferrer" className="inline-flex justify-center bg-brand-forest px-7 py-4 text-[11px] uppercase tracking-[0.22em] font-semibold text-brand-cream hover:bg-brand-ink transition-colors">
-                  Ask on WhatsApp · WhatsApp 諮詢
-                </a>
               </div>
             </section>
           )}
