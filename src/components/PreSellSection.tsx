@@ -37,146 +37,229 @@ type Project = {
   unitPlanImages?: ProjectMedia[];
 };
 
-const mediaFromEntries = (entries: [string, string, string?][]): ProjectMedia[] =>
-  entries.map(([title, id, note]) => ({ title, src: driveImage(id), note }));
+const mediaRows = (rows: string): ProjectMedia[] =>
+  rows.trim().split("\n").filter(Boolean).map((row) => {
+    const [title = "", id = "", note] = row.split("|");
+    return { title, src: driveImage(id), note };
+  });
 
-const lifeRama4FloorPlanImages = mediaFromEntries([
-  ["1st Layout Combine · 1 樓整體平面圖", "1TCedySR8iIf9MCYdMNa1Fq__bQqf3Ag_", "Simplex Floorplan · Simplex 樓層圖"],
-  ["2nd Mezzanine · 2 樓夾層平面圖", "1-PRz35yL6os6CAwUdO728bhj8q1mgrS-", "Simplex Floorplan · Simplex 樓層圖"],
-  ["2nd Parking · 2 樓停車層", "1prkp3I7p3-5KZwY2YgeFahz8LYCiy-cP", "Simplex Floorplan · Simplex 樓層圖"],
-  ["3rd Parking · 3 樓停車層", "1QilRlMB0tj1qytf5admSzPpn9_hhDEaS", "Simplex Floorplan · Simplex 樓層圖"],
-  ["4th Parking · 4 樓停車層", "1zTyck17FKc5qD-C9uqrqI5kCEePZeIEi", "Simplex Floorplan · Simplex 樓層圖"],
-  ["5th and 7th Parking · 5 / 7 樓停車層", "1CodhIq6bRZD9--25Ep5rj91JQ6MT-p8V", "Simplex Floorplan · Simplex 樓層圖"],
-  ["6th Parking · 6 樓停車層", "1rvSPPFGt95rOseHqnsG-wV_BISJhQ4GJ", "Simplex Floorplan · Simplex 樓層圖"],
-  ["8th Parking · 8 樓停車層", "1UCsLRZW1DEZtYSXOE8Tb2GAUIEhdxkxi", "Simplex Floorplan · Simplex 樓層圖"],
-  ["10th Typical Floor Plan · 10 樓標準層平面圖", "1ojSiaHrnZ_2GXN2ZHmQXTovjPaDo9vy-", "Vertiplex Floorplan · Vertiplex 樓層圖"],
-  ["11th-14th Typical Floor Plan · 11-14 樓標準層平面圖", "1fhVdq6Emj3qF3W1COj_LNv-naQYnBPzz", "Vertiplex Floorplan · Vertiplex 樓層圖"],
-  ["15th-24th Typical Floor Plan · 15-24 樓標準層平面圖", "1US2z1qN2bCE6lk197AGcl0QHritTkbtl", "Simplex Floorplan · Simplex 樓層圖"],
-  ["25th-32nd Typical Floor Plan · 25-32 樓標準層平面圖", "1DhEo6ozWTU5_x9RQq_nhbLKa30eLkKkk", "Simplex Floorplan · Simplex 樓層圖"],
-  ["33rd-35th Lower · 33-35 樓下層", "1p09MVy1u2SZBpfzJ9HlvESoeC6UKAdxB", "Vertiplex Floorplan · Vertiplex 樓層圖"],
-  ["33rd-35th Upper · 33-35 樓上層", "1IUcpXR3gesfJocEJfvhGl0WOquArsCIY", "Vertiplex Floorplan · Vertiplex 樓層圖"],
-  ["36th Lower · 36 樓下層", "1m_9IbLm9UHaKkaS_x9eFhxaKzud2CtCv", "Vertiplex Floorplan · Vertiplex 樓層圖"],
-  ["36th Upper · 36 樓上層", "1D7mWwr3Vb6Bt5mlJi-VHMcfXKOGLCt9g", "Vertiplex Floorplan · Vertiplex 樓層圖"],
-  ["37th Floor · 37 樓平面圖", "1DLUX1mBqntpgfKtRaUm9jDYGO2N79FPu", "Vertiplex Floorplan · Vertiplex 樓層圖"],
-]);
+const mediaUrlRows = (rows: string): ProjectMedia[] =>
+  rows.trim().split("\n").filter(Boolean).map((row) => {
+    const [title = "", src = "", note] = row.split("|");
+    return { title, src, note };
+  });
 
-const lifeRama4UnitPlanImages = mediaFromEntries([
-  ["Type A - L9-11-A1 · A 戶型 L9-11-A1", "1UYntSozif_9r9Vr155ALtaL9FIJYtIVN", "Simplex layout · Simplex 單位格局圖"],
-  ["Type A - L9-12-A2M · A 戶型 L9-12-A2M", "1X6XFBCZF4qv66wiyvkAsi5r7YJSG3uGE", "Simplex layout · Simplex 單位格局圖"],
-  ["Type A - L9-13-A2 · A 戶型 L9-13-A2", "1SVZwPscIVONGn9wGp_DmYw5dqo23hiJ2", "Simplex layout · Simplex 單位格局圖"],
-  ["Type A - L9-14-A2M · A 戶型 L9-14-A2M", "1zjygs6Z6RgByhTQeMEskdgRqDgaHUPJl", "Simplex layout · Simplex 單位格局圖"],
-  ["Type A - L9-30-A5M · A 戶型 L9-30-A5M", "1JA3WS47cc5f26HYGF8wSbKTm0x7beWu-", "Simplex layout · Simplex 單位格局圖"],
-  ["Type A - L9-31-A3 · A 戶型 L9-31-A3", "1HSJ7KkZp-qqUMNsPs9wBotxp9BRlzZNy", "Simplex layout · Simplex 單位格局圖"],
-  ["Type A - L9-32-A5 · A 戶型 L9-32-A5", "1iRMS_uDQ5-nfzoZyqO00esFM2ehZdaUj", "Simplex layout · Simplex 單位格局圖"],
-  ["Type A - L9-33-A4 · A 戶型 L9-33-A4", "17qq_FTBlF6UZ3aj_8O6YEBX1kLbWQJlI", "Simplex layout · Simplex 單位格局圖"],
-  ["Type A - L10-11-A1 · A 戶型 L10-11-A1", "1bU_u938BVMsefJyl3CEQsb5rtRASY4UP", "Simplex layout · Simplex 單位格局圖"],
-  ["Type A - L10-12-A2M · A 戶型 L10-12-A2M", "1QlW2Iz8Bz66I9g9fTRJ_jv8o-NZlysBd", "Simplex layout · Simplex 單位格局圖"],
-  ["Type A - L10-13-A2 · A 戶型 L10-13-A2", "1Fs1NAOcX7Eg9MbVxl41Nmn6K6zUah0ns", "Simplex layout · Simplex 單位格局圖"],
-  ["Type A - L10-14-A2M · A 戶型 L10-14-A2M", "1lwIyKpY2UUsnZtUA-qJxv0WEaWp2nmHA", "Simplex layout · Simplex 單位格局圖"],
-  ["Type A - L10-25-A6 · A 戶型 L10-25-A6", "1NJxsBG_S-hq_BCE8RiTIi6zaNjrhK2L4", "Simplex layout · Simplex 單位格局圖"],
-  ["Type A - L10-30-A5M · A 戶型 L10-30-A5M", "142UygqxJEocVq5NFZqDqbIK1QOpp4nLu", "Simplex layout · Simplex 單位格局圖"],
-  ["Type A - L10-31-A3 · A 戶型 L10-31-A3", "1A30rHgqDgtUlJ4IsPjqlJh-sIuWqbguJ", "Simplex layout · Simplex 單位格局圖"],
-  ["Type A - L10-32-A5 · A 戶型 L10-32-A5", "16ZyK1oJbS0EHaa9oZ80yoa8jRS7mKDW2", "Simplex layout · Simplex 單位格局圖"],
-  ["Type A - L10-33-A4 · A 戶型 L10-33-A4", "12hFhiFz3bWL9SyOdKti-tsVbP9AEfM8g", "Simplex layout · Simplex 單位格局圖"],
-  ["Type B - L10-01-B1 · B 戶型 L10-01-B1", "1L9HQs9zOgemt4bhx48AInUhGiQSxJ8Pi", "Simplex layout · Simplex 單位格局圖"],
-  ["Type B - L10-02-B3 · B 戶型 L10-02-B3", "1E3XBGpLWsS5RIIT5Y8ZsOA58T1YAHFSf", "Simplex layout · Simplex 單位格局圖"],
-  ["Type B - L11-41-B6 · B 戶型 L11-41-B6", "1390FMczW97L_DjMa5y66qA_mxuAsPgHv", "Simplex layout · Simplex 單位格局圖"],
-  ["Type B - L11-45-B7 · B 戶型 L11-45-B7", "1L3xJsLxViCKJnpux2E_qTq33Q-YeRS2F", "Simplex layout · Simplex 單位格局圖"],
-  ["Type B - L11-46-B8 · B 戶型 L11-46-B8", "1bhlsmYyKHPYj15DiRNGzCOZcp6RrZAMk", "Simplex layout · Simplex 單位格局圖"],
-  ["Type B - L25-25-B9 · B 戶型 L25-25-B9", "1oWRXwTUOZu5PuAwtx8sRAZv1Js7F4v_9", "Simplex layout · Simplex 單位格局圖"],
-  ["Type B - L25-30-B2 · B 戶型 L25-30-B2", "1fgyi-m__Q3DRncmsFX_-oitsmbneysHR", "Simplex layout · Simplex 單位格局圖"],
-  ["Type B - L25-31-B4M · B 戶型 L25-31-B4M", "1VXwNmq2mt4yQACkFsvWd9K468iyRxvMo", "Simplex layout · Simplex 單位格局圖"],
-  ["Type B - L25-32-B4 · B 戶型 L25-32-B4", "1K93b_kor145M9V3oCBQpvqd8Wzv05xGe", "Simplex layout · Simplex 單位格局圖"],
-  ["Type B - L25-33-B5 · B 戶型 L25-33-B5", "1f0qT9JKismgpsVCtHvTBvN2Hg7Sq6WnW", "Simplex layout · Simplex 單位格局圖"],
-  ["Type C - L33-14-C4M · C 戶型 L33-14-C4M", "1T4e5g942FzNsXnPV2d77wsf49NBs7INX", "Vertiplex layout · Vertiplex 單位格局圖"],
-  ["Type D - D12M-43 · D 戶型 D12M-43", "1KQ0x4EVXyT4dy9hqr6Pc9oEbs3opsZp6", "Vertiplex layout · Vertiplex 單位格局圖"],
-  ["Type D - L33-15/17/19/21-D13 · D 戶型 L33-15/17/19/21-D13", "1e_d9Ar1wQ6u6OueuqdyQDxU73Iuj-4ys", "Vertiplex layout · Vertiplex 單位格局圖"],
-  ["Type D - L33-16/18/20/22-D13M · D 戶型 L33-16/18/20/22-D13M", "14XhhxLkCE44D66oNy_rBlENmA1KZ-f-D", "Vertiplex layout · Vertiplex 單位格局圖"],
-  ["Type D - L33-23-D14 · D 戶型 L33-23-D14", "1k4rOBWxjxF9_dK5CSuPiMRRCA54qLkjO", "Vertiplex layout · Vertiplex 單位格局圖"],
-  ["Type D - L33-26-D15M · D 戶型 L33-26-D15M", "11Q5RAZrRR01ST0J-4AeSVpiuB4gbEadq", "Vertiplex layout · Vertiplex 單位格局圖"],
-  ["Type D - L33-27-D15 · D 戶型 L33-27-D15", "1CVEI6G83Va9QhWPfeuBS6Pqia3mL8VPv", "Vertiplex layout · Vertiplex 單位格局圖"],
-  ["Type D - L33-28-D16 · D 戶型 L33-28-D16", "1FoRiH002j6i2MBPgX3zsbnyDWGAZclUG", "Vertiplex layout · Vertiplex 單位格局圖"],
-  ["Type D - L33-29-D17 · D 戶型 L33-29-D17", "17doy55zUg4YKmjgYjPfUqRZoooYhSE-U", "Vertiplex layout · Vertiplex 單位格局圖"],
-  ["Type E - L33-04/06/08-E6M · E 戶型 L33-04/06/08-E6M", "1ChM9zmR7hWR4hHdvAlKGy6KWybOcBsig", "Vertiplex layout · Vertiplex 單位格局圖"],
-  ["Type E - L33-09-E7 · E 戶型 L33-09-E7", "134J9hDUkXYk3qiJzNVZMryhmQSR_iKFB", "Vertiplex layout · Vertiplex 單位格局圖"],
-  ["Type E - L33-42/44-E8 · E 戶型 L33-42/44-E8", "1s5KFtA29-dfN1tQkCaf0kHJ6Xup23SjR", "Vertiplex layout · Vertiplex 單位格局圖"],
-  ["Type E - L33-43-E8M · E 戶型 L33-43-E8M", "1yGHlwsGayar1VTsF7NrGyYt9bkZiw4P6", "Vertiplex layout · Vertiplex 單位格局圖"],
-  ["Type F - L33-37/39-F5M · F 戶型 L33-37/39-F5M", "1JCASApDRukyq958Vm9zlByV0g-usp8af", "Vertiplex layout · Vertiplex 單位格局圖"],
-  ["Type K - L33-40-K2 · K 戶型 L33-40-K2", "10JPoC6kQZsD1v0Xh3ygqWA4TojfIQQ6z", "Vertiplex layout · Vertiplex 單位格局圖"],
-]);
+const lifeRama4FloorPlanImages = mediaRows(`
+1st Layout Combine · 1 樓整體平面圖|1TCedySR8iIf9MCYdMNa1Fq__bQqf3Ag_|Simplex Floorplan · Simplex 樓層圖
+2nd Mezzanine · 2 樓夾層平面圖|1-PRz35yL6os6CAwUdO728bhj8q1mgrS-|Simplex Floorplan · Simplex 樓層圖
+2nd Parking · 2 樓停車層|1prkp3I7p3-5KZwY2YgeFahz8LYCiy-cP|Simplex Floorplan · Simplex 樓層圖
+3rd Parking · 3 樓停車層|1QilRlMB0tj1qytf5admSzPpn9_hhDEaS|Simplex Floorplan · Simplex 樓層圖
+4th Parking · 4 樓停車層|1zTyck17FKc5qD-C9uqrqI5kCEePZeIEi|Simplex Floorplan · Simplex 樓層圖
+5th and 7th Parking · 5 / 7 樓停車層|1CodhIq6bRZD9--25Ep5rj91JQ6MT-p8V|Simplex Floorplan · Simplex 樓層圖
+6th Parking · 6 樓停車層|1rvSPPFGt95rOseHqnsG-wV_BISJhQ4GJ|Simplex Floorplan · Simplex 樓層圖
+8th Parking · 8 樓停車層|1UCsLRZW1DEZtYSXOE8Tb2GAUIEhdxkxi|Simplex Floorplan · Simplex 樓層圖
+10th Typical Floor Plan · 10 樓標準層平面圖|1ojSiaHrnZ_2GXN2ZHmQXTovjPaDo9vy-|Vertiplex Floorplan · Vertiplex 樓層圖
+11th-14th Typical Floor Plan · 11-14 樓標準層平面圖|1fhVdq6Emj3qF3W1COj_LNv-naQYnBPzz|Vertiplex Floorplan · Vertiplex 樓層圖
+15th-24th Typical Floor Plan · 15-24 樓標準層平面圖|1US2z1qN2bCE6lk197AGcl0QHritTkbtl|Simplex Floorplan · Simplex 樓層圖
+25th-32nd Typical Floor Plan · 25-32 樓標準層平面圖|1DhEo6ozWTU5_x9RQq_nhbLKa30eLkKkk|Simplex Floorplan · Simplex 樓層圖
+33rd-35th Lower · 33-35 樓下層|1p09MVy1u2SZBpfzJ9HlvESoeC6UKAdxB|Vertiplex Floorplan · Vertiplex 樓層圖
+33rd-35th Upper · 33-35 樓上層|1IUcpXR3gesfJocEJfvhGl0WOquArsCIY|Vertiplex Floorplan · Vertiplex 樓層圖
+36th Lower · 36 樓下層|1m_9IbLm9UHaKkaS_x9eFhxaKzud2CtCv|Vertiplex Floorplan · Vertiplex 樓層圖
+36th Upper · 36 樓上層|1D7mWwr3Vb6Bt5mlJi-VHMcfXKOGLCt9g|Vertiplex Floorplan · Vertiplex 樓層圖
+37th Floor · 37 樓平面圖|1DLUX1mBqntpgfKtRaUm9jDYGO2N79FPu|Vertiplex Floorplan · Vertiplex 樓層圖
+`);
 
-const aspireFloorPlanImages = mediaFromEntries([
-  ["Ground Master Plan · G 樓總配置圖", "171RlWL4JNYee_e8yP-CZ09vvG8sAqa8B", "Floor Plan · 樓層平面圖"],
-  ["Ground Floor · G 樓配置圖", "19QOUA5FP7GmCkioBx-dbY8ApRExNd4YH", "Floor Plan · 樓層平面圖"],
-  ["Mezzanine Floor · M 樓配置圖", "1P7ttuOmATSrd7vXiohVFElNt0a_gbWEI", "Floor Plan · 樓層平面圖"],
-  ["Level 2 · 2 樓配置圖", "1zmqPm0YJGYdYu8Rj-5rebe7nTqV_f4Ne", "Floor Plan · 樓層平面圖"],
-  ["Level 3 · 3 樓配置圖", "1WNAj14IgU0ZdO48Nye0l2ZLjFOz5wti2", "Floor Plan · 樓層平面圖"],
-  ["Level 4 · 4 樓配置圖", "1HP6Mhq6H8q7iDf_Oef3qHQqUm9OzovlO", "Floor Plan · 樓層平面圖"],
-  ["Level 5 · 5 樓配置圖", "1_2kecBAMYkwzaVionLJRSqKBrE9XTTAD", "Floor Plan · 樓層平面圖"],
-  ["Level 6 · 6 樓配置圖", "1X8oAesJcrDkPhOGPph7YtQUNhERlIaYg", "Floor Plan · 樓層平面圖"],
-  ["Level 7 · 7 樓配置圖", "1S3cG-ekB-m12r55RG0nc7Lu2XK_C1Mvb", "Floor Plan · 樓層平面圖"],
-  ["Level 8 Facilities · 8 樓公設配置圖", "1HiPh4ax57EexEuuvCwcThGQx9VEXwUFd", "Floor Plan · 樓層平面圖"],
-  ["Level 9 · 9 樓配置圖", "1-rJsnS8CIJUTGXnaVKgYZmWloqYnggaa", "Floor Plan · 樓層平面圖"],
-  ["Level 10-30 · 10-30 樓標準層", "1Ho4xsSRIR1kPV83tc8GMowIEAMEizK-r", "Floor Plan · 樓層平面圖"],
-  ["Level 31-37 · 31-37 樓配置圖", "13HrNWTVOruqLh1aO0WPxISYIlArpu29K", "Floor Plan · 樓層平面圖"],
-  ["Level 38 · 38 樓配置圖", "1PZKFdypII24OoAkHWbHNjVubnAknj_Dh", "Floor Plan · 樓層平面圖"],
-  ["Level 38 Upper · 38 樓上層", "10zEZFkuQsKew9yeGcy18Zmpb8iBt9T4g", "Floor Plan · 樓層平面圖"],
-  ["Rooftop · 屋頂層配置圖", "1WYfLc3nnQA5M3TCdOs5H8InirXHmjuGK", "Floor Plan · 樓層平面圖"],
-]);
+const lifeRama4UnitPlanImages = mediaRows(`
+Type A - L9-11-A1 · A 戶型 L9-11-A1|1UYntSozif_9r9Vr155ALtaL9FIJYtIVN|Simplex layout · Simplex 單位格局圖
+Type A - L9-12-A2M · A 戶型 L9-12-A2M|1X6XFBCZF4qv66wiyvkAsi5r7YJSG3uGE|Simplex layout · Simplex 單位格局圖
+Type A - L9-13-A2 · A 戶型 L9-13-A2|1SVZwPscIVONGn9wGp_DmYw5dqo23hiJ2|Simplex layout · Simplex 單位格局圖
+Type A - L9-14-A2M · A 戶型 L9-14-A2M|1zjygs6Z6RgByhTQeMEskdgRqDgaHUPJl|Simplex layout · Simplex 單位格局圖
+Type A - L9-30-A5M · A 戶型 L9-30-A5M|1JA3WS47cc5f26HYGF8wSbKTm0x7beWu-|Simplex layout · Simplex 單位格局圖
+Type A - L9-31-A3 · A 戶型 L9-31-A3|1HSJ7KkZp-qqUMNsPs9wBotxp9BRlzZNy|Simplex layout · Simplex 單位格局圖
+Type A - L9-32-A5 · A 戶型 L9-32-A5|1iRMS_uDQ5-nfzoZyqO00esFM2ehZdaUj|Simplex layout · Simplex 單位格局圖
+Type A - L9-33-A4 · A 戶型 L9-33-A4|17qq_FTBlF6UZ3aj_8O6YEBX1kLbWQJlI|Simplex layout · Simplex 單位格局圖
+Type A - L10-11-A1 · A 戶型 L10-11-A1|1bU_u938BVMsefJyl3CEQsb5rtRASY4UP|Simplex layout · Simplex 單位格局圖
+Type A - L10-12-A2M · A 戶型 L10-12-A2M|1QlW2Iz8Bz66I9g9fTRJ_jv8o-NZlysBd|Simplex layout · Simplex 單位格局圖
+Type A - L10-13-A2 · A 戶型 L10-13-A2|1Fs1NAOcX7Eg9MbVxl41Nmn6K6zUah0ns|Simplex layout · Simplex 單位格局圖
+Type A - L10-14-A2M · A 戶型 L10-14-A2M|1lwIyKpY2UUsnZtUA-qJxv0WEaWp2nmHA|Simplex layout · Simplex 單位格局圖
+Type A - L10-25-A6 · A 戶型 L10-25-A6|1NJxsBG_S-hq_BCE8RiTIi6zaNjrhK2L4|Simplex layout · Simplex 單位格局圖
+Type A - L10-30-A5M · A 戶型 L10-30-A5M|142UygqxJEocVq5NFZqDqbIK1QOpp4nLu|Simplex layout · Simplex 單位格局圖
+Type A - L10-31-A3 · A 戶型 L10-31-A3|1A30rHgqDgtUlJ4IsPjqlJh-sIuWqbguJ|Simplex layout · Simplex 單位格局圖
+Type A - L10-32-A5 · A 戶型 L10-32-A5|16ZyK1oJbS0EHaa9oZ80yoa8jRS7mKDW2|Simplex layout · Simplex 單位格局圖
+Type A - L10-33-A4 · A 戶型 L10-33-A4|12hFhiFz3bWL9SyOdKti-tsVbP9AEfM8g|Simplex layout · Simplex 單位格局圖
+Type B - L10-01-B1 · B 戶型 L10-01-B1|1L9HQs9zOgemt4bhx48AInUhGiQSxJ8Pi|Simplex layout · Simplex 單位格局圖
+Type B - L10-02-B3 · B 戶型 L10-02-B3|1E3XBGpLWsS5RIIT5Y8ZsOA58T1YAHFSf|Simplex layout · Simplex 單位格局圖
+Type B - L11-41-B6 · B 戶型 L11-41-B6|1390FMczW97L_DjMa5y66qA_mxuAsPgHv|Simplex layout · Simplex 單位格局圖
+Type B - L11-45-B7 · B 戶型 L11-45-B7|1L3xJsLxViCKJnpux2E_qTq33Q-YeRS2F|Simplex layout · Simplex 單位格局圖
+Type B - L11-46-B8 · B 戶型 L11-46-B8|1bhlsmYyKHPYj15DiRNGzCOZcp6RrZAMk|Simplex layout · Simplex 單位格局圖
+Type B - L25-25-B9 · B 戶型 L25-25-B9|1oWRXwTUOZu5PuAwtx8sRAZv1Js7F4v_9|Simplex layout · Simplex 單位格局圖
+Type B - L25-30-B2 · B 戶型 L25-30-B2|1fgyi-m__Q3DRncmsFX_-oitsmbneysHR|Simplex layout · Simplex 單位格局圖
+Type B - L25-31-B4M · B 戶型 L25-31-B4M|1VXwNmq2mt4yQACkFsvWd9K468iyRxvMo|Simplex layout · Simplex 單位格局圖
+Type B - L25-32-B4 · B 戶型 L25-32-B4|1K93b_kor145M9V3oCBQpvqd8Wzv05xGe|Simplex layout · Simplex 單位格局圖
+Type B - L25-33-B5 · B 戶型 L25-33-B5|1f0qT9JKismgpsVCtHvTBvN2Hg7Sq6WnW|Simplex layout · Simplex 單位格局圖
+Type C - L33-14-C4M · C 戶型 L33-14-C4M|1T4e5g942FzNsXnPV2d77wsf49NBs7INX|Vertiplex layout · Vertiplex 單位格局圖
+Type D - D12M-43 · D 戶型 D12M-43|1KQ0x4EVXyT4dy9hqr6Pc9oEbs3opsZp6|Vertiplex layout · Vertiplex 單位格局圖
+Type D - L33-15/17/19/21-D13 · D 戶型 L33-15/17/19/21-D13|1e_d9Ar1wQ6u6OueuqdyQDxU73Iuj-4ys|Vertiplex layout · Vertiplex 單位格局圖
+Type D - L33-16/18/20/22-D13M · D 戶型 L33-16/18/20/22-D13M|14XhhxLkCE44D66oNy_rBlENmA1KZ-f-D|Vertiplex layout · Vertiplex 單位格局圖
+Type D - L33-23-D14 · D 戶型 L33-23-D14|1k4rOBWxjxF9_dK5CSuPiMRRCA54qLkjO|Vertiplex layout · Vertiplex 單位格局圖
+Type D - L33-26-D15M · D 戶型 L33-26-D15M|11Q5RAZrRR01ST0J-4AeSVpiuB4gbEadq|Vertiplex layout · Vertiplex 單位格局圖
+Type D - L33-27-D15 · D 戶型 L33-27-D15|1CVEI6G83Va9QhWPfeuBS6Pqia3mL8VPv|Vertiplex layout · Vertiplex 單位格局圖
+Type D - L33-28-D16 · D 戶型 L33-28-D16|1FoRiH002j6i2MBPgX3zsbnyDWGAZclUG|Vertiplex layout · Vertiplex 單位格局圖
+Type D - L33-29-D17 · D 戶型 L33-29-D17|17doy55zUg4YKmjgYjPfUqRZoooYhSE-U|Vertiplex layout · Vertiplex 單位格局圖
+Type E - L33-04/06/08-E6M · E 戶型 L33-04/06/08-E6M|1ChM9zmR7hWR4hHdvAlKGy6KWybOcBsig|Vertiplex layout · Vertiplex 單位格局圖
+Type E - L33-09-E7 · E 戶型 L33-09-E7|134J9hDUkXYk3qiJzNVZMryhmQSR_iKFB|Vertiplex layout · Vertiplex 單位格局圖
+Type E - L33-42/44-E8 · E 戶型 L33-42/44-E8|1s5KFtA29-dfN1tQkCaf0kHJ6Xup23SjR|Vertiplex layout · Vertiplex 單位格局圖
+Type E - L33-43-E8M · E 戶型 L33-43-E8M|1yGHlwsGayar1VTsF7NrGyYt9bkZiw4P6|Vertiplex layout · Vertiplex 單位格局圖
+Type F - L33-37/39-F5M · F 戶型 L33-37/39-F5M|1JCASApDRukyq958Vm9zlByV0g-usp8af|Vertiplex layout · Vertiplex 單位格局圖
+Type K - L33-40-K2 · K 戶型 L33-40-K2|10JPoC6kQZsD1v0Xh3ygqWA4TojfIQQ6z|Vertiplex layout · Vertiplex 單位格局圖
+`);
 
-const aspireUnitPlanImages = mediaFromEntries([
-  ["Type A1 · A1 戶型", "1WIegKqrG9MPaKrpvR68knFl3Qume42AM", "Unit Plan · 單位格局圖"],
-  ["Type A2 · A2 戶型", "1tY6-OtnXe81z-JwX2sWsl7VuB245_b1p", "Unit Plan · 單位格局圖"],
-  ["Type B1 · B1 戶型", "1s9fwqpzjVLcS0vgDydTFUpS7JqOFmWLQ", "Unit Plan · 單位格局圖"],
-  ["Type B1M · B1M 戶型", "1oaWeR8jDqO97w2Ad37xDvySAXL9lV_7n", "Unit Plan · 單位格局圖"],
-  ["Type B2 · B2 戶型", "15zpLgdDTE2ijGGWS8toeZfYUWDfd_5vb", "Unit Plan · 單位格局圖"],
-  ["Type B2M · B2M 戶型", "1apIGg_2h0gScQUA9Wjd2R-CGR85Ra7Ob", "Unit Plan · 單位格局圖"],
-  ["Type C1 · C1 戶型", "19nm7P6TJhsiY2JuhQSmlboM3zVb3f3hC", "Unit Plan · 單位格局圖"],
-  ["Type C1M · C1M 戶型", "1xTSdXo3fq8wvkr6bZTgI5Bt8q8dPX2CN", "Unit Plan · 單位格局圖"],
-  ["Type C2 · C2 戶型", "1Pz0ifTg7_RbaHMKqqPNgaq7G4kUFewnI", "Unit Plan · 單位格局圖"],
-  ["Type C2M · C2M 戶型", "11alxmsf9aR00kVF7WS4RRx511jxPn-0F", "Unit Plan · 單位格局圖"],
-  ["Type C3 · C3 戶型", "18vX9psRFxtdT0mZ7re66xAvDbs8k3IqU", "Unit Plan · 單位格局圖"],
-  ["Type C3M · C3M 戶型", "1vr8eyenMcwkSP0B5_xgGzgf-dVvXTdxR", "Unit Plan · 單位格局圖"],
-  ["Type C4 · C4 戶型", "1KXro74NZ79_iLARTzDwciNTMUzqfR0Pw", "Unit Plan · 單位格局圖"],
-  ["Type D1 · D1 戶型", "1tRpkhToEAVI-JwlvlTZXzV4qzut3UG0v", "Unit Plan · 單位格局圖"],
-  ["Type D1M · D1M 戶型", "1tdGlP2Qj-VEcb8n-0X-xaFd60vT7OcyW", "Unit Plan · 單位格局圖"],
-  ["Type D2 · D2 戶型", "1jZH4fe5eXtivZCTFQQIvCpEpU8O51O2d", "Unit Plan · 單位格局圖"],
-  ["Type D2M · D2M 戶型", "1dyMlFM4i5J_2iSFo3ANk-qvRmWrED6zN", "Unit Plan · 單位格局圖"],
-  ["Type D3 · D3 戶型", "1tMHp9mjDGZZtYxaRg7sUgsJw8sCdbqDO", "Unit Plan · 單位格局圖"],
-  ["Type E1 · E1 戶型", "1DAH9iU0-9Jg2o2pr6p_2gjzBGSXFgIzc", "Unit Plan · 單位格局圖"],
-  ["Type E2 · E2 戶型", "1s--1G8BxBFCX2broUEInM8euZSmD3Ir7", "Unit Plan · 單位格局圖"],
-  ["Type F1 · F1 戶型", "1_FeOv-7MAk-Nz3dyX8Q359D5eOY1Z1HA", "Unit Plan · 單位格局圖"],
-  ["Type G1 · G1 戶型", "1MTFZxgoLv5HigS0LMkDHLkXsHnknGlb7", "Unit Plan · 單位格局圖"],
-  ["Type G2 · G2 戶型", "1_MH-dFc2afLuTiTj1joy1zjTKSFVRZfg", "Unit Plan · 單位格局圖"],
-  ["Type G3 · G3 戶型", "1_8rqlbVP_HKnuX8uY_b61vBUnNz8D-d6", "Unit Plan · 單位格局圖"],
-  ["Type G3M · G3M 戶型", "1kSlJXiLB6s7v_piG4Kys2I0p5JKNbReh", "Unit Plan · 單位格局圖"],
-  ["Type H1 · H1 戶型", "1x0PNS3mf5LXDMcNgzD3tRtoYwN2IsLSQ", "Unit Plan · 單位格局圖"],
-  ["Type H1M · H1M 戶型", "1vNDbbzIioCFYAPRl808url__WO0MnXuQ", "Unit Plan · 單位格局圖"],
-  ["Type H2 · H2 戶型", "1JDA-WAw0mto4dQZbM11U-KqRnedFlETv", "Unit Plan · 單位格局圖"],
-  ["Type H2M · H2M 戶型", "1GrO16RL0gVy1rEOakSXkTNavdWoi_s5x", "Unit Plan · 單位格局圖"],
-  ["Type H3 · H3 戶型", "1ryjFfFYpFLrIWqnWUP2JUJNnbCwQh6rd", "Unit Plan · 單位格局圖"],
-  ["Type I1 · I1 戶型", "1I1w6PlSrReZr1fwqscxWEDq8Jqk0RwBm", "Unit Plan · 單位格局圖"],
-  ["Type I1M · I1M 戶型", "1l14N8Zj9g0Ylgx2tE08lcXu05MBs4t_N", "Unit Plan · 單位格局圖"],
-  ["Type I2 · I2 戶型", "14aMdWydgHo3gef0-q4L-Tzov_1mVViki", "Unit Plan · 單位格局圖"],
-  ["Type J1 · J1 戶型", "1nG8P8-OFO-_Htq_ObfFDLJpn6gCajpb0", "Unit Plan · 單位格局圖"],
-  ["Type J2 · J2 戶型", "1qWhBBSPuu8wRALBtrBCuREi_LNVXPMlb", "Unit Plan · 單位格局圖"],
-  ["Type K1 · K1 戶型", "1lCUx3pRHZiczo5h3p_Uv2_lp7mefiyf7", "Unit Plan · 單位格局圖"],
-]);
+const aspireFloorPlanImages = mediaRows(`
+Ground Master Plan · G 樓總配置圖|171RlWL4JNYee_e8yP-CZ09vvG8sAqa8B|Floor Plan · 樓層平面圖
+Ground Floor · G 樓配置圖|19QOUA5FP7GmCkioBx-dbY8ApRExNd4YH|Floor Plan · 樓層平面圖
+Mezzanine Floor · M 樓配置圖|1P7ttuOmATSrd7vXiohVFElNt0a_gbWEI|Floor Plan · 樓層平面圖
+Level 2 · 2 樓配置圖|1zmqPm0YJGYdYu8Rj-5rebe7nTqV_f4Ne|Floor Plan · 樓層平面圖
+Level 3 · 3 樓配置圖|1WNAj14IgU0ZdO48Nye0l2ZLjFOz5wti2|Floor Plan · 樓層平面圖
+Level 4 · 4 樓配置圖|1HP6Mhq6H8q7iDf_Oef3qHQqUm9OzovlO|Floor Plan · 樓層平面圖
+Level 5 · 5 樓配置圖|1_2kecBAMYkwzaVionLJRSqKBrE9XTTAD|Floor Plan · 樓層平面圖
+Level 6 · 6 樓配置圖|1X8oAesJcrDkPhOGPph7YtQUNhERlIaYg|Floor Plan · 樓層平面圖
+Level 7 · 7 樓配置圖|1S3cG-ekB-m12r55RG0nc7Lu2XK_C1Mvb|Floor Plan · 樓層平面圖
+Level 8 Facilities · 8 樓公設配置圖|1HiPh4ax57EexEuuvCwcThGQx9VEXwUFd|Floor Plan · 樓層平面圖
+Level 9 · 9 樓配置圖|1-rJsnS8CIJUTGXnaVKgYZmWloqYnggaa|Floor Plan · 樓層平面圖
+Level 10-30 · 10-30 樓標準層|1Ho4xsSRIR1kPV83tc8GMowIEAMEizK-r|Floor Plan · 樓層平面圖
+Level 31-37 · 31-37 樓配置圖|13HrNWTVOruqLh1aO0WPxISYIlArpu29K|Floor Plan · 樓層平面圖
+Level 38 · 38 樓配置圖|1PZKFdypII24OoAkHWbHNjVubnAknj_Dh|Floor Plan · 樓層平面圖
+Level 38 Upper · 38 樓上層|10zEZFkuQsKew9yeGcy18Zmpb8iBt9T4g|Floor Plan · 樓層平面圖
+Rooftop · 屋頂層配置圖|1WYfLc3nnQA5M3TCdOs5H8InirXHmjuGK|Floor Plan · 樓層平面圖
+`);
 
-const aspireGallery = mediaFromEntries([
-  ["Overall Day View · 建案日景外觀", "1QWawt34GCJ38OjqZ6ikJGNIIHPiW3kL8", "Perspective · 建案示意圖"],
-  ["Overall Night View · 建案夜景外觀", "1HXK3QVTKx62lg6B5e8DbGptLDND5g3gX", "Perspective · 建案示意圖"],
-  ["The Oasis · 綠意休憩空間", "1eCWVoqk-4iI3p48sBAT25o3w__qzZeCy", "Facilities · 公設示意圖"],
-  ["The Aspire Common · 共享公共空間", "18ZKcGMUP93cLjFzXFvYwAamCb_sUoZxo", "Facilities · 公設示意圖"],
-  ["The Co-op Society · 共享辦公與社交空間", "1x5y5K8I1U21pM5Tzh7PHjZnPzIc_-KC4", "Facilities · 公設示意圖"],
-  ["8th Floor Facilities · 8 樓公設", "1F2Pi9UBf6SkGYtN6IwVUQHbc4Iyum_LZ", "Facilities · 公設示意圖"],
-  ["The Workout · 健身空間", "1rxemBAYlFc4FeGdF6F25Yen2tMwWOE8V", "Facilities · 公設示意圖"],
-  ["Simplex 31 sq.m · Simplex 31 平方米室內", "1HP65aqVGG6pxbaoIz3jFPh78QI8Ra5iX", "Unit Interior · 室內示意圖"],
-  ["Vertiplex 33 sq.m · Vertiplex 33 平方米室內", "1cHPn8ET7So9KhlzoJw0qft_xYy2uOTJn", "Unit Interior · 室內示意圖"],
-  ["38th Rooftop Facilities · 38 樓屋頂公設", "1uB8hanbh-HdE2gwANzd01yiOGjr_uYKO", "Facilities · 公設示意圖"],
-  ["The Flyover · 高空連橋空間", "1IRNcHW9lLkuwDSqGGvSwo2bTKrFA_32R", "Facilities · 公設示意圖"],
-  ["Location Map · 建案位置圖", "1m0YZCeeWkm3d3oB7fi8LRABK2etQyQ_E", "Map · 地圖"],
-]);
+const aspireUnitPlanImages = mediaRows(`
+Type A1 · A1 戶型|1WIegKqrG9MPaKrpvR68knFl3Qume42AM|Unit Plan · 單位格局圖
+Type A2 · A2 戶型|1tY6-OtnXe81z-JwX2sWsl7VuB245_b1p|Unit Plan · 單位格局圖
+Type B1 · B1 戶型|1s9fwqpzjVLcS0vgDydTFUpS7JqOFmWLQ|Unit Plan · 單位格局圖
+Type B1M · B1M 戶型|1oaWeR8jDqO97w2Ad37xDvySAXL9lV_7n|Unit Plan · 單位格局圖
+Type B2 · B2 戶型|15zpLgdDTE2ijGGWS8toeZfYUWDfd_5vb|Unit Plan · 單位格局圖
+Type B2M · B2M 戶型|1apIGg_2h0gScQUA9Wjd2R-CGR85Ra7Ob|Unit Plan · 單位格局圖
+Type C1 · C1 戶型|19nm7P6TJhsiY2JuhQSmlboM3zVb3f3hC|Unit Plan · 單位格局圖
+Type C1M · C1M 戶型|1xTSdXo3fq8wvkr6bZTgI5Bt8q8dPX2CN|Unit Plan · 單位格局圖
+Type C2 · C2 戶型|1Pz0ifTg7_RbaHMKqqPNgaq7G4kUFewnI|Unit Plan · 單位格局圖
+Type C2M · C2M 戶型|11alxmsf9aR00kVF7WS4RRx511jxPn-0F|Unit Plan · 單位格局圖
+Type C3 · C3 戶型|18vX9psRFxtdT0mZ7re66xAvDbs8k3IqU|Unit Plan · 單位格局圖
+Type C3M · C3M 戶型|1vr8eyenMcwkSP0B5_xgGzgf-dVvXTdxR|Unit Plan · 單位格局圖
+Type C4 · C4 戶型|1KXro74NZ79_iLARTzDwciNTMUzqfR0Pw|Unit Plan · 單位格局圖
+Type D1 · D1 戶型|1tRpkhToEAVI-JwlvlTZXzV4qzut3UG0v|Unit Plan · 單位格局圖
+Type D1M · D1M 戶型|1tdGlP2Qj-VEcb8n-0X-xaFd60vT7OcyW|Unit Plan · 單位格局圖
+Type D2 · D2 戶型|1jZH4fe5eXtivZCTFQQIvCpEpU8O51O2d|Unit Plan · 單位格局圖
+Type D2M · D2M 戶型|1dyMlFM4i5J_2iSFo3ANk-qvRmWrED6zN|Unit Plan · 單位格局圖
+Type D3 · D3 戶型|1tMHp9mjDGZZtYxaRg7sUgsJw8sCdbqDO|Unit Plan · 單位格局圖
+Type E1 · E1 戶型|1DAH9iU0-9Jg2o2pr6p_2gjzBGSXFgIzc|Unit Plan · 單位格局圖
+Type E2 · E2 戶型|1s--1G8BxBFCX2broUEInM8euZSmD3Ir7|Unit Plan · 單位格局圖
+Type F1 · F1 戶型|1_FeOv-7MAk-Nz3dyX8Q359D5eOY1Z1HA|Unit Plan · 單位格局圖
+Type G1 · G1 戶型|1MTFZxgoLv5HigS0LMkDHLkXsHnknGlb7|Unit Plan · 單位格局圖
+Type G2 · G2 戶型|1_MH-dFc2afLuTiTj1joy1zjTKSFVRZfg|Unit Plan · 單位格局圖
+Type G3 · G3 戶型|1_8rqlbVP_HKnuX8uY_b61vBUnNz8D-d6|Unit Plan · 單位格局圖
+Type G3M · G3M 戶型|1kSlJXiLB6s7v_piG4Kys2I0p5JKNbReh|Unit Plan · 單位格局圖
+Type H1 · H1 戶型|1x0PNS3mf5LXDMcNgzD3tRtoYwN2IsLSQ|Unit Plan · 單位格局圖
+Type H1M · H1M 戶型|1vNDbbzIioCFYAPRl808url__WO0MnXuQ|Unit Plan · 單位格局圖
+Type H2 · H2 戶型|1JDA-WAw0mto4dQZbM11U-KqRnedFlETv|Unit Plan · 單位格局圖
+Type H2M · H2M 戶型|1GrO16RL0gVy1rEOakSXkTNavdWoi_s5x|Unit Plan · 單位格局圖
+Type H3 · H3 戶型|1ryjFfFYpFLrIWqnWUP2JUJNnbCwQh6rd|Unit Plan · 單位格局圖
+Type I1 · I1 戶型|1I1w6PlSrReZr1fwqscxWEDq8Jqk0RwBm|Unit Plan · 單位格局圖
+Type I1M · I1M 戶型|1l14N8Zj9g0Ylgx2tE08lcXu05MBs4t_N|Unit Plan · 單位格局圖
+Type I2 · I2 戶型|14aMdWydgHo3gef0-q4L-Tzov_1mVViki|Unit Plan · 單位格局圖
+Type J1 · J1 戶型|1nG8P8-OFO-_Htq_ObfFDLJpn6gCajpb0|Unit Plan · 單位格局圖
+Type J2 · J2 戶型|1qWhBBSPuu8wRALBtrBCuREi_LNVXPMlb|Unit Plan · 單位格局圖
+Type K1 · K1 戶型|1lCUx3pRHZiczo5h3p_Uv2_lp7mefiyf7|Unit Plan · 單位格局圖
+`);
+
+const aspireGallery = mediaRows(`
+Overall Day View · 建案日景外觀|1QWawt34GCJ38OjqZ6ikJGNIIHPiW3kL8|Perspective · 建案示意圖
+Overall Night View · 建案夜景外觀|1HXK3QVTKx62lg6B5e8DbGptLDND5g3gX|Perspective · 建案示意圖
+The Oasis · 綠意休憩空間|1eCWVoqk-4iI3p48sBAT25o3w__qzZeCy|Facilities · 公設示意圖
+The Aspire Common · 共享公共空間|18ZKcGMUP93cLjFzXFvYwAamCb_sUoZxo|Facilities · 公設示意圖
+The Co-op Society · 共享辦公與社交空間|1x5y5K8I1U21pM5Tzh7PHjZnPzIc_-KC4|Facilities · 公設示意圖
+8th Floor Facilities · 8 樓公設|1F2Pi9UBf6SkGYtN6IwVUQHbc4Iyum_LZ|Facilities · 公設示意圖
+The Workout · 健身空間|1rxemBAYlFc4FeGdF6F25Yen2tMwWOE8V|Facilities · 公設示意圖
+Simplex 31 sq.m · Simplex 31 平方米室內|1HP65aqVGG6pxbaoIz3jFPh78QI8Ra5iX|Unit Interior · 室內示意圖
+Vertiplex 33 sq.m · Vertiplex 33 平方米室內|1cHPn8ET7So9KhlzoJw0qft_xYy2uOTJn|Unit Interior · 室內示意圖
+38th Rooftop Facilities · 38 樓屋頂公設|1uB8hanbh-HdE2gwANzd01yiOGjr_uYKO|Facilities · 公設示意圖
+The Flyover · 高空連橋空間|1IRNcHW9lLkuwDSqGGvSwo2bTKrFA_32R|Facilities · 公設示意圖
+Location Map · 建案位置圖|1m0YZCeeWkm3d3oB7fi8LRABK2etQyQ_E|Map · 地圖
+`);
+
+const gooddayFloorPlanImages = mediaRows(`
+1st Layout · 1 樓總配置圖|1uIVVf-xvNEVUyfxa5nrz5wms-aSCfl2f|Floor Plan · 樓層平面圖
+2nd Layout · 2 樓總配置圖|1wMqTftWesvBMtQRGh65h_TWfJ8izWeHz|Floor Plan · 樓層平面圖
+3rd-8th Layout · 3-8 樓總配置圖|1CdfpUsEn-WpujVjn3mfK1-Dcf3FY0dHB|Floor Plan · 樓層平面圖
+Building A 2nd Floor · A 棟 2 樓|1obcjP9Jt3QXxDRtzKaPANB-cWVuYdBFk|Floor Plan · 樓層平面圖
+Building A 3rd Floor · A 棟 3 樓|1e_h0ZLSnhSONs4VIgz1GMI_zeUeukfVz|Floor Plan · 樓層平面圖
+Building A 4th-8th Floor · A 棟 4-8 樓|1xTHTO8ocH5VB7LtCSb_bsM4-yPGYFGvb|Floor Plan · 樓層平面圖
+Building A 9th Floor · A 棟 9 樓|17WX4dIES2l_LRnli5hsRb9ZNImmcCJME|Floor Plan · 樓層平面圖
+Building B 2nd Floor · B 棟 2 樓|1meBA9CCIDkPUyl4mjnm2RdGIKFWTfym8|Floor Plan · 樓層平面圖
+Building B 3rd-7th Floor · B 棟 3-7 樓|17AVc2aHEMtqWS7pnQpSWXiKgJ-tpZaee|Floor Plan · 樓層平面圖
+Building B 8th Floor · B 棟 8 樓|108nHq4hh-RvsRdP-WnymREvSn13ANgIc|Floor Plan · 樓層平面圖
+Building C 2nd-8th Floor · C 棟 2-8 樓|1jmD27PvvdwOoFsZrNRmwpXjOXGpRX97k|Floor Plan · 樓層平面圖
+Building C 9th Floor · C 棟 9 樓|1rAObGSxn9TJH4Makxs91YTYuP0-VuoZs|Floor Plan · 樓層平面圖
+`);
+
+const gooddayUnitPlanImages = mediaRows(`
+Unit Type A1 · A1 戶型|1v8re2a6FkUqYftTqiU1JM7uDvWVYsYOh|Unit Plan · 單位格局圖
+Unit Type A2 · A2 戶型|1LAwQ-sDkj3N217KQPk8sdyBHQFo_Q3L0|Unit Plan · 單位格局圖
+Unit Type B1 · B1 戶型|1PHFZRXbRP7qDUI4GYddLlm6qbDA-X6xM|Unit Plan · 單位格局圖
+Unit Type B2 · B2 戶型|1_V_rdnVOuF9oKeW9S4wd6u0cDg7m4M3a|Unit Plan · 單位格局圖
+Unit Type B3 · B3 戶型|1-EyxCoEwQLbn3gU9H5iZtnAy6ZIkfJG-|Unit Plan · 單位格局圖
+`);
+
+const gooddayGallery = mediaRows(`
+The Living Hall · 迎賓大廳|1qseLwXyGSlASj_jmLBhX6FoyotQdfOFF|Perspective · 建案示意圖
+The Living Hall 02 · 迎賓大廳 02|1WRtKc0ZMfudKIh_FTNKJOzf72aXUsp4m|Perspective · 建案示意圖
+The Hive · 共享空間|1WovBzHVgJoAGACBttc-cJ0UxNLFW1e1M|Facilities · 公設示意圖
+Goodday Club · 社交會所|1fJRxnfvur0CEuSIhQCikvDkfY-TgKVSF|Facilities · 公設示意圖
+Good Health · 健康空間|127jUNE6GxtDWsI-rT0ziKaAi-GdF2o56|Facilities · 公設示意圖
+Good Health 02 · 健康空間 02|1BXEHgu3XxodemRIhX-IWuhzdbUmBKfvf|Facilities · 公設示意圖
+Mock Up Room · 樣品屋|1eX8qtRSEP2piDRE17VtQweYvaVwJPsuQ|Unit Interior · 室內示意圖
+Mock Up Room 02 · 樣品屋 02|1Z8oMRxbjqrswxM9hjYTSD1EVcvPTZxkx|Unit Interior · 室內示意圖
+Swimming Pool 01 · 泳池|1oZtmbCYfAsHMtBq9JdWx_F4AGS6dwKcq|Facilities · 公設示意圖
+Swimming Pool 03 · 泳池 03|1xSvCttRNOk2NI-L52JAWt7JRlFHJk3Um|Facilities · 公設示意圖
+Swimming Pool 04 · 泳池 04|1iWligY5wHD_3DJDwfIisolGzctBeOWis|Facilities · 公設示意圖
+Top Facilities · 頂層公設|1xoSHlTG76tFMMEhgE__ARMGWpvJpzIvA|Facilities · 公設示意圖
+`);
+
+const floFloorPlanImages = mediaUrlRows(`
+2nd-4th Floor Plan · 2-4 樓平面圖|https://shangherealestate.com/wp-content/uploads/2026/06/截圖-2026-06-18-15.22.41.jpg.webp|Floor Plan · 樓層平面圖
+5th Floor Plan · 5 樓平面圖|https://shangherealestate.com/wp-content/uploads/2026/06/截圖-2026-06-18-15.22.48.jpg|Floor Plan · 樓層平面圖
+6th-19th Floor Plan · 6-19 樓平面圖|https://shangherealestate.com/wp-content/uploads/2026/06/截圖-2026-06-18-15.22.54.jpg.webp|Floor Plan · 樓層平面圖
+20th Floor Plan · 20 樓平面圖|https://shangherealestate.com/wp-content/uploads/2026/06/截圖-2026-06-18-15.23.00-1.jpg.webp|Floor Plan · 樓層平面圖
+21st Floor Plan · 21 樓平面圖|https://shangherealestate.com/wp-content/uploads/2026/06/截圖-2026-06-18-15.23.06.jpg.webp|Floor Plan · 樓層平面圖
+22nd Floor Plan · 22 樓平面圖|https://shangherealestate.com/wp-content/uploads/2026/06/截圖-2026-06-18-15.23.13.jpg.webp|Floor Plan · 樓層平面圖
+Rooftop Floor Plan · 頂層平面圖|https://shangherealestate.com/wp-content/uploads/2026/06/截圖-2026-06-18-15.23.20.jpg.webp|Floor Plan · 樓層平面圖
+`);
+
+const floUnitPlanImages = mediaUrlRows(`
+Studio / 1 Bedroom S · Studio / 一房 S|https://shangherealestate.com/wp-content/uploads/2026/06/截圖-2026-06-18-15.41.44.png.webp|Unit Plan · 單位格局圖
+1 Bedroom · 一房|https://shangherealestate.com/wp-content/uploads/2026/06/截圖-2026-06-18-15.42.09.jpg.webp|Unit Plan · 單位格局圖
+1 Bedroom Plus · 一房 Plus|https://shangherealestate.com/wp-content/uploads/2026/06/截圖-2026-06-18-15.42.18.jpg.webp|Unit Plan · 單位格局圖
+2 Bedroom · 兩房|https://shangherealestate.com/wp-content/uploads/2026/06/截圖-2026-06-18-15.42.30.jpg.webp|Unit Plan · 單位格局圖
+`);
+
+const floGallery = mediaUrlRows(`
+FLO by Sansiri Exterior · FLO by Sansiri 外觀|https://www.shangherealestate.com/wp-content/uploads/2026/06/flo-by-sansiri-1.jpg|Project Image · 建案圖片
+FLO Lifestyle Visual · FLO 生活意象|https://www.shangherealestate.com/wp-content/uploads/2026/06/public.avif|Project Image · 建案圖片
+2nd-4th Floor Plan · 2-4 樓平面圖|https://shangherealestate.com/wp-content/uploads/2026/06/截圖-2026-06-18-15.22.41.jpg.webp|Floor Plan · 樓層平面圖
+Studio / 1 Bedroom S · Studio / 一房 S|https://shangherealestate.com/wp-content/uploads/2026/06/截圖-2026-06-18-15.41.44.png.webp|Unit Plan · 單位格局圖
+1 Bedroom Plus · 一房 Plus|https://shangherealestate.com/wp-content/uploads/2026/06/截圖-2026-06-18-15.42.18.jpg.webp|Unit Plan · 單位格局圖
+`);
+
+const defaultProjectFees = {
+  management: "Project common fee subject to latest juristic person documents · 管理費以最新建案文件為準",
+  sinking: "Sinking fund subject to latest project documents · 公共基金以最新建案文件為準",
+};
+
+const projectFees: Record<string, typeof defaultProjectFees> = {
+  "Life Rama 4 - Asoke": { management: "50 baht/sq.m./month · 50 泰銖/平方公尺/月", sinking: "500 baht/sq.m. · 500 泰銖/平方公尺" },
+  "Aspire Sukhumvit - Rama 4": { management: "45 baht/sq.m./month · 45 泰銖/平方公尺/月", sinking: "450 baht/sq.m. · 450 泰銖/平方公尺" },
+  "Goodday Sukhumvit 93": { management: "36 baht/sq.m./month · 36 泰銖/平方公尺/月", sinking: "550 baht/sq.m. · 550 泰銖/平方公尺" },
+};
 
 const projectStub = (name: string, area: string, type: string, developer: string, description: string): Project => ({
   name,
@@ -197,7 +280,38 @@ const projectStub = (name: string, area: string, type: string, developer: string
 });
 
 const bangkokProjects: Project[] = [
-  projectStub("FLO by Sansiri", "Bangkok Riverside", "New Launch Condominium", "Sansiri", "A riverside-focused residence by Sansiri, planned for buyers who want Bangkok city access with a softer residential atmosphere near the Chao Phraya lifestyle corridor."),
+  {
+    name: "FLO by Sansiri",
+    area: "Khlong San / Chao Phraya · 空訕 / 昭披耶河岸",
+    type: "Pre-sale Riverside Condominium · 預售河岸生活公寓",
+    developer: "Sansiri Holding Six Co., Ltd. · Sansiri 關係企業",
+    status: "Pre-sale, expected completion Dec 2025 · 預售中，預計 2025 年 12 月完工",
+    ownership: "Freehold condominium · 永久產權公寓",
+    size: "1 residential building, 22 storeys; 508 units; approx. 2 rai land area · 1 棟 22 層住宅，共 508 戶，基地約 2 Rai",
+    address: "Somdet Chao Phraya Road, Khlong San, Bangkok · 曼谷 Khlong San 區 Somdet Chao Phraya Road",
+    mapQuery: "FLO by Sansiri Khlong San Bangkok",
+    description: "FLO by Sansiri is a 22-storey condominium in Khlong San, positioned around a Work-Life Flow concept. The project is about 350 meters from BTS Gold Line Khlong San Station and close to ICONSIAM, Chao Phraya riverside lifestyle, hotels, galleries, cafes and restaurants.\n\nFLO by Sansiri 位於曼谷 Khlong San，為 22 層、508 戶的河岸生活型公寓，主打 Work-Life Flow 概念。建案距 BTS 金線 Khlong San 站約 350 米，鄰近 ICONSIAM、昭披耶河岸生活圈、飯店、藝廊、咖啡廳與餐飲聚落。",
+    highlights: [
+      "350 meters to BTS Gold Line Khlong San Station · 距 BTS 金線 Khlong San 站約 350 米",
+      "ICONSIAM around 3 minutes away · ICONSIAM 約 3 分鐘生活圈",
+      "Historic Red Bloc design identity inspired by Khlong San culture · 設計靈感來自 Khlong San 歷史街區紅磚語彙",
+    ],
+    transport: [
+      "BTS Gold Line Khlong San Station around 350 meters · BTS 金線 Khlong San 站約 350 米",
+      "ICONSIAM around 950 meters / about 3 minutes · ICONSIAM 約 950 米 / 約 3 分鐘",
+      "Future MRT Purple Line connection supports broader city access · 未來 MRT 紫線規劃可望強化跨區連結",
+    ],
+    lifestyle: [
+      "Facilities include lobby, Garden Bloc, Creative Art Space, meeting room, Sky Bar, gym, mail and craft room, river-view deck, swimming pool, kid's pool, self-laundry, playground and sky garden · 公設包含大廳、Garden Bloc、Creative Art Space、會議室、Sky Bar、健身房、Mail & Craft Room、河景平台、泳池、兒童池、自助洗衣、遊樂區與空中花園",
+      "Half-Olympic 25-meter saltwater pool with a Historical Twist spiral stair concept · 25 米半奧運鹽水泳池，搭配 Historical Twist 螺旋樓梯設計概念",
+      "River-view deck and Sky Bar provide Chao Phraya views for work, gathering and relaxation · 河景平台與 Sky Bar 提供昭披耶河景，適合工作、聚會與休憩",
+    ],
+    floorPlans: ["2nd-4th floor", "5th floor", "6th-19th floor", "20th-22nd floor", "Rooftop floor"],
+    unitLayouts: ["1 Bedroom 24.50-34.75 sq.m", "2 Bedroom 46.00-64.00 sq.m", "High ceiling units 24.50-64.00 sq.m"],
+    gallery: floGallery,
+    floorPlanImages: floFloorPlanImages,
+    unitPlanImages: floUnitPlanImages,
+  },
   {
     name: "Life Rama 4 - Asoke",
     area: "Rama 4 / Asoke · 拉瑪四 / 阿索克",
@@ -209,35 +323,42 @@ const bangkokProjects: Project[] = [
     address: "Rama 4 Road, Khlong Toei, Bangkok 10110 · 曼谷 Khlong Toei 區 Rama 4 路 10110",
     mapQuery: "Life Rama 4 Asoke Rama 4 Road Khlong Toei Bangkok",
     description: "Life Rama 4 - Asoke is a large-scale city condominium by AP ME 12 on Rama 4 Road, Khlong Toei. The project is positioned for buyers who want a Bangkok CBD-fringe address with practical access toward Asoke, Sukhumvit, Queen Sirikit Convention Centre and Rama 4 business districts.\n\n本案位於曼谷 Rama 4 Road、Khlong Toei 區，由 AP ME 12 開發，為 39 層高樓層公寓。建案規劃住宅、商鋪、停車樓層、高樓層花園、泳池、健身房、蒸氣室與桑拿，適合重視市中心交通、出租需求與生活機能的買方。",
-    highlights: [
-      "CBD-fringe Rama 4 / Asoke location · Rama 4 / Asoke 城市核心外圍地段",
-      "1,237 residential units plus 2 shops · 1,237 戶住宅加 2 間商鋪",
-      "Maintenance fee 50 baht/sq.m./month; sinking fund 500 baht/sq.m. · 管理費 50 泰銖/平方公尺/月；公共基金 500 泰銖/平方公尺",
-    ],
-    transport: [
-      "Convenient access toward Asoke, Sukhumvit, Queen Sirikit Convention Centre and central Bangkok · 可銜接 Asoke、Sukhumvit、詩麗吉皇后會議中心與曼谷市中心",
-      "Suitable for tenants working around Rama 4, Sukhumvit, CBD and expressway-connected districts · 適合 Rama 4、Sukhumvit、CBD 與快速道路沿線工作客群",
-      "Rama 4 is an important city corridor connecting office, convention, hospital and residential demand · Rama 4 是串聯辦公、會展、醫療與住宅需求的重要城市走廊",
-    ],
-    lifestyle: [
-      "Facilities include 1st floor garden, 9th floor garden, 36th-39th floor gardens, swimming pool, fitness room, steam room and sauna room · 公設包含 1 樓花園、9 樓花園、36-39 樓高空花園、泳池、健身房、蒸氣室與桑拿",
-      "Security includes 24-hour guards, CCTV at main entrance, lobby, parking area and passenger elevators, plus access control · 管理包含 24 小時保全、主要入口/大廳/停車區/電梯 CCTV 與門禁系統",
-      "Close to city lifestyle, business, hospital and convention demand around Rama 4 and Sukhumvit · 鄰近 Rama 4 與 Sukhumvit 一帶的商務、醫療、會展與生活需求",
-    ],
+    highlights: ["CBD-fringe Rama 4 / Asoke location · Rama 4 / Asoke 城市核心外圍地段", "1,237 residential units plus 2 shops · 1,237 戶住宅加 2 間商鋪", "Maintenance fee 50 baht/sq.m./month; sinking fund 500 baht/sq.m. · 管理費 50 泰銖/平方公尺/月；公共基金 500 泰銖/平方公尺"],
+    transport: ["Convenient access toward Asoke, Sukhumvit, Queen Sirikit Convention Centre and central Bangkok · 可銜接 Asoke、Sukhumvit、詩麗吉皇后會議中心與曼谷市中心", "Suitable for tenants working around Rama 4, Sukhumvit, CBD and expressway-connected districts · 適合 Rama 4、Sukhumvit、CBD 與快速道路沿線工作客群", "Rama 4 is an important city corridor connecting office, convention, hospital and residential demand · Rama 4 是串聯辦公、會展、醫療與住宅需求的重要城市走廊"],
+    lifestyle: ["Facilities include 1st floor garden, 9th floor garden, 36th-39th floor gardens, swimming pool, fitness room, steam room and sauna room · 公設包含 1 樓花園、9 樓花園、36-39 樓高空花園、泳池、健身房、蒸氣室與桑拿", "Security includes 24-hour guards, CCTV at main entrance, lobby, parking area and passenger elevators, plus access control · 管理包含 24 小時保全、主要入口/大廳/停車區/電梯 CCTV 與門禁系統", "Close to city lifestyle, business, hospital and convention demand around Rama 4 and Sukhumvit · 鄰近 Rama 4 與 Sukhumvit 一帶的商務、醫療、會展與生活需求"],
     floorPlans: ["Simplex Floorplan", "Simplex Typical Floor Plans", "Vertiplex Floorplan"],
     unitLayouts: ["Simplex Type A and B", "Vertiplex Type C to K", "Official floor and unit plans"],
-    gallery: mediaFromEntries([
-      ["Project Overview · 建案外觀概覽", "1AL9VvmNKpz3j0pfUSNJmVYRiypmYdYqh", "Exterior reference · 外觀參考"],
-      ["Swimming Pool & Jacuzzi · 泳池與按摩池", "1ugehNPxMVC6XUZPFG8HhKwMfi94fXX-Q", "Facilities actual photo · 公設實景圖"],
-      ["The Parlour · 迎賓客廳", "1Ou4F1SlN4YtX8p062UUojUOGE1k0tK5w", "Facilities actual photo · 公設實景圖"],
-      ["Playfulness Bar · 休閒吧檯", "163BUYbpRLW48xMbEE2RvCBrAJ7N5SrTv", "Facilities actual photo · 公設實景圖"],
-      ["Sky Studio · 空中共享空間", "1yM6XuDQC_WK3JjnzOrS7rT-h9BzTY4Ua", "Facilities actual photo · 公設實景圖"],
-      ["Benchakitti Park View · 班嘉奇蒂公園景觀", "1TCb-nj1qylcZ4ho3VBsreGFE0dkkJZv7", "View reference · 景觀參考"],
-    ]),
+    gallery: mediaRows(`
+Project Overview · 建案外觀概覽|1AL9VvmNKpz3j0pfUSNJmVYRiypmYdYqh|Exterior reference · 外觀參考
+Swimming Pool & Jacuzzi · 泳池與按摩池|1ugehNPxMVC6XUZPFG8HhKwMfi94fXX-Q|Facilities actual photo · 公設實景圖
+The Parlour · 迎賓客廳|1Ou4F1SlN4YtX8p062UUojUOGE1k0tK5w|Facilities actual photo · 公設實景圖
+Playfulness Bar · 休閒吧檯|163BUYbpRLW48xMbEE2RvCBrAJ7N5SrTv|Facilities actual photo · 公設實景圖
+Sky Studio · 空中共享空間|1yM6XuDQC_WK3JjnzOrS7rT-h9BzTY4Ua|Facilities actual photo · 公設實景圖
+Benchakitti Park View · 班嘉奇蒂公園景觀|1TCb-nj1qylcZ4ho3VBsreGFE0dkkJZv7|View reference · 景觀參考
+`),
     floorPlanImages: lifeRama4FloorPlanImages,
     unitPlanImages: lifeRama4UnitPlanImages,
   },
-  projectStub("Goodday Sukhumvit 93", "Sukhumvit 93", "Low-rise Condominium", "Sansiri", "A Sukhumvit 93 residence with approachable positioning, suited for buyers looking for an easy-to-understand Bangkok entry point with everyday convenience."),
+  {
+    name: "Goodday Sukhumvit 93",
+    area: "Sukhumvit 93 / Bang Chak · 素坤逸 93 / Bang Chak",
+    type: "Low-rise Condominium · 低樓層生活公寓",
+    developer: "AP (Thailand) · AP 泰國",
+    status: "Ready project, completed Q2 2026 · 2026 年 Q2 已完工",
+    ownership: "Freehold condominium · 永久產權公寓",
+    size: "3 buildings, 8 storeys; 604 residential units plus 1 shop; 31% parking · 3 棟 8 層，共 604 戶住宅加 1 間商鋪，車位約 31%",
+    address: "Sukhumvit 93, Bang Chak, Phra Khanong, Bangkok 10260 · 曼谷 Phra Khanong 區 Bang Chak，Sukhumvit 93",
+    mapQuery: "Goodday Sukhumvit 93 Bang Chak Bangkok",
+    description: "Goodday Sukhumvit 93 is an AP (Thailand) low-rise condominium positioned as an accessible first Bangkok property. The project focuses on value, a younger lifestyle and practical ownership, with furnished units that reduce decoration work for overseas buyers.\n\nGoodday Sukhumvit 93 是 AP (Thailand) 推出的低樓層住宅產品，定位為較容易入手的曼谷首購 / 入門投資選項。建案主打高性價比、年輕生活風格與實用交屋配置，對海外買方而言能降低後續裝潢與出租準備成本。",
+    highlights: ["Starting reference from 1.86M THB · 參考起價約 186 萬泰銖起", "BTS Bang Chak around 1.2 km · 距 BTS Bang Chak 約 1.2 公里", "Fully furnished concept supports easier move-in and rental setup · Fully Furnished 概念，降低入住與出租準備門檻"],
+    transport: ["7-Eleven around 50 meters · 7-11 約 50 米", "BTS Bang Chak around 1.2 km · BTS Bang Chak 約 1.2 公里", "Wells International School around 1.5 km · Wells International School 約 1.5 公里", "Century The Movie Plaza Sukhumvit around 2.2 km · Century The Movie Plaza Sukhumvit 約 2.2 公里", "True Digital Park around 2.5 km · True Digital Park 約 2.5 公里"],
+    lifestyle: ["Facilities include 24-hour fitness, 20-meter saltwater pool, co-working space and landscaped green court · 公設包含 24 小時健身房、20 米鹽水泳池、共享辦公空間與綠化中庭", "The Productive Space and The Green Step support remote-work and young tenant demand · The Productive Space 與 The Green Step 適合遠端工作與年輕租客需求", "Neighbourhood retail and daily-life services are practical for long-stay tenants · 周邊商場與日常服務完整，適合長住型租客"],
+    floorPlans: ["1st layout", "2nd layout", "3rd-8th layout", "Building A/B/C plans"],
+    unitLayouts: ["1 Bedroom 26 sq.m", "1 Bedroom Plus 35 sq.m", "Unit types A1, A2, B1, B2, B3"],
+    gallery: gooddayGallery,
+    floorPlanImages: gooddayFloorPlanImages,
+    unitPlanImages: gooddayUnitPlanImages,
+  },
   projectStub("Ideo Sukhumvit Rama 4", "Sukhumvit / Rama 4", "Condominium", "Ananda Development", "A Rama 4 and Sukhumvit city project with Ananda's transit-oriented positioning, suitable for buyers who prioritize connectivity and rental depth."),
   {
     name: "Aspire Sukhumvit - Rama 4",
@@ -250,24 +371,9 @@ const bangkokProjects: Project[] = [
     address: "Rama 4 Road, Phra Khanong, Khlong Toei, Bangkok · 曼谷 Khlong Toei 區 Phra Khanong，Rama 4 Road",
     mapQuery: "Aspire Sukhumvit Rama 4 Phra Khanong Bangkok",
     description: "Aspire Sukhumvit - Rama 4 is a ready high-rise condominium by AP (Thailand) on Rama 4 Road near BTS Phra Khanong. The project is designed around Fast-Track Living, combining practical city access, everyday facilities and AP's 4.4-meter Vertiplex layouts for buyers who want more vertical space in a compact Bangkok unit.\n\nAspire Sukhumvit - Rama 4 位於 Rama 4 Road，鄰近 BTS Phra Khanong，由 AP (Thailand) 開發。建案主打 Fast-Track Living，結合市區通勤、公設機能與 4.4 米挑高 Vertiplex 房型，適合想要交通便利、空間感較強、同時兼顧自住與出租的買方。",
-    highlights: [
-      "Starting reference from 3.4M THB · 參考起價約 340 萬泰銖起",
-      "BTS Phra Khanong around 600 meters with shuttle service · 距 BTS Phra Khanong 約 600 米，設有接駁服務",
-      "Simplex and 4.4-meter Vertiplex layouts · 提供平層與 4.4 米挑高 Vertiplex 房型",
-    ],
-    transport: [
-      "BTS Phra Khanong around 600 meters · BTS Phra Khanong 約 600 米",
-      "Kluaynamthai Hospital around 600 meters · Kluaynamthai Hospital 約 600 米",
-      "W District around 650 meters · W District 文青藝術美食夜市約 650 米",
-      "Summer Hill around 700 meters · Summer Hill 社區商場約 700 米",
-      "Gateway Ekkamai around 1.5 kilometers · Gateway Ekkamai 約 1.5 公里",
-      "Sukhumvit Hospital around 1.5 kilometers · Sukhumvit Hospital 約 1.5 公里",
-    ],
-    lifestyle: [
-      "Facilities include infinity pool, fitness room, sky garden, rooftop garden, lobby, electronic access and 24-hour security · 公設包含無邊際泳池、健身房、空中花園、屋頂花園、大廳、電子門禁與 24 小時保全",
-      "Around 5,000 sq.m. of shared and green space supports work, relaxation and social use · 約 5,000 平方米公共與綠化空間，支援工作、休閒與社交使用",
-      "Vertiplex layouts create stronger perceived space efficiency for compact urban units · Vertiplex 挑高房型能放大空間感，適合曼谷小坪數產品比較",
-    ],
+    highlights: ["Starting reference from 3.4M THB · 參考起價約 340 萬泰銖起", "BTS Phra Khanong around 600 meters with shuttle service · 距 BTS Phra Khanong 約 600 米，設有接駁服務", "Simplex and 4.4-meter Vertiplex layouts · 提供平層與 4.4 米挑高 Vertiplex 房型"],
+    transport: ["BTS Phra Khanong around 600 meters · BTS Phra Khanong 約 600 米", "Kluaynamthai Hospital around 600 meters · Kluaynamthai Hospital 約 600 米", "W District around 650 meters · W District 文青藝術美食夜市約 650 米", "Summer Hill around 700 meters · Summer Hill 社區商場約 700 米", "Gateway Ekkamai around 1.5 kilometers · Gateway Ekkamai 約 1.5 公里", "Sukhumvit Hospital around 1.5 kilometers · Sukhumvit Hospital 約 1.5 公里"],
+    lifestyle: ["Facilities include infinity pool, fitness room, sky garden, rooftop garden, lobby, electronic access and 24-hour security · 公設包含無邊際泳池、健身房、空中花園、屋頂花園、大廳、電子門禁與 24 小時保全", "Around 5,000 sq.m. of shared and green space supports work, relaxation and social use · 約 5,000 平方米公共與綠化空間，支援工作、休閒與社交使用", "Vertiplex layouts create stronger perceived space efficiency for compact urban units · Vertiplex 挑高房型能放大空間感，適合曼谷小坪數產品比較"],
     floorPlans: ["Ground and facility plans", "Typical floor plans", "Rooftop floor plan"],
     unitLayouts: ["Studio 24 sq.m", "1-Bed 26.5-34 sq.m", "2-Bed 50-55 sq.m", "Vertiplex 25-52 sq.m"],
     gallery: aspireGallery,
@@ -388,13 +494,14 @@ function DetailHero({ project }: { project: Project }) {
 }
 
 function ProjectOverview({ project }: { project: Project }) {
+  const fees = projectFees[project.name] || defaultProjectFees;
   const rows = [
     ["Developer · 發展商", project.developer],
     ["Ownership · 產權類型", project.ownership],
     ["Room Planning · 戶型規劃", project.size],
     ["Address · 建案地址", project.address],
-    ["Management Fee · 管理費", project.name === "Aspire Sukhumvit - Rama 4" ? "45 baht/sq.m./month · 45 泰銖/平方公尺/月" : "50 baht/sq.m./month · 50 泰銖/平方公尺/月"],
-    ["Sinking Fund · 公共基金", project.name === "Aspire Sukhumvit - Rama 4" ? "450 baht/sq.m. · 450 泰銖/平方公尺" : "500 baht/sq.m. · 500 泰銖/平方公尺"],
+    ["Management Fee · 管理費", fees.management],
+    ["Sinking Fund · 公共基金", fees.sinking],
   ];
 
   return (
@@ -486,24 +593,32 @@ function LocationSection({ project, mapSrc }: { project: Project; mapSrc: string
 function ProjectFaq({ project }: { project: Project }) {
   const isLife = project.name === "Life Rama 4 - Asoke";
   const isAspire = project.name === "Aspire Sukhumvit - Rama 4";
+  const isGoodday = project.name === "Goodday Sukhumvit 93";
+  const isFlo = project.name === "FLO by Sansiri";
   const faqs = isLife
     ? [
         { question: "How is Life Rama 4 - Asoke different from Life Sukhumvit - Rama 4? · 這個建案和 Life Sukhumvit - Rama 4 有什麼不同？", answer: "Both projects sit within the Rama 4 / Sukhumvit comparison zone, but Life Rama 4 - Asoke is closer to Queen Sirikit, Asoke and Khlong Toei business demand. It is presented here with existing project photos, floor plans and unit layouts for direct comparison.\n\n兩者都屬於 Rama 4 / Sukhumvit 生活圈可比較的 AP 系列產品，但 Life Rama 4 - Asoke 更靠近 Queen Sirikit、Asoke 與 Khlong Toei 商務軸線，且已整理現有實景、公設與格局素材，方便直接比較。" },
         { question: "What is the key location advantage? · 本案最主要的地段優勢是什麼？", answer: "The main advantage is the Rama 4 corridor, with access toward Asoke, Sukhumvit, Queen Sirikit Convention Centre and central business districts. This supports office, convention, medical, retail and long-stay rental demand.\n\n本案核心優勢在於 Rama 4 走廊，可往 Asoke、Sukhumvit、詩麗吉皇后會議中心與市中心商務區移動，同時承接辦公、會展、醫療、商業與長租需求。" },
-        { question: "Is it suitable for rental investment? · 以出租投資角度來看，這個案子適合嗎？", answer: "For long-term rental cash flow, the project has strong comparison value because of its scale, facilities and city location. Actual return should still be calculated by purchase price, floor, layout, decoration, fees and current rent.\n\n若買方目標是長租型現金流，本案的規模、公設、城市位置與 Rama 4 / Sukhumvit 客群都有可比較性。不過實際投報仍需依購入價格、樓層、房型、裝修、費用與當期租金行情試算。" },
-        { question: "Will the large community size affect resale? · 大型社區規模會不會影響轉售？", answer: "Large communities are easier for tenants to recognize and usually offer fuller facilities, but resale competition within the same project can be higher. Floor, view, condition and entry price become important.\n\n大型社區的優點是公設完整、租客辨識度高，缺點是同案競爭也會較明顯，因此轉售時會更看重樓層、景觀、屋況與入手價格。" },
       ]
     : isAspire
       ? [
           { question: "How far is Aspire Sukhumvit - Rama 4 from BTS Phra Khanong? · Aspire Sukhumvit - Rama 4 距離 BTS Phra Khanong 遠嗎？", answer: "The project is around 600 meters from BTS Phra Khanong and project materials also mention shuttle service. For most tenants, this distance is practical by walking, shuttle or motorcycle taxi.\n\n建案距離 BTS Phra Khanong 約 600 米，資料也提到設有接駁服務。對多數租客來說，可步行、搭接駁或摩托計程車銜接，通勤便利度具備實用性。" },
-          { question: "What is the investment logic of Rama 4? · Rama 4 路段的投資邏輯是什麼？", answer: "Rama 4 is a major Bangkok corridor linking Sukhumvit, office demand, hospitals, convention activity and future city renewal. Aspire sits in a more approachable price segment compared with many inner Sukhumvit projects.\n\nRama 4 是曼谷重要幹道，串聯 Sukhumvit、辦公需求、醫療、會展與城市更新。Aspire 的價格帶相對市中心核心區更容易入手，適合做出租與自用比較。" },
           { question: "What is special about the Vertiplex layout? · Vertiplex 挑高房型有什麼特色？", answer: "The 4.4-meter Vertiplex layout uses vertical space to create stronger separation between living and sleeping areas. It can feel larger than a typical compact unit, but buyers should review stair placement and actual usable behavior.\n\n4.4 米 Vertiplex 挑高房型利用垂直空間區分起居與睡眠區，視覺與使用感通常比一般小坪數更有層次。不過仍建議確認樓梯位置、實際使用動線與收納安排。" },
-          { question: "Is the project suitable for long-term rental? · 本案適合長租出租嗎？", answer: "The project has rental logic from BTS access, nearby W District, hospitals, schools and Sukhumvit / Rama 4 employment demand. Actual rent should be checked by layout, floor, view and furnishing level.\n\n本案具備長租邏輯，包含 BTS、W District、醫院、學校，以及 Sukhumvit / Rama 4 工作客群。實際租金仍需依房型、樓層、景觀與家具裝修程度評估。" },
         ]
-      : [
-          { question: "Who is this project suitable for? · 這個建案適合哪一類買方？", answer: `${project.name} is suitable for buyers who value the ${project.area} location and want to compare lifestyle comfort with rental potential.\n\n${project.name} 適合重視 ${project.area} 區域條件、希望比較自住舒適度與出租潛力的買方。` },
-          { question: "What should I confirm before purchase? · 購買前需要確認什麼？", answer: "Confirm updated pricing, quota, payment schedule, contract terms and transfer fees before making a decision.\n\n正式購買前建議確認最新價格、外國人額度、付款表、合約條款與過戶費用。" },
-        ];
+      : isGoodday
+        ? [
+            { question: "Is Goodday Sukhumvit 93 suitable as an entry-level Bangkok investment? · Goodday Sukhumvit 93 適合作為曼谷入門投資嗎？", answer: "Yes, it is positioned in an accessible price range with practical low-rise planning and furnished units. Buyers should still compare rent, walking distance to BTS, furniture package and final transfer costs.\n\n可以，它的價格帶較容易入手，低樓層社區規劃實用，且主打附家具交屋。不過仍建議比較租金、到 BTS 距離、家具配套與最終過戶成本。" },
+            { question: "Will the 1.2 km distance to BTS Bang Chak affect rental? · 距 BTS Bang Chak 約 1.2 公里會影響出租嗎？", answer: "It may be less direct than projects beside a station, but the lower entry price, local retail, 7-Eleven nearby and furnished setup can still support practical tenant demand.\n\n相較捷運站旁建案，1.2 公里確實需要納入比較；但較低入手價、周邊生活機能、鄰近 7-11 與附家具設定，仍可支撐實用型租客需求。" },
+          ]
+        : isFlo
+          ? [
+              { question: "What is the main location advantage of FLO by Sansiri? · FLO by Sansiri 的主要地段優勢是什麼？", answer: "The project is about 350 meters from BTS Gold Line Khlong San Station and close to ICONSIAM and the Chao Phraya riverside lifestyle area. This gives it a different lifestyle identity from inner Sukhumvit projects.\n\n建案距 BTS 金線 Khlong San 站約 350 米，鄰近 ICONSIAM 與昭披耶河岸生活圈，與傳統 Sukhumvit 市中心建案相比，生活氛圍與河岸題材更鮮明。" },
+              { question: "What type of buyer is FLO suitable for? · FLO 適合哪一類買方？", answer: "FLO suits buyers who want a Sansiri project near the river, lifestyle destinations and transit access, with unit choices from 1-bedroom to 2-bedroom and high-ceiling options.\n\nFLO 適合想要 Sansiri 品牌、河岸生活圈、ICONSIAM 機能與交通連結的買方，房型涵蓋一房、兩房與挑高選項。" },
+            ]
+          : [
+              { question: "Who is this project suitable for? · 這個建案適合哪一類買方？", answer: `${project.name} is suitable for buyers who value the ${project.area} location and want to compare lifestyle comfort with rental potential.\n\n${project.name} 適合重視 ${project.area} 區域條件、希望比較自住舒適度與出租潛力的買方。` },
+              { question: "What should I confirm before purchase? · 購買前需要確認什麼？", answer: "Confirm updated pricing, quota, payment schedule, contract terms and transfer fees before making a decision.\n\n正式購買前建議確認最新價格、外國人額度、付款表、合約條款與過戶費用。" },
+            ];
 
   return (
     <section className="bg-background border border-border p-6 md:p-8">
