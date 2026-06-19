@@ -13,6 +13,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as MandateRouteImport } from './routes/mandate'
+import { Route as PreSellRouteImport } from './routes/presell'
 import { Route as PropertyManagementRouteImport } from './routes/property-management'
 
 const AboutRoute = AboutRouteImport.update({
@@ -35,6 +36,11 @@ const MandateRoute = MandateRouteImport.update({
   path: '/mandate',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PreSellRoute = PreSellRouteImport.update({
+  id: '/presell',
+  path: '/presell',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PropertyManagementRoute = PropertyManagementRouteImport.update({
   id: '/property-management',
   path: '/property-management',
@@ -46,6 +52,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/faq': typeof FaqRoute
   '/mandate': typeof MandateRoute
+  '/presell': typeof PreSellRoute
   '/property-management': typeof PropertyManagementRoute
 }
 export interface FileRoutesByTo {
@@ -53,6 +60,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/faq': typeof FaqRoute
   '/mandate': typeof MandateRoute
+  '/presell': typeof PreSellRoute
   '/property-management': typeof PropertyManagementRoute
 }
 export interface FileRoutesById {
@@ -61,14 +69,15 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/faq': typeof FaqRoute
   '/mandate': typeof MandateRoute
+  '/presell': typeof PreSellRoute
   '/property-management': typeof PropertyManagementRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/about' | '/' | '/faq' | '/mandate' | '/property-management'
+  fullPaths: '/about' | '/' | '/faq' | '/mandate' | '/presell' | '/property-management'
   fileRoutesByTo: FileRoutesByTo
-  to: '/about' | '/' | '/faq' | '/mandate' | '/property-management'
-  id: '__root__' | '/about' | '/' | '/faq' | '/mandate' | '/property-management'
+  to: '/about' | '/' | '/faq' | '/mandate' | '/presell' | '/property-management'
+  id: '__root__' | '/about' | '/' | '/faq' | '/mandate' | '/presell' | '/property-management'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -76,6 +85,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   FaqRoute: typeof FaqRoute
   MandateRoute: typeof MandateRoute
+  PreSellRoute: typeof PreSellRoute
   PropertyManagementRoute: typeof PropertyManagementRoute
 }
 
@@ -109,6 +119,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MandateRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/presell': {
+      id: '/presell'
+      path: '/presell'
+      fullPath: '/presell'
+      preLoaderRoute: typeof PreSellRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/property-management': {
       id: '/property-management'
       path: '/property-management'
@@ -124,6 +141,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   FaqRoute: FaqRoute,
   MandateRoute: MandateRoute,
+  PreSellRoute: PreSellRoute,
   PropertyManagementRoute: PropertyManagementRoute,
 }
 export const routeTree = rootRouteImport
