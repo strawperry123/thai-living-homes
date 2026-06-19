@@ -16,8 +16,14 @@ type Project = {
   status: string;
   ownership: string;
   size: string;
+  address: string;
+  mapQuery: string;
   description: string;
   highlights: string[];
+  transport: string[];
+  lifestyle: string[];
+  floorPlans: string[];
+  unitLayouts: string[];
 };
 
 const bangkokProjects: Project[] = [
@@ -28,9 +34,15 @@ const bangkokProjects: Project[] = [
     developer: "Sansiri",
     status: "New launch / presale",
     ownership: "Freehold condominium",
-    size: "Studio to family layouts, subject to availability",
-    description: "A riverside-focused new residence by Sansiri, positioned for buyers who want city access with a softer residential atmosphere near Bangkok's river lifestyle.",
-    highlights: ["Riverside lifestyle positioning", "Developed by Sansiri", "Suitable for lifestyle use and long-term rental planning"],
+    size: "Studio, 1-bedroom and family layouts, subject to availability",
+    address: "Bangkok Riverside, Bangkok",
+    mapQuery: "FLO by Sansiri Bangkok",
+    description: "A riverside-focused residence by Sansiri, planned for buyers who want Bangkok city access with a softer residential atmosphere near the Chao Phraya lifestyle corridor.",
+    highlights: ["Riverside lifestyle positioning", "Sansiri developer profile", "Suitable for lifestyle use and rental planning"],
+    transport: ["Connects to Bangkok riverside roads and central business areas", "Suitable for buyers who want river lifestyle with city access", "Future riverside retail and hotel growth supports the district"],
+    lifestyle: ["Riverside restaurants and hospitality", "Retail and community lifestyle destinations", "Calmer residential feel compared with inner Sukhumvit"],
+    floorPlans: ["Typical residential floor plan", "Amenity floor concept", "Parking and lobby circulation plan"],
+    unitLayouts: ["Studio / compact unit", "1-bedroom unit", "Larger residence layout"],
   },
   {
     name: "Life Sukhumvit - Rama 4",
@@ -40,8 +52,14 @@ const bangkokProjects: Project[] = [
     status: "Presale / new development",
     ownership: "Freehold condominium",
     size: "Compact city units to larger urban layouts",
+    address: "Sukhumvit - Rama 4, Bangkok",
+    mapQuery: "Life Sukhumvit Rama 4 Bangkok",
     description: "A city condominium around the Sukhumvit and Rama 4 corridor, designed for buyers who value transport access, business districts, and future urban growth.",
     highlights: ["Sukhumvit and Rama 4 connection", "Strong city rental catchment", "Urban lifestyle facilities"],
+    transport: ["Access to Rama 4 and Sukhumvit corridors", "Convenient for CBD, Khlong Toei and Queen Sirikit Convention Centre areas", "Connects toward Thonglor, Ekkamai and Phrom Phong"],
+    lifestyle: ["Close to central work and lifestyle districts", "Good fit for city professionals", "Rama 4 corridor continues to attract mixed-use development"],
+    floorPlans: ["High-rise residential typical floor", "Facility floor", "Parking and entrance circulation"],
+    unitLayouts: ["Studio / 1-bedroom", "1-bedroom plus", "2-bedroom city layout"],
   },
   {
     name: "Goodday Sukhumvit 93",
@@ -51,8 +69,14 @@ const bangkokProjects: Project[] = [
     status: "New launch / presale",
     ownership: "Freehold condominium",
     size: "Practical compact layouts",
+    address: "Sukhumvit 93, Bangkok",
+    mapQuery: "Goodday Sukhumvit 93 Bangkok",
     description: "A Sukhumvit 93 residence with approachable positioning, suited for buyers looking for an easy-to-understand Bangkok entry point with everyday convenience.",
     highlights: ["Sukhumvit neighborhood access", "Practical unit planning", "Good fit for first Bangkok property planning"],
+    transport: ["Located in the Sukhumvit east-side residential corridor", "Access to On Nut and Bang Chak lifestyle areas", "Suitable for renters who commute along Sukhumvit"],
+    lifestyle: ["Local markets, supermarkets and community retail", "Everyday residential convenience", "More approachable entry compared with prime inner Sukhumvit"],
+    floorPlans: ["Low-rise typical floor", "Common area plan", "Building circulation plan"],
+    unitLayouts: ["Studio unit", "1-bedroom unit", "1-bedroom plus unit"],
   },
   {
     name: "LOVE Charoen Nakhon",
@@ -62,8 +86,14 @@ const bangkokProjects: Project[] = [
     status: "New launch / presale",
     ownership: "Freehold condominium",
     size: "City view and river-near layouts",
+    address: "Charoen Nakhon, Bangkok",
+    mapQuery: "LOVE Charoen Nakhon Bangkok",
     description: "A Charoen Nakhon project placed near Bangkok's expanding riverside lifestyle zone, where retail, transport, and residential demand continue to mature.",
     highlights: ["Riverside growth corridor", "Near Iconsiam lifestyle zone", "High-rise city living"],
+    transport: ["Access to Charoen Nakhon and Krung Thon Buri areas", "Connects toward riverside retail and CBD routes", "Suitable for buyers watching riverside transformation"],
+    lifestyle: ["Iconsiam and riverside hospitality", "Local food and heritage neighborhoods", "Growing mix of retail, transit and residential projects"],
+    floorPlans: ["Typical tower floor", "Facility floor", "Drop-off and lobby plan"],
+    unitLayouts: ["1-bedroom city view", "1-bedroom plus", "2-bedroom river-near layout"],
   },
   {
     name: "Ideo Sukhumvit Rama 4",
@@ -73,8 +103,14 @@ const bangkokProjects: Project[] = [
     status: "New development",
     ownership: "Freehold condominium",
     size: "Urban one-bedroom and two-bedroom planning",
+    address: "Sukhumvit Rama 4, Bangkok",
+    mapQuery: "Ideo Sukhumvit Rama 4 Bangkok",
     description: "A Rama 4 and Sukhumvit city project with Ananda's transit-oriented positioning, suitable for buyers who prioritize connectivity and rental depth.",
     highlights: ["Transit-oriented positioning", "Rama 4 urban growth", "Designed for city professionals"],
+    transport: ["Connects to Sukhumvit, Rama 4 and expressway routes", "Convenient toward Khlong Toei, Ekkamai and Queen Sirikit areas", "Suitable for renters working around Sukhumvit and CBD"],
+    lifestyle: ["Urban retail and food scene", "Close to parks, offices and lifestyle malls by car", "Good city-rental fundamentals"],
+    floorPlans: ["Residential floor plan", "Facility floor plan", "Building master circulation"],
+    unitLayouts: ["1-bedroom", "1-bedroom plus", "2-bedroom"],
   },
   {
     name: "Aspire Sukhumvit - Rama 4",
@@ -84,8 +120,14 @@ const bangkokProjects: Project[] = [
     status: "New development",
     ownership: "Freehold condominium",
     size: "Efficient city layouts",
+    address: "Sukhumvit Rama 4, Bangkok",
+    mapQuery: "Aspire Sukhumvit Rama 4 Bangkok",
     description: "A value-focused city residence in the Sukhumvit and Rama 4 area, balancing accessibility, facilities, and investment entry price considerations.",
     highlights: ["Sukhumvit-Rama 4 location", "Efficient investment layouts", "Good rental-demand fundamentals"],
+    transport: ["Access to Rama 4, Sukhumvit and central Bangkok routes", "Convenient for CBD and east-side city movement", "Suitable for tenants who want practical commute options"],
+    lifestyle: ["Everyday retail and food options nearby", "Urban facilities designed for practical living", "Positioning balances price and city location"],
+    floorPlans: ["Building floor plan", "Facility floor plan", "Parking and lobby plan"],
+    unitLayouts: ["Studio / compact unit", "1-bedroom", "2-bedroom"],
   },
   {
     name: "The Residences 38",
@@ -95,8 +137,14 @@ const bangkokProjects: Project[] = [
     status: "Completed",
     ownership: "Freehold condominium",
     size: "1-bedroom to penthouse residences",
+    address: "Sukhumvit, Khlong Toei, Bangkok 10110",
+    mapQuery: "The Residences 38 Bangkok",
     description: "A limited luxury residence near BTS Thong Lo, designed around privacy, hotel-style service, and prime Sukhumvit living for high-end owner-occupiers.",
     highlights: ["Near BTS Thong Lo", "Limited private residences", "Hotel-style management concept"],
+    transport: ["Walkable to BTS Thong Lo", "Quick access to Sukhumvit Road and Rama 4", "Convenient toward Phrom Phong, Ekkamai and central Bangkok"],
+    lifestyle: ["Thonglor restaurants and cafes", "Close to EmQuartier and lifestyle retail", "International schools and hospitals within driving distance"],
+    floorPlans: ["36-storey residential planning", "Private residence floors", "Amenity and arrival plan"],
+    unitLayouts: ["1-bedroom 55-75 sqm", "2-bedroom 91-252 sqm", "Penthouse residence planning"],
   },
   {
     name: "XT 10 Ekkamai",
@@ -106,8 +154,14 @@ const bangkokProjects: Project[] = [
     status: "Presale / new launch",
     ownership: "Freehold condominium",
     size: "City lifestyle layouts",
+    address: "Ekkamai, Bangkok",
+    mapQuery: "XT 10 Ekkamai Bangkok",
     description: "An Ekkamai project positioned for a younger urban lifestyle, with access to Sukhumvit, restaurants, community malls, and tenant demand from the east-side corridor.",
     highlights: ["Ekkamai lifestyle district", "Sukhumvit east-side access", "Suitable for rental-oriented buyers"],
+    transport: ["Access to Ekkamai and Sukhumvit corridors", "Convenient toward Thonglor and Phra Khanong", "Strong tenant demand from the east-side city cluster"],
+    lifestyle: ["Cafes, restaurants and community malls", "Ekkamai bus terminal and BTS area access", "Young professional lifestyle positioning"],
+    floorPlans: ["Typical tower floor", "Lifestyle amenity floor", "Arrival and lobby plan"],
+    unitLayouts: ["Studio", "1-bedroom", "2-bedroom"],
   },
   {
     name: "Porsche Design Tower Bangkok",
@@ -117,8 +171,14 @@ const bangkokProjects: Project[] = [
     status: "Planned ultra-luxury development",
     ownership: "Luxury residential ownership, subject to sales terms",
     size: "Large sky villa residences",
+    address: "Thonglor, Bangkok",
+    mapQuery: "Porsche Design Tower Bangkok Thonglor",
     description: "A rare branded luxury tower in Thonglor, created for ultra-high-end buyers seeking privacy, design identity, and collectible real estate in Bangkok.",
     highlights: ["First Porsche Design Tower in Asia", "Thonglor luxury address", "Sky villa concept"],
+    transport: ["Positioned in Bangkok's Thonglor luxury district", "Access to Sukhumvit, Ekkamai and Phrom Phong", "Designed for private high-end city living"],
+    lifestyle: ["Branded residence experience", "Private sky villa positioning", "High-end dining, clubs and lifestyle nearby"],
+    floorPlans: ["Sky villa floor plan", "Passion space / private garage concept", "Private amenity and service planning"],
+    unitLayouts: ["Sky villa residence", "Duplex / multi-level residence", "Penthouse concept"],
   },
   {
     name: "COCO PARC",
@@ -128,8 +188,14 @@ const bangkokProjects: Project[] = [
     status: "Completed / active sale",
     ownership: "Freehold condominium",
     size: "Urban luxury layouts",
+    address: "Rama 4, Bangkok",
+    mapQuery: "COCO PARC Bangkok",
     description: "A luxury residence close to Lumpini and Rama 4, positioned for buyers who want direct access to central business, green space, and established city infrastructure.",
     highlights: ["Near Lumpini and Rama 4", "Central city access", "Luxury city facilities"],
+    transport: ["Close to MRT and Rama 4 corridor", "Convenient toward Sathorn, Silom and Sukhumvit", "Easy access to major office districts"],
+    lifestyle: ["Lumpini park lifestyle", "Central business district convenience", "Luxury facilities and city services"],
+    floorPlans: ["Tower floor plan", "Facility floor", "Arrival and parking plan"],
+    unitLayouts: ["1-bedroom", "2-bedroom", "Large city residence"],
   },
   {
     name: "Supalai Icon Sathorn",
@@ -139,8 +205,14 @@ const bangkokProjects: Project[] = [
     status: "Completed / active sale",
     ownership: "Freehold condominium",
     size: "City residence layouts",
+    address: "Sathorn, Bangkok",
+    mapQuery: "Supalai Icon Sathorn Bangkok",
     description: "A large-scale Sathorn address with mixed-use convenience, suited for buyers who value a recognized CBD location and established developer profile.",
     highlights: ["Sathorn CBD location", "Mixed-use convenience", "Recognized Thai developer"],
+    transport: ["Access to Sathorn and Silom business districts", "Connects to Rama 4 and central routes", "Suitable for executive tenants and city residents"],
+    lifestyle: ["CBD dining and retail", "Office district demand", "Large-scale mixed-use environment"],
+    floorPlans: ["Mixed-use master plan", "Residential tower floor", "Amenity floor"],
+    unitLayouts: ["1-bedroom", "2-bedroom", "Larger city residence"],
   },
   {
     name: "Sansiri Via 34",
@@ -150,8 +222,14 @@ const bangkokProjects: Project[] = [
     status: "Ready / resale and active opportunities",
     ownership: "Freehold condominium",
     size: "Private city residence layouts",
+    address: "Sukhumvit 34, Bangkok",
+    mapQuery: "Sansiri Via 34 Bangkok",
     description: "A private Sukhumvit 34 residence in a quieter pocket near Thonglor and Phrom Phong, suitable for buyers who prefer calm city living over high-density towers.",
     highlights: ["Sukhumvit 34 address", "Private residential atmosphere", "Near Thonglor and Phrom Phong"],
+    transport: ["Access to Thonglor and Phrom Phong", "Convenient toward Sukhumvit and Rama 4", "Quiet residential pocket with city access"],
+    lifestyle: ["Boutique residential character", "Nearby restaurants and lifestyle malls", "Good fit for self-use and long-stay tenants"],
+    floorPlans: ["Low-rise residential floor", "Common area plan", "Parking and arrival plan"],
+    unitLayouts: ["1-bedroom", "2-bedroom", "Private residence layouts"],
   },
 ];
 
@@ -164,8 +242,14 @@ const phuketProjects: Project[] = [
     status: "Luxury resort residence",
     ownership: "Resort residence ownership, subject to project terms",
     size: "Large beach-oriented residence layouts",
+    address: "Bang Tao, Phuket",
+    mapQuery: "Banyan Tree Beach Residences Oceanus Phuket",
     description: "A premium beach residence concept under the Banyan Tree lifestyle umbrella, designed for buyers seeking resort living, privacy, and long-term Phuket asset value.",
     highlights: ["Bang Tao resort lifestyle", "Banyan Tree brand environment", "Beach residence positioning"],
+    transport: ["Bang Tao and Laguna Phuket access", "Convenient toward beach clubs and resort districts", "Reach Phuket International Airport by car"],
+    lifestyle: ["Beachfront and resort-style living", "Golf, wellness and hospitality ecosystem", "Strong holiday-home positioning"],
+    floorPlans: ["Beach residence master plan", "Residential floor plan", "Resort amenity plan"],
+    unitLayouts: ["Large residence", "Beach-oriented layout", "Private resort home planning"],
   },
   {
     name: "The Cube Amaze Phuket - Srisoonthorn",
@@ -175,8 +259,14 @@ const phuketProjects: Project[] = [
     status: "New project",
     ownership: "Condominium ownership, subject to quota availability",
     size: "S, M and L room plans",
+    address: "Srisoonthorn Road, Thalang, Phuket",
+    mapQuery: "The Cube Amaze Phuket Srisoonthorn",
     description: "A 7-storey low-rise resort condominium in Srisoonthorn, positioned for practical Phuket living with resort-style common areas and central island connectivity.",
     highlights: ["Srisoonthorn Road location", "2 buildings, 7 storeys", "386-unit project planning"],
+    transport: ["Close to main road connection", "Convenient toward Thalang, Boat Avenue and Bang Tao", "Good central access for island living"],
+    lifestyle: ["Low-rise resort-style design", "Functional common areas", "Practical entry point for Phuket property"],
+    floorPlans: ["Master plan", "Building A / B floor plan", "Common area plan"],
+    unitLayouts: ["S room plan", "M room plan", "L room plan"],
   },
   {
     name: "The Title Cielo Rawai",
@@ -186,8 +276,14 @@ const phuketProjects: Project[] = [
     status: "Ready / active sale focus",
     ownership: "Condominium ownership, subject to quota availability",
     size: "Resort-style layouts for holiday and rental use",
+    address: "Rawai, Phuket",
+    mapQuery: "The Title Cielo Rawai Phuket",
     description: "A Rawai-focused resort residence suitable for buyers who want a southern Phuket lifestyle, beach access, and a product that can serve both personal use and rental planning.",
     highlights: ["Rawai lifestyle location", "Main active-sale Phuket focus", "Resort-style condominium concept"],
+    transport: ["Access to Rawai and Nai Harn lifestyle areas", "Convenient for southern Phuket beaches", "Suitable for holiday and long-stay rental demand"],
+    lifestyle: ["Rawai seafood and beach lifestyle", "Nai Harn, Promthep and southern Phuket attractions", "Relaxed residential resort atmosphere"],
+    floorPlans: ["Resort master plan", "Residential floor plan", "Common facility plan"],
+    unitLayouts: ["Studio / 1-bedroom", "1-bedroom plus", "2-bedroom resort layout"],
   },
   {
     name: "KATA BELLO (The Title KataBello)",
@@ -197,8 +293,14 @@ const phuketProjects: Project[] = [
     status: "New / active project information",
     ownership: "Condominium ownership, subject to quota availability",
     size: "Holiday residence layouts",
+    address: "Kata, Phuket",
+    mapQuery: "The Title KataBello Phuket",
     description: "A Kata-area resort residence concept under The Title brand, suited for buyers who want a west-coast Phuket location with holiday appeal and rental potential.",
     highlights: ["Kata west-coast positioning", "The Title resort residence brand", "Lifestyle and rental-use planning"],
+    transport: ["Access to Kata and Karon beaches", "Convenient toward Chalong and southern Phuket", "Appealing for west-coast holiday demand"],
+    lifestyle: ["Kata beach lifestyle", "Tourism and long-stay demand", "Restaurants, cafes and resort services nearby"],
+    floorPlans: ["Resort master plan", "Residential building floor", "Amenity plan"],
+    unitLayouts: ["Studio / 1-bedroom", "Holiday residence layout", "Larger resort unit"],
   },
   {
     name: "The Title Heritage Bang Tao",
@@ -208,10 +310,34 @@ const phuketProjects: Project[] = [
     status: "New / active project information",
     ownership: "Condominium ownership, subject to quota availability",
     size: "Resort-style residence layouts",
+    address: "Bang Tao, Phuket",
+    mapQuery: "The Title Heritage Bang Tao Phuket",
     description: "A Bang Tao residence concept designed around Phuket's established resort district, suitable for buyers prioritizing beach lifestyle, services, and long-term area growth.",
     highlights: ["Bang Tao resort district", "The Title brand environment", "Strong lifestyle and rental-demand area"],
+    transport: ["Access to Bang Tao, Boat Avenue and Laguna", "Convenient toward Phuket International Airport", "Strong west-coast lifestyle corridor"],
+    lifestyle: ["Beach clubs, restaurants and wellness", "Established foreign-owner and rental market", "Resort-style living environment"],
+    floorPlans: ["Project master plan", "Residential floor plan", "Amenity and pool plan"],
+    unitLayouts: ["Studio / 1-bedroom", "1-bedroom plus", "2-bedroom residence"],
   },
 ];
+
+function PlanPreview({ title, items }: { title: string; items: string[] }) {
+  return (
+    <div className="border border-border bg-background p-5">
+      <p className="text-[10px] uppercase tracking-[0.22em] text-brand-clay font-medium">{title}</p>
+      <div className="mt-4 grid gap-3">
+        {items.map((item, index) => (
+          <div key={item} className="flex items-center gap-3 border border-border bg-brand-cream/40 p-3">
+            <div className="h-12 w-12 shrink-0 border border-brand-clay/40 bg-background flex items-center justify-center font-display text-brand-clay">
+              {String(index + 1).padStart(2, "0")}
+            </div>
+            <p className="font-serif-tc text-sm leading-relaxed text-foreground/70">{item}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 function ProjectCard({ project, index, isActive, onSelect }: { project: Project; index: number; isActive: boolean; onSelect: () => void }) {
   return (
@@ -254,6 +380,7 @@ export function PreSellSection() {
   const totalPages = Math.ceil(projects.length / pageSize);
   const visibleProjects = useMemo(() => projects.slice((page - 1) * pageSize, page * pageSize), [page, pageSize, projects]);
   const selectedProject = projects.find((project) => project.name === selectedName) || visibleProjects[0] || projects[0];
+  const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(selectedProject.mapQuery)}&output=embed`;
 
   const chooseRegion = (nextRegion: "bangkok" | "phuket") => {
     const nextProjects = nextRegion === "bangkok" ? bangkokProjects : phuketProjects;
@@ -343,6 +470,8 @@ export function PreSellSection() {
                     ["Status", selectedProject.status],
                     ["Ownership", selectedProject.ownership],
                     ["Room Planning", selectedProject.size],
+                    ["Address", selectedProject.address],
+                    ["Project Type", selectedProject.type],
                   ].map(([label, value]) => (
                     <div key={label} className="bg-background p-5">
                       <p className="text-[10px] uppercase tracking-[0.22em] text-brand-clay font-medium">{label}</p>
@@ -351,6 +480,7 @@ export function PreSellSection() {
                   ))}
                 </div>
               </div>
+
               <div className="mt-8 grid md:grid-cols-3 gap-4">
                 {selectedProject.highlights.map((item) => (
                   <div key={item} className="border border-border bg-background px-5 py-4 font-serif-tc text-sm leading-loose text-foreground/70">
@@ -358,6 +488,28 @@ export function PreSellSection() {
                   </div>
                 ))}
               </div>
+
+              <div className="mt-10 grid lg:grid-cols-2 gap-8">
+                <div className="space-y-8">
+                  <PlanPreview title="Floor Plan · 樓層平面圖" items={selectedProject.floorPlans} />
+                  <PlanPreview title="Unit Layout · 單位格局圖" items={selectedProject.unitLayouts} />
+                </div>
+                <div className="space-y-8">
+                  <PlanPreview title="Transport · 交通" items={selectedProject.transport} />
+                  <PlanPreview title="Lifestyle · 生活機能" items={selectedProject.lifestyle} />
+                </div>
+              </div>
+
+              <div className="mt-10 overflow-hidden border border-border bg-background">
+                <iframe
+                  title={`${selectedProject.name} map`}
+                  src={mapSrc}
+                  className="h-80 w-full"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <a href={lineUrl} target="_blank" rel="noreferrer" className="inline-flex justify-center bg-[#06C755] px-7 py-4 text-[11px] uppercase tracking-[0.22em] font-semibold text-white hover:bg-[#05b34d] transition-colors">
                   Ask on LINE · LINE 諮詢
