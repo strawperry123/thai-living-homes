@@ -147,15 +147,36 @@ export function AboutSection() {
 
           <div className="lg:col-span-7 border border-brand-cream/15 p-8 md:p-10">
             <p className="text-[10px] uppercase tracking-[0.35em] text-brand-sand font-medium">
-              Bangkok Office
+              Bangkok Office · 曼谷辦公室
             </p>
-            <h3 className="mt-3 font-serif-tc text-3xl text-brand-cream">曼谷辦公室</h3>
+            <h3 className="mt-3 font-display text-3xl text-brand-cream">Bangkok Office</h3>
+            <p className="mt-1 font-serif-tc text-2xl text-brand-sand/90">曼谷辦公室</p>
             <address className="mt-8 not-italic space-y-5 text-sm md:text-base leading-relaxed text-brand-cream/78">
-              <p>2823/3 Rama IV Rd, Khlong Tan, Khlong Toei, Bangkok 10110</p>
-              <p className="font-serif-tc">實地看屋請提前預約</p>
-              <p>Consultation: +66 985973849 / +66 624892930</p>
-              <p>Viewing Hours: Monday to Saturday, 10:00-18:00</p>
-              <p>Email: khantharos.adm@gmail.com</p>
+              <p>
+                <span className="block text-brand-sand/90 text-[10px] uppercase tracking-[0.22em]">Address</span>
+                2823/3 Rama IV Rd, Khlong Tan, Khlong Toei, Bangkok 10110
+                <span className="mt-1 block font-serif-tc">地址：2823/3 Rama IV Rd, Khlong Tan, Khlong Toei, Bangkok 10110</span>
+              </p>
+              <p>
+                <span className="block text-brand-sand/90 text-[10px] uppercase tracking-[0.22em]">Appointment</span>
+                Property viewing is by appointment only.
+                <span className="mt-1 block font-serif-tc">實地看屋請提前預約。</span>
+              </p>
+              <p>
+                <span className="block text-brand-sand/90 text-[10px] uppercase tracking-[0.22em]">Consultation Line</span>
+                +66 985973849 / +66 624892930
+                <span className="mt-1 block font-serif-tc">諮詢專線：+66 985973849 / +66 624892930</span>
+              </p>
+              <p>
+                <span className="block text-brand-sand/90 text-[10px] uppercase tracking-[0.22em]">Viewing Hours</span>
+                Monday to Saturday, 10:00-18:00
+                <span className="mt-1 block font-serif-tc">實地看屋：週一至週六 10:00-18:00</span>
+              </p>
+              <p>
+                <span className="block text-brand-sand/90 text-[10px] uppercase tracking-[0.22em]">Email</span>
+                khantharos.adm@gmail.com
+                <span className="mt-1 block font-serif-tc">洽詢信箱：khantharos.adm@gmail.com</span>
+              </p>
             </address>
             <div className="mt-10 flex flex-wrap gap-3">
               {socialLinks.map((link) => (
