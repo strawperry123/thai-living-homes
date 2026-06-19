@@ -5,8 +5,15 @@ import property3 from "@/assets/property-3.jpg";
 
 const lineUrl = "https://lin.ee/W1y4D20";
 const whatsappUrl = "https://wa.me/66985973849";
+const driveImage = (id: string) => `https://drive.google.com/thumbnail?id=${id}&sz=w1600`;
 
 const images = [property1, property2, property3];
+
+type ProjectMedia = {
+  title: string;
+  src: string;
+  note?: string;
+};
 
 type Project = {
   name: string;
@@ -24,6 +31,9 @@ type Project = {
   lifestyle: string[];
   floorPlans: string[];
   unitLayouts: string[];
+  gallery?: ProjectMedia[];
+  floorPlanImages?: ProjectMedia[];
+  unitPlanImages?: ProjectMedia[];
 };
 
 const bangkokProjects: Project[] = [
@@ -60,6 +70,29 @@ const bangkokProjects: Project[] = [
     lifestyle: ["Facilities include 1st floor garden, 9th floor garden, 36th-39th floor gardens, swimming pool, fitness room, steam room and sauna room", "Security includes 24-hour guards, CCTV at main entrance, lobby, parking area and passenger elevators, plus access control", "Building systems include 7 passenger elevators, 1 fireman elevator, backup generator support, fire protection system, fiber optic telephone system and digital TV"],
     floorPlans: ["Simplex Floorplan: 2nd-Mezzanine, 2nd Parking, 3rd Parking, 4th Parking, 5th/7th Parking, 6th Parking and 8th Parking", "Simplex Typical Floor Plans: 11th-14th, 15th-24th and 25th-32nd", "Vertiplex Floorplan: 10th, 11th-14th, 33rd-35th lower/upper, 36th lower/upper and 37th"],
     unitLayouts: ["Vertiplex layout folders: Type C, D, E, F, G, H, I, J and K", "Official usable area details PDF is available in the Drive folder", "Project files also include E-Brochure, Facilities actual photos, Mock up photos, View images, Specifications PDF and foreign buyer guidance PDFs"],
+    gallery: [
+      { title: "The Parlour", src: driveImage("1Ou4F1SlN4YtX8p062UUojUOGE1k0tK5w"), note: "Facilities actual photo" },
+      { title: "Playfulness Bar", src: driveImage("163BUYbpRLW48xMbEE2RvCBrAJ7N5SrTv"), note: "Facilities actual photo" },
+      { title: "Sky Studio", src: driveImage("1yM6XuDQC_WK3JjnzOrS7rT-h9BzTY4Ua"), note: "Facilities actual photo" },
+      { title: "Swimming Pool & Jacuzzi", src: driveImage("1ugehNPxMVC6XUZPFG8HhKwMfi94fXX-Q"), note: "Facilities actual photo" },
+      { title: "Project Overview", src: driveImage("1AL9VvmNKpz3j0pfUSNJmVYRiypmYdYqh"), note: "Facilities actual photo" },
+      { title: "Benchakitti Park View", src: driveImage("1TCb-nj1qylcZ4ho3VBsreGFE0dkkJZv7"), note: "View reference" },
+    ],
+    floorPlanImages: [
+      { title: "10th Typical Floor Plan", src: driveImage("1ojSiaHrnZ_2GXN2ZHmQXTovjPaDo9vy-"), note: "Vertiplex Floorplan" },
+      { title: "11th-14th Typical Floor Plan", src: driveImage("1fhVdq6Emj3qF3W1COj_LNv-naQYnBPzz"), note: "Vertiplex Floorplan" },
+      { title: "33rd-35th Lower", src: driveImage("1p09MVy1u2SZBpfzJ9HlvESoeC6UKAdxB"), note: "Vertiplex Floorplan" },
+      { title: "33rd-35th Upper", src: driveImage("1IUcpXR3gesfJocEJfvhGl0WOquArsCIY"), note: "Vertiplex Floorplan" },
+      { title: "36th Lower", src: driveImage("1m_9IbLm9UHaKkaS_x9eFhxaKzud2CtCv"), note: "Vertiplex Floorplan" },
+      { title: "37th Floor", src: driveImage("1DLUX1mBqntpgfKtRaUm9jDYGO2N79FPu"), note: "Vertiplex Floorplan" },
+    ],
+    unitPlanImages: [
+      { title: "Type C", src: driveImage("1T4e5g942FzNsXnPV2d77wsf49NBs7INX"), note: "Vertiplex layout" },
+      { title: "Type D", src: driveImage("1e_d9Ar1wQ6u6OueuqdyQDxU73Iuj-4ys"), note: "Vertiplex layout" },
+      { title: "Type E", src: driveImage("1ChM9zmR7hWR4hHdvAlKGy6KWybOcBsig"), note: "Vertiplex layout" },
+      { title: "Type F", src: driveImage("1JCASApDRukyq958Vm9zlByV0g-usp8af"), note: "Vertiplex layout" },
+      { title: "Type K", src: driveImage("10JPoC6kQZsD1v0Xh3ygqWA4TojfIQQ6z"), note: "Vertiplex layout" },
+    ],
   },
   {
     name: "Goodday Sukhumvit 93",
@@ -339,6 +372,34 @@ function PlanPreview({ title, items }: { title: string; items: string[] }) {
   );
 }
 
+function MediaGallery({ title, items, fit = "cover" }: { title: string; items?: ProjectMedia[]; fit?: "cover" | "contain" }) {
+  if (!items?.length) return null;
+
+  return (
+    <section className="mt-10 border border-border bg-background p-6 md:p-8">
+      <p className="text-[10px] uppercase tracking-[0.32em] text-brand-clay font-medium">{title}</p>
+      <div className="mt-5 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {items.map((item) => (
+          <figure key={item.src} className="border border-border bg-brand-cream/35 overflow-hidden">
+            <div className="bg-background">
+              <img
+                src={item.src}
+                alt={item.title}
+                loading="lazy"
+                className={`w-full aspect-[4/3] ${fit === "contain" ? "object-contain p-3" : "object-cover"}`}
+              />
+            </div>
+            <figcaption className="p-4">
+              <p className="font-serif-tc text-base text-brand-ink leading-tight">{item.title}</p>
+              {item.note && <p className="mt-2 text-xs uppercase tracking-[0.16em] text-brand-clay">{item.note}</p>}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function ProjectAbout({ project }: { project: Project }) {
   return (
     <section className="mt-10 border border-border bg-background p-6 md:p-8">
@@ -406,7 +467,7 @@ function ProjectCard({ project, index, isActive, onSelect }: { project: Project;
       <button type="button" onClick={onSelect} className="block w-full text-left">
         <div className="relative overflow-hidden">
           <img
-            src={images[index % images.length]}
+            src={project.gallery?.[0]?.src || images[index % images.length]}
             alt={project.name}
             width={900}
             height={1120}
@@ -552,6 +613,9 @@ export function PreSellSection() {
 
               <ProjectAbout project={selectedProject} />
               <ProjectFaq project={selectedProject} />
+              <MediaGallery title="Project Images · 建案圖片" items={selectedProject.gallery} />
+              <MediaGallery title="Floor Plan Images · 樓層平面圖" items={selectedProject.floorPlanImages} fit="contain" />
+              <MediaGallery title="Unit Layout Images · 單位格局圖" items={selectedProject.unitPlanImages} fit="contain" />
 
               <div className="mt-10 grid lg:grid-cols-2 gap-8">
                 <div className="space-y-8">
