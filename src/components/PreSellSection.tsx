@@ -37,6 +37,71 @@ type Project = {
   unitPlanImages?: ProjectMedia[];
 };
 
+const lifeRama4FloorPlanImages: ProjectMedia[] = [
+  { title: "1st Layout Combine · 1 樓整體平面圖", src: driveImage("1TCedySR8iIf9MCYdMNa1Fq__bQqf3Ag_"), note: "Simplex Floorplan · Simplex 樓層圖" },
+  { title: "2nd Mezzanine · 2 樓夾層平面圖", src: driveImage("1-PRz35yL6os6CAwUdO728bhj8q1mgrS-"), note: "Simplex Floorplan · Simplex 樓層圖" },
+  { title: "2nd Parking · 2 樓停車層", src: driveImage("1prkp3I7p3-5KZwY2YgeFahz8LYCiy-cP"), note: "Simplex Floorplan · Simplex 樓層圖" },
+  { title: "3rd Parking · 3 樓停車層", src: driveImage("1QilRlMB0tj1qytf5admSzPpn9_hhDEaS"), note: "Simplex Floorplan · Simplex 樓層圖" },
+  { title: "4th Parking · 4 樓停車層", src: driveImage("1zTyck17FKc5qD-C9uqrqI5kCEePZeIEi"), note: "Simplex Floorplan · Simplex 樓層圖" },
+  { title: "5th and 7th Parking · 5 / 7 樓停車層", src: driveImage("1CodhIq6bRZD9--25Ep5rj91JQ6MT-p8V"), note: "Simplex Floorplan · Simplex 樓層圖" },
+  { title: "6th Parking · 6 樓停車層", src: driveImage("1rvSPPFGt95rOseHqnsG-wV_BISJhQ4GJ"), note: "Simplex Floorplan · Simplex 樓層圖" },
+  { title: "8th Parking · 8 樓停車層", src: driveImage("1UCsLRZW1DEZtYSXOE8Tb2GAUIEhdxkxi"), note: "Simplex Floorplan · Simplex 樓層圖" },
+  { title: "10th Typical Floor Plan · 10 樓標準層平面圖", src: driveImage("1ojSiaHrnZ_2GXN2ZHmQXTovjPaDo9vy-"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
+  { title: "11th-14th Typical Floor Plan · 11-14 樓標準層平面圖", src: driveImage("1fhVdq6Emj3qF3W1COj_LNv-naQYnBPzz"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
+  { title: "15th-24th Typical Floor Plan · 15-24 樓標準層平面圖", src: driveImage("1US2z1qN2bCE6lk197AGcl0QHritTkbtl"), note: "Simplex Floorplan · Simplex 樓層圖" },
+  { title: "25th-32nd Typical Floor Plan · 25-32 樓標準層平面圖", src: driveImage("1DhEo6ozWTU5_x9RQq_nhbLKa30eLkKkk"), note: "Simplex Floorplan · Simplex 樓層圖" },
+  { title: "33rd-35th Lower · 33-35 樓下層", src: driveImage("1p09MVy1u2SZBpfzJ9HlvESoeC6UKAdxB"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
+  { title: "33rd-35th Upper · 33-35 樓上層", src: driveImage("1IUcpXR3gesfJocEJfvhGl0WOquArsCIY"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
+  { title: "36th Lower · 36 樓下層", src: driveImage("1m_9IbLm9UHaKkaS_x9eFhxaKzud2CtCv"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
+  { title: "36th Upper · 36 樓上層", src: driveImage("1D7mWwr3Vb6Bt5mlJi-VHMcfXKOGLCt9g"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
+  { title: "37th Floor · 37 樓平面圖", src: driveImage("1DLUX1mBqntpgfKtRaUm9jDYGO2N79FPu"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
+];
+
+const lifeRama4UnitPlanImages: ProjectMedia[] = [
+  { title: "Type A - L9-11-A1 · A 戶型 L9-11-A1", src: driveImage("1UYntSozif_9r9Vr155ALtaL9FIJYtIVN"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type A - L9-12-A2M · A 戶型 L9-12-A2M", src: driveImage("1X6XFBCZF4qv66wiyvkAsi5r7YJSG3uGE"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type A - L9-13-A2 · A 戶型 L9-13-A2", src: driveImage("1SVZwPscIVONGn9wGp_DmYw5dqo23hiJ2"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type A - L9-14-A2M · A 戶型 L9-14-A2M", src: driveImage("1zjygs6Z6RgByhTQeMEskdgRqDgaHUPJl"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type A - L9-30-A5M · A 戶型 L9-30-A5M", src: driveImage("1JA3WS47cc5f26HYGF8wSbKTm0x7beWu-"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type A - L9-31-A3 · A 戶型 L9-31-A3", src: driveImage("1HSJ7KkZp-qqUMNsPs9wBotxp9BRlzZNy"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type A - L9-32-A5 · A 戶型 L9-32-A5", src: driveImage("1iRMS_uDQ5-nfzoZyqO00esFM2ehZdaUj"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type A - L9-33-A4 · A 戶型 L9-33-A4", src: driveImage("17qq_FTBlF6UZ3aj_8O6YEBX1kLbWQJlI"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type A - L10-11-A1 · A 戶型 L10-11-A1", src: driveImage("1bU_u938BVMsefJyl3CEQsb5rtRASY4UP"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type A - L10-12-A2M · A 戶型 L10-12-A2M", src: driveImage("1QlW2Iz8Bz66I9g9fTRJ_jv8o-NZlysBd"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type A - L10-13-A2 · A 戶型 L10-13-A2", src: driveImage("1Fs1NAOcX7Eg9MbVxl41Nmn6K6zUah0ns"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type A - L10-14-A2M · A 戶型 L10-14-A2M", src: driveImage("1lwIyKpY2UUsnZtUA-qJxv0WEaWp2nmHA"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type A - L10-25-A6 · A 戶型 L10-25-A6", src: driveImage("1NJxsBG_S-hq_BCE8RiTIi6zaNjrhK2L4"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type A - L10-30-A5M · A 戶型 L10-30-A5M", src: driveImage("142UygqxJEocVq5NFZqDqbIK1QOpp4nLu"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type A - L10-31-A3 · A 戶型 L10-31-A3", src: driveImage("1A30rHgqDgtUlJ4IsPjqlJh-sIuWqbguJ"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type A - L10-32-A5 · A 戶型 L10-32-A5", src: driveImage("16ZyK1oJbS0EHaa9oZ80yoa8jRS7mKDW2"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type A - L10-33-A4 · A 戶型 L10-33-A4", src: driveImage("12hFhiFz3bWL9SyOdKti-tsVbP9AEfM8g"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type B - L10-01-B1 · B 戶型 L10-01-B1", src: driveImage("1L9HQs9zOgemt4bhx48AInUhGiQSxJ8Pi"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type B - L10-02-B3 · B 戶型 L10-02-B3", src: driveImage("1E3XBGpLWsS5RIIT5Y8ZsOA58T1YAHFSf"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type B - L11-41-B6 · B 戶型 L11-41-B6", src: driveImage("1390FMczW97L_DjMa5y66qA_mxuAsPgHv"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type B - L11-45-B7 · B 戶型 L11-45-B7", src: driveImage("1L3xJsLxViCKJnpux2E_qTq33Q-YeRS2F"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type B - L11-46-B8 · B 戶型 L11-46-B8", src: driveImage("1bhlsmYyKHPYj15DiRNGzCOZcp6RrZAMk"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type B - L25-25-B9 · B 戶型 L25-25-B9", src: driveImage("1oWRXwTUOZu5PuAwtx8sRAZv1Js7F4v_9"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type B - L25-30-B2 · B 戶型 L25-30-B2", src: driveImage("1fgyi-m__Q3DRncmsFX_-oitsmbneysHR"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type B - L25-31-B4M · B 戶型 L25-31-B4M", src: driveImage("1VXwNmq2mt4yQACkFsvWd9K468iyRxvMo"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type B - L25-32-B4 · B 戶型 L25-32-B4", src: driveImage("1K93b_kor145M9V3oCBQpvqd8Wzv05xGe"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type B - L25-33-B5 · B 戶型 L25-33-B5", src: driveImage("1f0qT9JKismgpsVCtHvTBvN2Hg7Sq6WnW"), note: "Simplex layout · Simplex 單位格局圖" },
+  { title: "Type C - L33-14-C4M · C 戶型 L33-14-C4M", src: driveImage("1T4e5g942FzNsXnPV2d77wsf49NBs7INX"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+  { title: "Type D - D12M-43 · D 戶型 D12M-43", src: driveImage("1KQ0x4EVXyT4dy9hqr6Pc9oEbs3opsZp6"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+  { title: "Type D - L33-15/17/19/21-D13 · D 戶型 L33-15/17/19/21-D13", src: driveImage("1e_d9Ar1wQ6u6OueuqdyQDxU73Iuj-4ys"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+  { title: "Type D - L33-16/18/20/22-D13M · D 戶型 L33-16/18/20/22-D13M", src: driveImage("14XhhxLkCE44D66oNy_rBlENmA1KZ-f-D"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+  { title: "Type D - L33-23-D14 · D 戶型 L33-23-D14", src: driveImage("1k4rOBWxjxF9_dK5CSuPiMRRCA54qLkjO"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+  { title: "Type D - L33-26-D15M · D 戶型 L33-26-D15M", src: driveImage("11Q5RAZrRR01ST0J-4AeSVpiuB4gbEadq"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+  { title: "Type D - L33-27-D15 · D 戶型 L33-27-D15", src: driveImage("1CVEI6G83Va9QhWPfeuBS6Pqia3mL8VPv"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+  { title: "Type D - L33-28-D16 · D 戶型 L33-28-D16", src: driveImage("1FoRiH002j6i2MBPgX3zsbnyDWGAZclUG"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+  { title: "Type D - L33-29-D17 · D 戶型 L33-29-D17", src: driveImage("17doy55zUg4YKmjgYjPfUqRZoooYhSE-U"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+  { title: "Type E - L33-04/06/08-E6M · E 戶型 L33-04/06/08-E6M", src: driveImage("1ChM9zmR7hWR4hHdvAlKGy6KWybOcBsig"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+  { title: "Type E - L33-09-E7 · E 戶型 L33-09-E7", src: driveImage("134J9hDUkXYk3qiJzNVZMryhmQSR_iKFB"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+  { title: "Type E - L33-42/44-E8 · E 戶型 L33-42/44-E8", src: driveImage("1s5KFtA29-dfN1tQkCaf0kHJ6Xup23SjR"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+  { title: "Type E - L33-43-E8M · E 戶型 L33-43-E8M", src: driveImage("1yGHlwsGayar1VTsF7NrGyYt9bkZiw4P6"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+  { title: "Type F - L33-37/39-F5M · F 戶型 L33-37/39-F5M", src: driveImage("1JCASApDRukyq958Vm9zlByV0g-usp8af"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+  { title: "Type K - L33-40-K2 · K 戶型 L33-40-K2", src: driveImage("10JPoC6kQZsD1v0Xh3ygqWA4TojfIQQ6z"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+];
+
 const bangkokProjects: Project[] = [
   {
     name: "FLO by Sansiri",
@@ -82,13 +147,13 @@ const bangkokProjects: Project[] = [
       "Building systems include 7 passenger elevators, 1 fireman elevator, backup generator support, fire protection system, fiber optic telephone system and digital TV · 建物配置 7 部客梯、1 部消防電梯、備用發電、消防系統、光纖與數位電視系統",
     ],
     floorPlans: [
-      "Simplex Floorplan: 2nd-Mezzanine, 2nd Parking, 3rd Parking, 4th Parking, 5th/7th Parking, 6th Parking and 8th Parking · Simplex 樓層圖：2F/夾層、2F 停車、3F 停車、4F 停車、5F/7F 停車、6F 停車與 8F 停車",
+      "Simplex Floorplan: 1st, 2nd-Mezzanine, 2nd Parking, 3rd Parking, 4th Parking, 5th/7th Parking, 6th Parking and 8th Parking · Simplex 樓層圖：1F、2F/夾層、2F 停車、3F 停車、4F 停車、5F/7F 停車、6F 停車與 8F 停車",
       "Simplex Typical Floor Plans: 11th-14th, 15th-24th and 25th-32nd · Simplex 標準層：11-14F、15-24F、25-32F",
       "Vertiplex Floorplan: 10th, 11th-14th, 33rd-35th lower/upper, 36th lower/upper and 37th · Vertiplex 樓層圖：10F、11-14F、33-35F 下層/上層、36F 下層/上層與 37F",
     ],
     unitLayouts: [
+      "Simplex layout folders: Type A and B · Simplex 房型圖分類：A、B 戶型",
       "Vertiplex layout folders: Type C, D, E, F, G, H, I, J and K · Vertiplex 房型圖分類：C、D、E、F、G、H、I、J、K 戶型",
-      "Official usable area details PDF is available in the Drive folder · Drive 素材內含官方可使用面積明細 PDF",
       "Project files also include E-Brochure, facilities actual photos, mock-up photos, view images, specifications PDF and foreign buyer guidance PDFs · 素材另含電子型錄、公設實景圖、樣品屋照片、景觀圖、建材規格 PDF 與外國人購屋指南 PDF",
     ],
     gallery: [
@@ -99,32 +164,8 @@ const bangkokProjects: Project[] = [
       { title: "Project Overview · 建案外觀概覽", src: driveImage("1AL9VvmNKpz3j0pfUSNJmVYRiypmYdYqh"), note: "Facilities actual photo · 公設實景圖" },
       { title: "Benchakitti Park View · 班嘉奇蒂公園景觀", src: driveImage("1TCb-nj1qylcZ4ho3VBsreGFE0dkkJZv7"), note: "View reference · 景觀參考" },
     ],
-    floorPlanImages: [
-      { title: "10th Typical Floor Plan · 10 樓標準層平面圖", src: driveImage("1ojSiaHrnZ_2GXN2ZHmQXTovjPaDo9vy-"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
-      { title: "11th-14th Typical Floor Plan · 11-14 樓標準層平面圖", src: driveImage("1fhVdq6Emj3qF3W1COj_LNv-naQYnBPzz"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
-      { title: "33rd-35th Lower · 33-35 樓下層", src: driveImage("1p09MVy1u2SZBpfzJ9HlvESoeC6UKAdxB"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
-      { title: "33rd-35th Upper · 33-35 樓上層", src: driveImage("1IUcpXR3gesfJocEJfvhGl0WOquArsCIY"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
-      { title: "36th Lower · 36 樓下層", src: driveImage("1m_9IbLm9UHaKkaS_x9eFhxaKzud2CtCv"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
-      { title: "36th Upper · 36 樓上層", src: driveImage("1D7mWwr3Vb6Bt5mlJi-VHMcfXKOGLCt9g"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
-      { title: "37th Floor · 37 樓平面圖", src: driveImage("1DLUX1mBqntpgfKtRaUm9jDYGO2N79FPu"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
-    ],
-    unitPlanImages: [
-      { title: "Type C - L33-14-C4M · C 戶型 L33-14-C4M", src: driveImage("1T4e5g942FzNsXnPV2d77wsf49NBs7INX"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
-      { title: "Type D - D12M-43 · D 戶型 D12M-43", src: driveImage("1KQ0x4EVXyT4dy9hqr6Pc9oEbs3opsZp6"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
-      { title: "Type D - L33-15/17/19/21-D13 · D 戶型 L33-15/17/19/21-D13", src: driveImage("1e_d9Ar1wQ6u6OueuqdyQDxU73Iuj-4ys"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
-      { title: "Type D - L33-16/18/20/22-D13M · D 戶型 L33-16/18/20/22-D13M", src: driveImage("14XhhxLkCE44D66oNy_rBlENmA1KZ-f-D"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
-      { title: "Type D - L33-23-D14 · D 戶型 L33-23-D14", src: driveImage("1k4rOBWxjxF9_dK5CSuPiMRRCA54qLkjO"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
-      { title: "Type D - L33-26-D15M · D 戶型 L33-26-D15M", src: driveImage("11Q5RAZrRR01ST0J-4AeSVpiuB4gbEadq"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
-      { title: "Type D - L33-27-D15 · D 戶型 L33-27-D15", src: driveImage("1CVEI6G83Va9QhWPfeuBS6Pqia3mL8VPv"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
-      { title: "Type D - L33-28-D16 · D 戶型 L33-28-D16", src: driveImage("1FoRiH002j6i2MBPgX3zsbnyDWGAZclUG"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
-      { title: "Type D - L33-29-D17 · D 戶型 L33-29-D17", src: driveImage("17doy55zUg4YKmjgYjPfUqRZoooYhSE-U"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
-      { title: "Type E - L33-04/06/08-E6M · E 戶型 L33-04/06/08-E6M", src: driveImage("1ChM9zmR7hWR4hHdvAlKGy6KWybOcBsig"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
-      { title: "Type E - L33-09-E7 · E 戶型 L33-09-E7", src: driveImage("134J9hDUkXYk3qiJzNVZMryhmQSR_iKFB"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
-      { title: "Type E - L33-42/44-E8 · E 戶型 L33-42/44-E8", src: driveImage("1s5KFtA29-dfN1tQkCaf0kHJ6Xup23SjR"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
-      { title: "Type E - L33-43-E8M · E 戶型 L33-43-E8M", src: driveImage("1yGHlwsGayar1VTsF7NrGyYt9bkZiw4P6"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
-      { title: "Type F - L33-37/39-F5M · F 戶型 L33-37/39-F5M", src: driveImage("1JCASApDRukyq958Vm9zlByV0g-usp8af"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
-      { title: "Type K - L33-40-K2 · K 戶型 L33-40-K2", src: driveImage("10JPoC6kQZsD1v0Xh3ygqWA4TojfIQQ6z"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
-    ],
+    floorPlanImages: lifeRama4FloorPlanImages,
+    unitPlanImages: lifeRama4UnitPlanImages,
   },
   {
     name: "Goodday Sukhumvit 93",
@@ -549,6 +590,17 @@ export function PreSellSection() {
   const selectedProject = projects.find((project) => project.name === selectedName) || visibleProjects[0] || projects[0];
   const mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(selectedProject.mapQuery)}&output=embed`;
 
+  const scrollToDetails = () => {
+    window.setTimeout(() => {
+      document.getElementById("selected-project")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 0);
+  };
+
+  const chooseProject = (projectName: string) => {
+    setSelectedName(projectName);
+    scrollToDetails();
+  };
+
   const chooseRegion = (nextRegion: "bangkok" | "phuket") => {
     const nextProjects = nextRegion === "bangkok" ? bangkokProjects : phuketProjects;
     setRegion(nextRegion);
@@ -617,13 +669,13 @@ export function PreSellSection() {
                 project={project}
                 index={(page - 1) * pageSize + index}
                 isActive={selectedProject.name === project.name}
-                onSelect={() => setSelectedName(project.name)}
+                onSelect={() => chooseProject(project.name)}
               />
             ))}
           </div>
 
           {selectedProject && (
-            <section className="mt-12 border border-border bg-brand-cream p-8 md:p-10">
+            <section id="selected-project" className="scroll-mt-24 mt-12 border border-border bg-brand-cream p-8 md:p-10">
               <div className="grid lg:grid-cols-12 gap-10">
                 <div className="lg:col-span-5">
                   <p className="text-[10px] uppercase tracking-[0.35em] text-brand-clay font-medium">Selected Project</p>
@@ -657,12 +709,12 @@ export function PreSellSection() {
                 ))}
               </div>
 
+              <MediaGallery title="Project Images · 建案圖片" items={selectedProject.gallery} />
+              <MediaGallery title="Unit Layout Images · 單位格局圖" items={selectedProject.unitPlanImages} fit="contain" />
               <ProjectAbout project={selectedProject} />
               <ProjectFaq project={selectedProject} />
               <TextColumns transport={selectedProject.transport} lifestyle={selectedProject.lifestyle} />
-              <MediaGallery title="Project Images · 建案圖片" items={selectedProject.gallery} />
               <MediaGallery title="Floor Plan Images · 樓層平面圖" items={selectedProject.floorPlanImages} fit="contain" />
-              <MediaGallery title="Unit Layout Images · 單位格局圖" items={selectedProject.unitPlanImages} fit="contain" />
 
               <div className="mt-10 overflow-hidden border border-border bg-background">
                 <iframe
