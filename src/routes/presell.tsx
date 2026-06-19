@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PreSellSection } from "@/components/PreSellSection";
+import { PreSellSectionV2 } from "@/components/PreSellSectionV2";
 
 export const Route = createFileRoute("/presell")({
   head: () => ({
@@ -12,5 +12,5 @@ export const Route = createFileRoute("/presell")({
       },
     ],
   }),
-  component: PreSellSection,
+  component: PreSellSectionV2,
 });
