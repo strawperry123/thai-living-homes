@@ -56,42 +56,62 @@ const bangkokProjects: Project[] = [
   },
   {
     name: "Life Rama 4 - Asoke",
-    area: "Rama 4 / Asoke",
-    type: "High-rise Condominium",
-    developer: "AP ME 12 Co., Ltd.",
-    status: "Project details and official sales materials available",
-    ownership: "Freehold condominium, subject to foreign quota and contract terms",
-    size: "1 building, 39 storeys; 1,237 residential units, 2 shops; approx. 496 parking lots",
-    address: "Rama 4 Road, Khlong Toei, Bangkok 10110",
+    area: "Rama 4 / Asoke · 拉瑪四 / 阿索克",
+    type: "High-rise Condominium · 高樓層公寓",
+    developer: "AP ME 12 Co., Ltd. · AP 集團關係企業",
+    status: "Official project details and sales materials available · 已整理官方建案資料與銷售素材",
+    ownership: "Freehold condominium, subject to foreign quota and contract terms · 永久產權公寓，外國人額度與合約條件以開發商文件為準",
+    size: "1 building, 39 storeys; 1,237 residential units, 2 shops; approx. 496 parking lots · 1 棟 39 層，共 1,237 戶住宅、2 間商鋪，約 496 個車位",
+    address: "Rama 4 Road, Khlong Toei, Bangkok 10110 · 曼谷 Khlong Toei 區 Rama 4 路 10110",
     mapQuery: "Life Rama 4 Asoke Rama 4 Road Khlong Toei Bangkok",
-    description: "Life Rama 4 - Asoke is a 39-storey city condominium by AP ME 12 on Rama 4 Road, Khlong Toei. The project combines a large residential scale, parking podium, upper-floor gardens, pool, fitness, steam and sauna facilities, and practical access to the Rama 4, Asoke and Khlong Toei business corridor.",
-    highlights: ["5-2-7.5 Rai project land area", "1,237 residential units plus 2 shops", "Maintenance fee 50 baht/sq.m./month and sinking fund 500 baht/sq.m."],
-    transport: ["Located on Rama 4 Road in Khlong Toei with convenient access toward Asoke, Sukhumvit, Queen Sirikit Convention Centre and central Bangkok", "Good fit for renters who work around Rama 4, Sukhumvit, CBD and expressway-connected districts", "The Drive folder includes a location map file for onsite project reference"],
-    lifestyle: ["Facilities include 1st floor garden, 9th floor garden, 36th-39th floor gardens, swimming pool, fitness room, steam room and sauna room", "Security includes 24-hour guards, CCTV at main entrance, lobby, parking area and passenger elevators, plus access control", "Building systems include 7 passenger elevators, 1 fireman elevator, backup generator support, fire protection system, fiber optic telephone system and digital TV"],
-    floorPlans: ["Simplex Floorplan: 2nd-Mezzanine, 2nd Parking, 3rd Parking, 4th Parking, 5th/7th Parking, 6th Parking and 8th Parking", "Simplex Typical Floor Plans: 11th-14th, 15th-24th and 25th-32nd", "Vertiplex Floorplan: 10th, 11th-14th, 33rd-35th lower/upper, 36th lower/upper and 37th"],
-    unitLayouts: ["Vertiplex layout folders: Type C, D, E, F, G, H, I, J and K", "Official usable area details PDF is available in the Drive folder", "Project files also include E-Brochure, Facilities actual photos, Mock up photos, View images, Specifications PDF and foreign buyer guidance PDFs"],
+    description: "Life Rama 4 - Asoke is a 39-storey city condominium by AP ME 12 on Rama 4 Road, Khlong Toei. The project combines a large residential scale, parking podium, upper-floor gardens, pool, fitness, steam and sauna facilities, with practical access to Rama 4, Asoke and the Khlong Toei business corridor. 本案位於曼谷 Rama 4 Road、Khlong Toei 區，由 AP ME 12 開發，為 39 層高樓層公寓。建案規劃住宅、商鋪、停車樓層、高樓層花園、泳池、健身房、蒸氣室與桑拿，適合重視市中心交通、出租需求與生活機能的買方。",
+    highlights: [
+      "Project land area: 5-2-7.5 Rai · 基地面積 5-2-7.5 Rai",
+      "1,237 residential units plus 2 shops · 1,237 戶住宅加 2 間商鋪",
+      "Maintenance fee 50 baht/sq.m./month; sinking fund 500 baht/sq.m. · 管理費 50 泰銖/平方公尺/月；公共基金 500 泰銖/平方公尺",
+    ],
+    transport: [
+      "Located on Rama 4 Road in Khlong Toei with convenient access toward Asoke, Sukhumvit, Queen Sirikit Convention Centre and central Bangkok · 位於 Khlong Toei 的 Rama 4 Road，可銜接 Asoke、Sukhumvit、詩麗吉皇后會議中心與曼谷市中心",
+      "Suitable for tenants working around Rama 4, Sukhumvit, CBD and expressway-connected districts · 適合 Rama 4、Sukhumvit、CBD 與快速道路沿線工作客群",
+      "The Drive folder includes a location map file for onsite project reference · Drive 素材內含 location map，可作為建案位置參考",
+    ],
+    lifestyle: [
+      "Facilities include 1st floor garden, 9th floor garden, 36th-39th floor gardens, swimming pool, fitness room, steam room and sauna room · 公設包含 1 樓花園、9 樓花園、36-39 樓高空花園、泳池、健身房、蒸氣室與桑拿",
+      "Security includes 24-hour guards, CCTV at main entrance, lobby, parking area and passenger elevators, plus access control · 管理包含 24 小時保全、主要入口/大廳/停車區/電梯 CCTV 與門禁系統",
+      "Building systems include 7 passenger elevators, 1 fireman elevator, backup generator support, fire protection system, fiber optic telephone system and digital TV · 建物配置 7 部客梯、1 部消防電梯、備用發電、消防系統、光纖與數位電視系統",
+    ],
+    floorPlans: [
+      "Simplex Floorplan: 2nd-Mezzanine, 2nd Parking, 3rd Parking, 4th Parking, 5th/7th Parking, 6th Parking and 8th Parking · Simplex 樓層圖：2F/夾層、2F 停車、3F 停車、4F 停車、5F/7F 停車、6F 停車與 8F 停車",
+      "Simplex Typical Floor Plans: 11th-14th, 15th-24th and 25th-32nd · Simplex 標準層：11-14F、15-24F、25-32F",
+      "Vertiplex Floorplan: 10th, 11th-14th, 33rd-35th lower/upper, 36th lower/upper and 37th · Vertiplex 樓層圖：10F、11-14F、33-35F 下層/上層、36F 下層/上層與 37F",
+    ],
+    unitLayouts: [
+      "Vertiplex layout folders: Type C, D, E, F, G, H, I, J and K · Vertiplex 房型圖分類：C、D、E、F、G、H、I、J、K 戶型",
+      "Official usable area details PDF is available in the Drive folder · Drive 素材內含官方可使用面積明細 PDF",
+      "Project files also include E-Brochure, facilities actual photos, mock-up photos, view images, specifications PDF and foreign buyer guidance PDFs · 素材另含電子型錄、公設實景圖、樣品屋照片、景觀圖、建材規格 PDF 與外國人購屋指南 PDF",
+    ],
     gallery: [
-      { title: "The Parlour", src: driveImage("1Ou4F1SlN4YtX8p062UUojUOGE1k0tK5w"), note: "Facilities actual photo" },
-      { title: "Playfulness Bar", src: driveImage("163BUYbpRLW48xMbEE2RvCBrAJ7N5SrTv"), note: "Facilities actual photo" },
-      { title: "Sky Studio", src: driveImage("1yM6XuDQC_WK3JjnzOrS7rT-h9BzTY4Ua"), note: "Facilities actual photo" },
-      { title: "Swimming Pool & Jacuzzi", src: driveImage("1ugehNPxMVC6XUZPFG8HhKwMfi94fXX-Q"), note: "Facilities actual photo" },
-      { title: "Project Overview", src: driveImage("1AL9VvmNKpz3j0pfUSNJmVYRiypmYdYqh"), note: "Facilities actual photo" },
-      { title: "Benchakitti Park View", src: driveImage("1TCb-nj1qylcZ4ho3VBsreGFE0dkkJZv7"), note: "View reference" },
+      { title: "The Parlour · 迎賓客廳", src: driveImage("1Ou4F1SlN4YtX8p062UUojUOGE1k0tK5w"), note: "Facilities actual photo · 公設實景圖" },
+      { title: "Playfulness Bar · 休閒吧檯", src: driveImage("163BUYbpRLW48xMbEE2RvCBrAJ7N5SrTv"), note: "Facilities actual photo · 公設實景圖" },
+      { title: "Sky Studio · 空中共享空間", src: driveImage("1yM6XuDQC_WK3JjnzOrS7rT-h9BzTY4Ua"), note: "Facilities actual photo · 公設實景圖" },
+      { title: "Swimming Pool & Jacuzzi · 泳池與按摩池", src: driveImage("1ugehNPxMVC6XUZPFG8HhKwMfi94fXX-Q"), note: "Facilities actual photo · 公設實景圖" },
+      { title: "Project Overview · 建案外觀概覽", src: driveImage("1AL9VvmNKpz3j0pfUSNJmVYRiypmYdYqh"), note: "Facilities actual photo · 公設實景圖" },
+      { title: "Benchakitti Park View · 班嘉奇蒂公園景觀", src: driveImage("1TCb-nj1qylcZ4ho3VBsreGFE0dkkJZv7"), note: "View reference · 景觀參考" },
     ],
     floorPlanImages: [
-      { title: "10th Typical Floor Plan", src: driveImage("1ojSiaHrnZ_2GXN2ZHmQXTovjPaDo9vy-"), note: "Vertiplex Floorplan" },
-      { title: "11th-14th Typical Floor Plan", src: driveImage("1fhVdq6Emj3qF3W1COj_LNv-naQYnBPzz"), note: "Vertiplex Floorplan" },
-      { title: "33rd-35th Lower", src: driveImage("1p09MVy1u2SZBpfzJ9HlvESoeC6UKAdxB"), note: "Vertiplex Floorplan" },
-      { title: "33rd-35th Upper", src: driveImage("1IUcpXR3gesfJocEJfvhGl0WOquArsCIY"), note: "Vertiplex Floorplan" },
-      { title: "36th Lower", src: driveImage("1m_9IbLm9UHaKkaS_x9eFhxaKzud2CtCv"), note: "Vertiplex Floorplan" },
-      { title: "37th Floor", src: driveImage("1DLUX1mBqntpgfKtRaUm9jDYGO2N79FPu"), note: "Vertiplex Floorplan" },
+      { title: "10th Typical Floor Plan · 10 樓標準層平面圖", src: driveImage("1ojSiaHrnZ_2GXN2ZHmQXTovjPaDo9vy-"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
+      { title: "11th-14th Typical Floor Plan · 11-14 樓標準層平面圖", src: driveImage("1fhVdq6Emj3qF3W1COj_LNv-naQYnBPzz"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
+      { title: "33rd-35th Lower · 33-35 樓下層", src: driveImage("1p09MVy1u2SZBpfzJ9HlvESoeC6UKAdxB"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
+      { title: "33rd-35th Upper · 33-35 樓上層", src: driveImage("1IUcpXR3gesfJocEJfvhGl0WOquArsCIY"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
+      { title: "36th Lower · 36 樓下層", src: driveImage("1m_9IbLm9UHaKkaS_x9eFhxaKzud2CtCv"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
+      { title: "37th Floor · 37 樓平面圖", src: driveImage("1DLUX1mBqntpgfKtRaUm9jDYGO2N79FPu"), note: "Vertiplex Floorplan · Vertiplex 樓層圖" },
     ],
     unitPlanImages: [
-      { title: "Type C", src: driveImage("1T4e5g942FzNsXnPV2d77wsf49NBs7INX"), note: "Vertiplex layout" },
-      { title: "Type D", src: driveImage("1e_d9Ar1wQ6u6OueuqdyQDxU73Iuj-4ys"), note: "Vertiplex layout" },
-      { title: "Type E", src: driveImage("1ChM9zmR7hWR4hHdvAlKGy6KWybOcBsig"), note: "Vertiplex layout" },
-      { title: "Type F", src: driveImage("1JCASApDRukyq958Vm9zlByV0g-usp8af"), note: "Vertiplex layout" },
-      { title: "Type K", src: driveImage("10JPoC6kQZsD1v0Xh3ygqWA4TojfIQQ6z"), note: "Vertiplex layout" },
+      { title: "Type C · C 戶型", src: driveImage("1T4e5g942FzNsXnPV2d77wsf49NBs7INX"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+      { title: "Type D · D 戶型", src: driveImage("1e_d9Ar1wQ6u6OueuqdyQDxU73Iuj-4ys"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+      { title: "Type E · E 戶型", src: driveImage("1ChM9zmR7hWR4hHdvAlKGy6KWybOcBsig"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+      { title: "Type F · F 戶型", src: driveImage("1JCASApDRukyq958Vm9zlByV0g-usp8af"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
+      { title: "Type K · K 戶型", src: driveImage("10JPoC6kQZsD1v0Xh3ygqWA4TojfIQQ6z"), note: "Vertiplex layout · Vertiplex 單位格局圖" },
     ],
   },
   {
@@ -408,7 +428,7 @@ function ProjectAbout({ project }: { project: Project }) {
         <div className="lg:col-span-7">
           <h4 className="font-display text-3xl text-brand-ink leading-tight">{project.name}</h4>
           <p className="mt-5 font-serif-tc text-base leading-loose text-foreground/70">
-            {project.description} KHANTHAROS 會從地段、交通、生活機能、房型規劃與未來轉售出租條件整理重點，協助客戶判斷是否符合自住、收租或資產配置需求。
+            {project.description} KHANTHAROS reviews location, transportation, lifestyle, layout planning and future rental or resale conditions before recommending a project. KHANTHAROS 會從地段、交通、生活機能、房型規劃與未來轉售出租條件整理重點，協助客戶判斷是否符合自住、收租或資產配置需求。
           </p>
         </div>
         <div className="lg:col-span-5 grid gap-3">
@@ -426,20 +446,20 @@ function ProjectAbout({ project }: { project: Project }) {
 function ProjectFaq({ project }: { project: Project }) {
   const faqs = [
     {
-      question: "這個建案適合哪一類買方？",
-      answer: `${project.name} 適合重視 ${project.area} 區域條件、希望比較自住舒適度與出租潛力的買方。實際是否適合，仍會依預算、持有時間與租金目標進一步評估。`,
+      question: "Who is this project suitable for? · 這個建案適合哪一類買方？",
+      answer: `${project.name} is suitable for buyers who value the ${project.area} location and want to compare lifestyle comfort with rental potential. ${project.name} 適合重視 ${project.area} 區域條件、希望比較自住舒適度與出租潛力的買方。實際是否適合，仍會依預算、持有時間與租金目標進一步評估。`,
     },
     {
-      question: "產權與銷售狀態是什麼？",
-      answer: `目前頁面整理的產權資訊為：${project.ownership}。建案狀態為：${project.status}。正式購買前仍需以開發商最新銷售資料與合約文件為準。`,
+      question: "What is the ownership and sales status? · 產權與銷售狀態是什麼？",
+      answer: `Ownership information: ${project.ownership}. Current project status: ${project.status}. 目前頁面整理的產權資訊為：${project.ownership}。建案狀態為：${project.status}。正式購買前仍需以開發商最新銷售資料與合約文件為準。`,
     },
     {
-      question: "有哪些房型或格局可以參考？",
-      answer: `目前整理的房型方向為：${project.size}。下方會持續補入樓層平面圖與單位格局圖，方便直接在本網站比較。`,
+      question: "What layouts are available for reference? · 有哪些房型或格局可以參考？",
+      answer: `Current layout summary: ${project.size}. 目前整理的房型方向為：${project.size}。下方會持續補入樓層平面圖與單位格局圖，方便直接在本網站比較。`,
     },
     {
-      question: "交通與生活機能如何？",
-      answer: `${project.transport[0]}；生活機能方面，${project.lifestyle[0]}。我們會依客戶需求補充通勤、學校、醫院、商場與出租客群分析。`,
+      question: "How are the transportation and lifestyle facilities? · 交通與生活機能如何？",
+      answer: `${project.transport[0]} ${project.lifestyle[0]} 我們也會依客戶需求補充通勤、學校、醫院、商場與出租客群分析。`,
     },
   ];
 
@@ -588,12 +608,12 @@ export function PreSellSection() {
                 </div>
                 <div className="lg:col-span-7 grid sm:grid-cols-2 gap-px bg-border">
                   {[
-                    ["Developer", selectedProject.developer],
-                    ["Status", selectedProject.status],
-                    ["Ownership", selectedProject.ownership],
-                    ["Room Planning", selectedProject.size],
-                    ["Address", selectedProject.address],
-                    ["Project Type", selectedProject.type],
+                    ["Developer · 開發商", selectedProject.developer],
+                    ["Status · 建案狀態", selectedProject.status],
+                    ["Ownership · 產權", selectedProject.ownership],
+                    ["Room Planning · 房型規劃", selectedProject.size],
+                    ["Address · 地址", selectedProject.address],
+                    ["Project Type · 建案類型", selectedProject.type],
                   ].map(([label, value]) => (
                     <div key={label} className="bg-background p-5">
                       <p className="text-[10px] uppercase tracking-[0.22em] text-brand-clay font-medium">{label}</p>
