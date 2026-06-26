@@ -2,8 +2,6 @@ import { useMemo, useState } from "react";
 import wyneKitchenImage from "@/assets/resell/wyne-by-sansiri/kitchen-living.jpg";
 import wyneLivingImage from "@/assets/resell/wyne-by-sansiri/living-area.jpg";
 import wyneBedroomImage from "@/assets/resell/wyne-by-sansiri/bedroom-window.jpg";
-import property1 from "@/assets/property-1.jpg";
-import property2 from "@/assets/property-2.jpg";
 
 const lineUrl = "https://lin.ee/W1y4D20";
 const whatsappUrl = "https://wa.me/66985973849";
@@ -13,9 +11,6 @@ const gallery = [
   { title: "Kitchen and Living Area", zh: "廚房與客廳", image: wyneKitchenImage },
   { title: "Living Area", zh: "客廳與工作區", image: wyneLivingImage },
   { title: "Bedroom", zh: "臥室", image: wyneBedroomImage },
-  { title: "Bedroom Storage", zh: "臥室收納", image: wyneBedroomImage },
-  { title: "Bathroom Shower", zh: "衛浴淋浴區", image: property2 },
-  { title: "Bathroom Vanity", zh: "衛浴洗手台", image: property1 },
 ];
 
 const resellProjects = [
@@ -177,11 +172,11 @@ export function WyneResellSection() {
                 </div>
               </div>
 
-              <figure className="mt-6 flex min-h-[280px] items-center justify-center overflow-hidden border border-border bg-brand-cream/25 p-3 md:min-h-[360px] md:p-5">
-                <img src={currentImage.image} alt={currentImage.title} loading="lazy" className="max-h-[360px] w-auto max-w-full object-contain md:max-h-[440px]" />
+              <figure className="mt-6 flex min-h-[260px] items-center justify-center overflow-hidden border border-border bg-brand-cream/25 p-3 md:min-h-[340px] md:p-5">
+                <img src={currentImage.image} alt={currentImage.title} loading="lazy" className="max-h-[320px] w-auto max-w-full object-contain md:max-h-[400px]" />
               </figure>
 
-              <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+              <div className="mt-5 grid grid-cols-3 gap-3">
                 {gallery.map((image, index) => (
                   <button key={`${image.title}-${index}`} type="button" onClick={() => setActiveImage(index)} aria-label={`Show ${image.title}`} className={`overflow-hidden border bg-background p-1 text-left transition-colors ${activeImage === index ? "border-brand-forest" : "border-border hover:border-brand-clay"}`}>
                     <img src={image.image} alt={image.title} loading="lazy" className="aspect-[4/3] w-full object-cover" />
