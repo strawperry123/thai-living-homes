@@ -22,7 +22,7 @@ const mainNavItems = [
 
 const serviceNavItems = [
   { href: "/property-management", en: "Property Management", tc: "房源管理" },
-  { href: "/#resell", en: "Resell", tc: "中古房" },
+  { href: "/resell", en: "Resell", tc: "中古房" },
   { href: "/#rental", en: "Rental", tc: "出租" },
   { href: "/presell", en: "PreSell", tc: "預售/新成屋" },
 ];
