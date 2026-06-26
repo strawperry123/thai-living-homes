@@ -1,4 +1,6 @@
 import { useMemo, useState } from "react";
+import wyneKitchenImage from "@/assets/resell/wyne-by-sansiri/kitchen-living.jpg";
+import wyneLivingImage from "@/assets/resell/wyne-by-sansiri/living-area.jpg";
 import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
 import property3 from "@/assets/property-3.jpg";
@@ -8,12 +10,12 @@ const whatsappUrl = "https://wa.me/66985973849";
 const bilingual = (text: string) => text.split(" · ").join("\n");
 
 const gallery = [
-  { title: "Kitchen and Living Area", zh: "廚房與客廳", image: property1 },
-  { title: "Living Area", zh: "客廳與工作區", image: property2 },
+  { title: "Kitchen and Living Area", zh: "廚房與客廳", image: wyneKitchenImage },
+  { title: "Living Area", zh: "客廳與工作區", image: wyneLivingImage },
   { title: "Bedroom", zh: "臥室", image: property3 },
-  { title: "Bedroom Storage", zh: "臥室收納", image: property1 },
+  { title: "Bedroom Storage", zh: "臥室收納", image: wyneKitchenImage },
   { title: "Bathroom Shower", zh: "衛浴淋浴區", image: property2 },
-  { title: "Bathroom Vanity", zh: "衛浴洗手台", image: property3 },
+  { title: "Bathroom Vanity", zh: "衛浴洗手台", image: property1 },
 ];
 
 const resellProjects = [
@@ -23,7 +25,7 @@ const resellProjects = [
     price: "3.35M THB · 335 萬泰銖",
     summary: "1 Bedroom · 30 sq.m. · 7th Floor Garden View",
     summaryZh: "一房 · 30 平方米 · 7 樓園景 · 家具家電齊全",
-    cover: property1,
+    cover: wyneKitchenImage,
   },
 ];
 
@@ -62,8 +64,8 @@ export function WyneResellSection() {
             <h1 className="mt-6 font-display text-5xl md:text-7xl leading-[1.04] tracking-tight text-brand-ink text-balance">Selected Bangkok resale homes.</h1>
           </div>
           <div className="lg:col-span-5">
-            <p className="text-base leading-relaxed text-foreground/70">Owner listings are reorganized into KHANTHAROS advisory pages, so clients can review photos, price and key details directly on our website.</p>
-            <p className="mt-5 font-serif-tc text-xl leading-loose text-brand-forest/85">屋主委託物件整理成 KHANTHAROS 自己的中古房頁面，客戶可直接在我們網站內看照片、價格與重點資料。</p>
+            <p className="text-base leading-relaxed text-foreground/70">Resale listings are reorganized into KHANTHAROS advisory pages, so clients can review photos, price and key details directly on our website.</p>
+            <p className="mt-5 font-serif-tc text-xl leading-loose text-brand-forest/85">中古房物件整理成 KHANTHAROS 自己的頁面，客戶可直接在我們網站內看照片、價格與重點資料。</p>
           </div>
         </div>
       </section>
@@ -99,7 +101,7 @@ export function WyneResellSection() {
           <section id="selected-resell-property" className="mt-12 scroll-mt-24">
             <div className="overflow-hidden border border-border bg-background">
               <div className="p-6 md:p-9">
-                <p className="text-[10px] uppercase tracking-[0.32em] text-brand-clay font-medium">Selected Property</p>
+                <p className="text-[10px] uppercase tracking-[0.32em] text-brand-clay font-medium">Selected Property · 建案詳情</p>
                 <h3 className="mt-3 font-display text-4xl md:text-6xl text-brand-ink leading-[1.02]">{selectedProject.name}</h3>
                 <p className="mt-4 text-xl text-brand-forest">For Sale · 3.35M THB</p>
                 <p className="mt-3 max-w-4xl whitespace-pre-line text-sm leading-loose text-foreground/70">{bilingual("Fully furnished 1-bedroom unit near BTS Phra Khanong, suitable for own stay or rental investment. · 鄰近 BTS Phra Khanong 的一房中古物件，家具家電齊全，適合自住或出租收租規劃。")}</p>
