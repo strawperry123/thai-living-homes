@@ -2,14 +2,14 @@ import { useMemo, useState } from "react";
 import wyneKitchenImage from "@/assets/resell/wyne-by-sansiri/kitchen-living.jpg";
 import wyneLivingImage from "@/assets/resell/wyne-by-sansiri/living-area.jpg";
 import wyneBedroomImage from "@/assets/resell/wyne-by-sansiri/bedroom-window.jpg";
-import { okaHausBedroomSingle } from "@/assets/resell/oka-haus/bedroom-single";
-import { okaHausKitchen } from "@/assets/resell/oka-haus/kitchen";
+import { okaHausMorePhoto } from "@/assets/resell/oka-haus/more-photo";
 
 const lineUrl = "https://lin.ee/W1y4D20";
 const whatsappUrl = "https://wa.me/66985973849";
+const okaHausInstagramUrl = "https://www.instagram.com/p/DaDfRJOAfIy/?img_index=1";
 const bilingual = (text: string) => text.split(" · ").join("\n");
 
-type GalleryImage = { title: string; zh: string; image: string };
+type GalleryImage = { title: string; zh: string; image: string; href?: string };
 type ResellProject = {
   name: string;
   area: string;
@@ -93,12 +93,11 @@ const resellProjects: ResellProject[] = [
     price: "6.90M THB · 690 萬泰銖",
     summary: "2 Bedrooms · 2 Bathrooms · 50 sq.m. · High Floor Corner Unit",
     summaryZh: "兩房兩衛 · 50 平方米 · 高樓層邊間 · 浴缸 · 河景",
-    cover: okaHausBedroomSingle,
+    cover: okaHausMorePhoto,
     tag: "For Sale / Rent · 出售 / 出租",
     detailPrice: "For Sale · 6.90M THB",
     gallery: [
-      { title: "Bedroom and Built-in Storage", zh: "臥室與收納櫃", image: okaHausBedroomSingle },
-      { title: "Kitchen and Appliances", zh: "廚房與家電", image: okaHausKitchen },
+      { title: "More Photos on Instagram", zh: "點擊查看 IG 更多照片", image: okaHausMorePhoto, href: okaHausInstagramUrl },
     ],
     specs: [
       ["Layout · 格局", "2 Bedrooms, 2 Bathrooms · 兩房兩衛"],
@@ -246,7 +245,13 @@ export function WyneResellSection() {
               </div>
 
               <figure className="mt-6 flex min-h-[260px] items-center justify-center overflow-hidden border border-border bg-brand-cream/25 p-3 md:min-h-[340px] md:p-5">
-                <img src={currentImage.image} alt={currentImage.title} loading="lazy" className="max-h-[320px] w-auto max-w-full object-contain md:max-h-[400px]" />
+                {currentImage.href ? (
+                  <a href={currentImage.href} target="_blank" rel="noreferrer" className="block">
+                    <img src={currentImage.image} alt={currentImage.title} loading="lazy" className="max-h-[320px] w-auto max-w-full object-contain md:max-h-[400px]" />
+                  </a>
+                ) : (
+                  <img src={currentImage.image} alt={currentImage.title} loading="lazy" className="max-h-[320px] w-auto max-w-full object-contain md:max-h-[400px]" />
+                )}
               </figure>
 
               <div className="mt-5 grid grid-cols-3 gap-3">
