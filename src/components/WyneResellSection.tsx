@@ -40,6 +40,44 @@ const specs = [
   ["Transfer Fee · 過戶費", "50 / 50 · 買賣雙方各半"],
 ];
 
+const overviewEn = [
+  "Wyne by Sansiri is a ready-to-move resale condominium on Sukhumvit, close to BTS Phra Khanong.",
+  "This 30 sq.m. one-bedroom unit is on the 7th floor with garden view and comes fully furnished with electrical appliances.",
+];
+
+const overviewZh = [
+  "Wyne by Sansiri 位於素坤逸生活圈，鄰近 BTS Phra Khanong。",
+  "此戶為 30 平方米一房，位於 7 樓園景，家具家電齊全，可直接入住或出租。",
+];
+
+const highlights = [
+  "Ready-to-move fully furnished unit · 家具家電齊全，可直接入住",
+  "Good rental demand near BTS Phra Khanong · 鄰近 BTS 帕卡農站，出租需求穩定",
+  "Compact 30 sq.m. layout for own stay or investment · 30 平方米精簡格局，適合自住或投資",
+  "Transfer fee 50/50 · 過戶費買賣雙方各半",
+];
+
+const nearbyPlaces = [
+  "BTS Phra Khanong · BTS 帕卡農站",
+  "Sukhumvit Road · 素坤逸主幹道",
+  "W District lifestyle area · W District 生活商圈",
+  "Ekkamai / Thonglor lifestyle zone · Ekkamai / Thonglor 生活圈",
+];
+
+const furnishingNotes = [
+  "Bed and wardrobe · 床組與衣櫃",
+  "Sofa and living area furniture · 沙發與客廳家具",
+  "Kitchen counter and selected appliances · 廚房檯面與部分家電",
+  "Move-in condition, viewing by appointment · 可入住狀態，實地看屋需預約",
+];
+
+const buyerNotes = [
+  "Price: 3.35M THB · 售價：335 萬泰銖",
+  "Transfer fee: 50/50 · 過戶費：買賣雙方各半",
+  "Availability subject to owner confirmation · 物件狀態以屋主確認為準",
+  "Viewing by appointment · 實地看屋請提前預約",
+];
+
 export function WyneResellSection() {
   const [selectedName, setSelectedName] = useState(resellProjects[0].name);
   const [activeImage, setActiveImage] = useState(0);
@@ -81,8 +119,8 @@ export function WyneResellSection() {
             {resellProjects.map((project) => (
               <article key={project.name} className="group bg-background">
                 <button type="button" onClick={() => chooseProject(project.name)} className="block w-full text-left">
-                  <div className="relative overflow-hidden">
-                    <img src={project.cover} alt={project.name} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-[1000ms] group-hover:scale-105" />
+                  <div className="relative overflow-hidden bg-brand-cream/50">
+                    <img src={project.cover} alt={project.name} loading="lazy" className="aspect-[4/3] w-full object-contain p-2 transition-transform duration-[1000ms] group-hover:scale-[1.02]" />
                     <div className="absolute left-4 top-4 bg-brand-cream/95 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-brand-forest font-medium">For Sale · 出售</div>
                   </div>
                   <div className={`border border-t-0 p-6 transition-colors ${selectedProject.name === project.name ? "border-brand-forest bg-brand-cream" : "border-border"}`}>
@@ -99,19 +137,20 @@ export function WyneResellSection() {
           </div>
 
           <section id="selected-resell-property" className="mt-12 scroll-mt-24">
-            <div className="overflow-hidden border border-border bg-background">
-              <div className="p-6 md:p-9">
-                <p className="text-[10px] uppercase tracking-[0.32em] text-brand-clay font-medium">Selected Property · 建案詳情</p>
-                <h3 className="mt-3 font-display text-4xl md:text-6xl text-brand-ink leading-[1.02]">{selectedProject.name}</h3>
-                <p className="mt-4 text-xl text-brand-forest">For Sale · 3.35M THB</p>
-                <p className="mt-3 max-w-4xl whitespace-pre-line text-sm leading-loose text-foreground/70">{bilingual("Fully furnished 1-bedroom unit near BTS Phra Khanong, suitable for own stay or rental investment. · 鄰近 BTS Phra Khanong 的一房中古物件，家具家電齊全，適合自住或出租收租規劃。")}</p>
-              </div>
-              <div className="grid gap-px bg-border lg:grid-cols-3">
-                <div className="bg-background lg:col-span-2">
-                  <img src={gallery[0].image} alt="Wyne by Sansiri" className="h-full max-h-[620px] min-h-[360px] w-full object-cover" />
+            <div className="border border-border bg-background p-6 md:p-9">
+              <p className="text-[10px] uppercase tracking-[0.32em] text-brand-clay font-medium">Selected Property · 建案詳情</p>
+              <div className="mt-4 grid gap-8 lg:grid-cols-12 lg:items-end">
+                <div className="lg:col-span-7">
+                  <h3 className="font-display text-4xl md:text-6xl text-brand-ink leading-[1.02]">{selectedProject.name}</h3>
+                  <p className="mt-4 text-xl text-brand-forest">For Sale · 3.35M THB</p>
                 </div>
-                <div className="grid gap-px bg-border">
-                  {gallery.slice(1, 3).map((image) => <img key={image.title} src={image.image} alt={image.title} className="h-full min-h-44 w-full bg-background object-cover" />)}
+                <div className="lg:col-span-5">
+                  <div className="space-y-3 text-sm leading-loose text-foreground/70">
+                    {overviewEn.map((item) => <p key={item}>{item}</p>)}
+                  </div>
+                  <div className="mt-5 space-y-3 font-serif-tc text-base leading-loose text-brand-ink/75">
+                    {overviewZh.map((item) => <p key={item}>{item}</p>)}
+                  </div>
                 </div>
               </div>
             </div>
@@ -126,20 +165,64 @@ export function WyneResellSection() {
             </div>
 
             <div className="mt-10 border border-border bg-background p-5 md:p-7">
-              <div className="flex items-end justify-between gap-4">
+              <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                 <div>
                   <p className="text-[10px] uppercase tracking-[0.32em] text-brand-clay font-medium">Photo Gallery · 實拍照片</p>
                   <h4 className="mt-3 whitespace-pre-line font-serif-tc text-3xl text-brand-ink">{bilingual(`${currentImage.title} · ${currentImage.zh}`)}</h4>
                   <p className="mt-2 text-xs text-foreground/55">{activeImage + 1} / {gallery.length}</p>
                 </div>
                 <div className="flex gap-2">
-                  <button type="button" onClick={() => moveImage(-1)} aria-label="Previous image" className="h-10 w-10 border border-border text-xl text-brand-ink hover:border-brand-forest hover:text-brand-forest">‹</button>
-                  <button type="button" onClick={() => moveImage(1)} aria-label="Next image" className="h-10 w-10 border border-border text-xl text-brand-ink hover:border-brand-forest hover:text-brand-forest">›</button>
+                  <button type="button" onClick={() => moveImage(-1)} aria-label="Previous image" className="h-11 w-11 border border-border text-2xl text-brand-ink transition-colors hover:border-brand-forest hover:text-brand-forest">‹</button>
+                  <button type="button" onClick={() => moveImage(1)} aria-label="Next image" className="h-11 w-11 border border-border text-2xl text-brand-ink transition-colors hover:border-brand-forest hover:text-brand-forest">›</button>
                 </div>
               </div>
-              <figure className="mt-5 overflow-hidden border border-border bg-brand-cream/25">
-                <img src={currentImage.image} alt={currentImage.title} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+
+              <figure className="mt-6 flex min-h-[280px] items-center justify-center overflow-hidden border border-border bg-brand-cream/25 p-3 md:min-h-[360px] md:p-5">
+                <img src={currentImage.image} alt={currentImage.title} loading="lazy" className="max-h-[360px] w-auto max-w-full object-contain md:max-h-[440px]" />
               </figure>
+
+              <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
+                {gallery.map((image, index) => (
+                  <button key={`${image.title}-${index}`} type="button" onClick={() => setActiveImage(index)} aria-label={`Show ${image.title}`} className={`overflow-hidden border bg-background p-1 text-left transition-colors ${activeImage === index ? "border-brand-forest" : "border-border hover:border-brand-clay"}`}>
+                    <img src={image.image} alt={image.title} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+                    <span className="mt-2 block whitespace-pre-line px-1 pb-1 text-[10px] leading-relaxed text-foreground/65">{bilingual(`${image.title} · ${image.zh}`)}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="mt-10 grid gap-6 lg:grid-cols-2">
+              <section className="border border-border bg-brand-cream/25 p-6 md:p-7">
+                <p className="text-[10px] uppercase tracking-[0.28em] text-brand-clay font-medium">Highlights · 物件亮點</p>
+                <ul className="mt-5 space-y-4 text-sm leading-loose text-brand-ink/80">
+                  {highlights.map((item) => <li key={item} className="whitespace-pre-line">{bilingual(item)}</li>)}
+                </ul>
+              </section>
+
+              <section className="border border-border bg-background p-6 md:p-7">
+                <p className="text-[10px] uppercase tracking-[0.28em] text-brand-clay font-medium">Location · 周邊生活</p>
+                <ul className="mt-5 space-y-4 text-sm leading-loose text-brand-ink/80">
+                  {nearbyPlaces.map((item) => <li key={item} className="whitespace-pre-line">{bilingual(item)}</li>)}
+                </ul>
+              </section>
+
+              <section className="border border-border bg-background p-6 md:p-7">
+                <p className="text-[10px] uppercase tracking-[0.28em] text-brand-clay font-medium">Furniture & Appliances · 家具家電</p>
+                <ul className="mt-5 space-y-4 text-sm leading-loose text-brand-ink/80">
+                  {furnishingNotes.map((item) => <li key={item} className="whitespace-pre-line">{bilingual(item)}</li>)}
+                </ul>
+              </section>
+
+              <section className="border border-border bg-brand-forest p-6 text-brand-cream md:p-7">
+                <p className="text-[10px] uppercase tracking-[0.28em] text-brand-cream/70 font-medium">Buyer Notes · 購買備註</p>
+                <ul className="mt-5 space-y-4 text-sm leading-loose text-brand-cream/90">
+                  {buyerNotes.map((item) => <li key={item} className="whitespace-pre-line">{bilingual(item)}</li>)}
+                </ul>
+                <div className="mt-7 flex flex-wrap gap-3">
+                  <a href={lineUrl} target="_blank" rel="noreferrer" className="bg-[#06C755] px-5 py-3 text-[11px] uppercase tracking-[0.18em] font-semibold text-white transition-colors hover:bg-[#05b34d]">LINE</a>
+                  <a href={whatsappUrl} target="_blank" rel="noreferrer" className="bg-brand-cream px-5 py-3 text-[11px] uppercase tracking-[0.18em] font-semibold text-brand-forest transition-colors hover:bg-white">WhatsApp</a>
+                </div>
+              </section>
             </div>
           </section>
         </div>
