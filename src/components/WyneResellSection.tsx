@@ -1,17 +1,19 @@
 import { useMemo, useState } from "react";
+import property1 from "@/assets/property-1.jpg";
+import property2 from "@/assets/property-2.jpg";
+import property3 from "@/assets/property-3.jpg";
 
 const lineUrl = "https://lin.ee/W1y4D20";
 const whatsappUrl = "https://wa.me/66985973849";
-
-const wyneKitchenImage = "data:image/jpeg;base64,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";
+const bilingual = (text: string) => text.split(" · ").join("\n");
 
 const gallery = [
-  { title: "Kitchen and Living Area", zh: "廚房與客廳", image: wyneKitchenImage },
-  { title: "Living Area", zh: "客廳與工作區", image: wyneLivingImage },
-  { title: "Bedroom", zh: "臥室", image: wyneBedroomImage },
-  { title: "Bedroom Storage", zh: "臥室收納", image: wyneBedroomMirrorImage },
-  { title: "Bathroom Shower", zh: "衛浴淋浴區", image: wyneBathroomImage },
-  { title: "Bathroom Vanity", zh: "衛浴洗手台", image: wyneBathroomVanityImage },
+  { title: "Kitchen and Living Area", zh: "廚房與客廳", image: property1 },
+  { title: "Living Area", zh: "客廳與工作區", image: property2 },
+  { title: "Bedroom", zh: "臥室", image: property3 },
+  { title: "Bedroom Storage", zh: "臥室收納", image: property1 },
+  { title: "Bathroom Shower", zh: "衛浴淋浴區", image: property2 },
+  { title: "Bathroom Vanity", zh: "衛浴洗手台", image: property3 },
 ];
 
 const resellProjects = [
@@ -21,7 +23,7 @@ const resellProjects = [
     price: "3.35M THB · 335 萬泰銖",
     summary: "1 Bedroom · 30 sq.m. · 7th Floor Garden View",
     summaryZh: "一房 · 30 平方米 · 7 樓園景 · 家具家電齊全",
-    cover: wyneKitchenImage,
+    cover: property1,
   },
 ];
 
@@ -35,10 +37,6 @@ const specs = [
   ["Price · 售價", "3.35M THB · 335 萬泰銖"],
   ["Transfer Fee · 過戶費", "50 / 50 · 買賣雙方各半"],
 ];
-
-function bilingual(text: string) {
-  return text.split(" · ").join("\n");
-}
 
 export function WyneResellSection() {
   const [selectedName, setSelectedName] = useState(resellProjects[0].name);
