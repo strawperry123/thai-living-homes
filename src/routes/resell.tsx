@@ -1,16 +1,16 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ResellSection } from "@/components/ResellSection";
+import { ResellSectionV2 } from "@/components/ResellSectionV2";
 
 export const Route = createFileRoute("/resell")({
   head: () => ({
     meta: [
-      { title: "Resell 中古房 | KHANTHAROS PROPERTY" },
+      { title: "Wyne by Sansiri 中古房 | KHANTHAROS PROPERTY" },
       {
         name: "description",
         content:
-          "Curated Bangkok resale condominium opportunities with buyer-side due diligence, title checks, quota review and transfer support.",
+          "For sale Wyne by Sansiri, 1 bedroom 30 sq.m., 7th floor garden view, fully furnished, near BTS Phra Khanong.",
       },
     ],
   }),
-  component: ResellSection,
+  component: ResellSectionV2,
 });
