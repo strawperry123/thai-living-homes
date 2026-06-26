@@ -1,121 +1,154 @@
-import { useState } from "react";
-import { ArrowLeft, ArrowRight, Building2, Home, MapPin, Maximize2, Train, Wallet } from "lucide-react";
+import { useMemo, useState } from "react";
 
-const wyneKitchenLivingImage = "data:image/jpeg;base64,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";
-const wyneBedroomImage = "data:image/jpeg;base64,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";
-const wyneBathroomImage = "data:image/jpeg;base64,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";
+const lineUrl = "https://lin.ee/W1y4D20";
+const whatsappUrl = "https://wa.me/66985973849";
+
+const wyneKitchenImage = "data:image/jpeg;base64,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";
 
 const gallery = [
-  { title: "Kitchen and Living Area", zh: "廚房與客廳", image: wyneKitchenLivingImage },
+  { title: "Kitchen and Living Area", zh: "廚房與客廳", image: wyneKitchenImage },
+  { title: "Living Area", zh: "客廳與工作區", image: wyneLivingImage },
   { title: "Bedroom", zh: "臥室", image: wyneBedroomImage },
-  { title: "Bathroom", zh: "衛浴", image: wyneBathroomImage },
+  { title: "Bedroom Storage", zh: "臥室收納", image: wyneBedroomMirrorImage },
+  { title: "Bathroom Shower", zh: "衛浴淋浴區", image: wyneBathroomImage },
+  { title: "Bathroom Vanity", zh: "衛浴洗手台", image: wyneBathroomVanityImage },
+];
+
+const resellProjects = [
+  {
+    name: "Wyne by Sansiri",
+    area: "Phra Khanong / Sukhumvit · 帕卡農 / 素坤逸",
+    price: "3.35M THB · 335 萬泰銖",
+    summary: "1 Bedroom · 30 sq.m. · 7th Floor Garden View",
+    summaryZh: "一房 · 30 平方米 · 7 樓園景 · 家具家電齊全",
+    cover: wyneKitchenImage,
+  },
 ];
 
 const specs = [
-  { icon: Home, en: "1 Bedroom", zh: "一房格局" },
-  { icon: Maximize2, en: "30 sq.m.", zh: "室內約 30 平方米" },
-  { icon: Building2, en: "7th Floor", zh: "位於 7 樓" },
-  { icon: Train, en: "Near BTS Phra Khanong", zh: "近 BTS Phra Khanong 站" },
+  ["Layout · 格局", "1 Bedroom · 一房"],
+  ["Size · 面積", "30 sq.m. · 30 平方米"],
+  ["Floor · 樓層", "7th Floor · 7 樓"],
+  ["View · 景觀", "Garden View · 園景"],
+  ["Furniture · 家具", "Fully-furnished · 家具家電齊全"],
+  ["Transit · 交通", "BTS Phra Khanong · BTS 帕卡農站"],
+  ["Price · 售價", "3.35M THB · 335 萬泰銖"],
+  ["Transfer Fee · 過戶費", "50 / 50 · 買賣雙方各半"],
 ];
 
-export function WyneResellSection() {
-  const [active, setActive] = useState(0);
-  const current = gallery[active];
+function bilingual(text: string) {
+  return text.split(" · ").join("\n");
+}
 
-  const move = (direction: number) => {
-    setActive((active + direction + gallery.length) % gallery.length);
+export function WyneResellSection() {
+  const [selectedName, setSelectedName] = useState(resellProjects[0].name);
+  const [activeImage, setActiveImage] = useState(0);
+  const selectedProject = useMemo(() => resellProjects.find((project) => project.name === selectedName) || resellProjects[0], [selectedName]);
+  const currentImage = gallery[activeImage];
+
+  const chooseProject = (name: string) => {
+    setSelectedName(name);
+    window.setTimeout(() => document.getElementById("selected-resell-property")?.scrollIntoView({ behavior: "smooth", block: "start" }), 0);
+  };
+
+  const moveImage = (direction: number) => {
+    setActiveImage((activeImage + direction + gallery.length) % gallery.length);
   };
 
   return (
-    <main className="bg-[#f7f3ec] text-[#2f2a24]">
-      <section className="mx-auto grid max-w-7xl gap-10 px-4 py-12 md:grid-cols-[1.08fr_0.92fr] md:px-8 md:py-16">
-        <div className="overflow-hidden rounded-md bg-white shadow-sm">
-          <img src={wyneKitchenLivingImage} alt="Wyne by Sansiri kitchen and living area" className="h-[420px] w-full object-cover md:h-[620px]" />
-        </div>
-        <div className="flex flex-col justify-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#a46f3c]">Owner Post · 屋主委託出售</p>
-          <h1 className="mt-4 text-4xl font-semibold leading-tight md:text-6xl">For Sale Wyne by Sansiri</h1>
-          <p className="mt-4 text-xl text-[#6b6257]">1 Bedroom · 30 sq.m. · 7th Floor Garden View</p>
-          <p className="mt-2 text-lg text-[#6b6257]">一房 · 30 平方米 · 7 樓園景 · 全配家具家電</p>
-          <div className="mt-8 grid gap-3 sm:grid-cols-2">
-            <div className="rounded-md border border-[#d9c7ad] bg-white p-5">
-              <p className="text-sm text-[#8b7c69]">Selling Price · 售價</p>
-              <p className="mt-2 text-3xl font-semibold">3.35M THB</p>
-              <p className="text-sm text-[#8b7c69]">約 335 萬泰銖</p>
-            </div>
-            <div className="rounded-md border border-[#d9c7ad] bg-white p-5">
-              <p className="text-sm text-[#8b7c69]">Transfer Fee · 過戶費</p>
-              <p className="mt-2 text-3xl font-semibold">50 / 50</p>
-              <p className="text-sm text-[#8b7c69]">買賣雙方各半</p>
-            </div>
+    <main className="min-h-screen bg-background pt-20 text-foreground font-sans">
+      <section className="bg-brand-cream py-24 md:py-32">
+        <div className="mx-auto grid max-w-7xl items-end gap-12 px-6 md:px-10 lg:grid-cols-12">
+          <div className="lg:col-span-7">
+            <p className="text-[10px] uppercase tracking-[0.45em] text-brand-clay font-medium">Resell · 中古房</p>
+            <h1 className="mt-6 font-display text-5xl md:text-7xl leading-[1.04] tracking-tight text-brand-ink text-balance">Selected Bangkok resale homes.</h1>
           </div>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a href="https://lin.ee/W1y4D20" className="rounded-md bg-[#2f2a24] px-6 py-3 text-sm font-semibold text-white">LINE Consultation</a>
-            <a href="https://wa.me/66985973849" className="rounded-md border border-[#2f2a24] px-6 py-3 text-sm font-semibold">WhatsApp</a>
+          <div className="lg:col-span-5">
+            <p className="text-base leading-relaxed text-foreground/70">Owner listings are reorganized into KHANTHAROS advisory pages, so clients can review photos, price and key details directly on our website.</p>
+            <p className="mt-5 font-serif-tc text-xl leading-loose text-brand-forest/85">屋主委託物件整理成 KHANTHAROS 自己的中古房頁面，客戶可直接在我們網站內看照片、價格與重點資料。</p>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-12 md:px-8">
-        <div className="grid gap-4 md:grid-cols-4">
-          {specs.map((item) => {
-            const Icon = item.icon;
-            return (
-              <div key={item.en} className="rounded-md bg-white p-5 shadow-sm">
-                <Icon className="h-5 w-5 text-[#a46f3c]" />
-                <p className="mt-4 font-semibold">{item.en}</p>
-                <p className="text-sm text-[#786d5f]">{item.zh}</p>
+      <section className="py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-6 md:px-10">
+          <div className="mb-12">
+            <p className="text-[10px] uppercase tracking-[0.35em] text-brand-clay font-medium">Property Collection · 物件列表</p>
+            <h2 className="mt-4 font-display text-4xl md:text-5xl text-brand-ink">Bangkok Resell</h2>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {resellProjects.map((project) => (
+              <article key={project.name} className="group bg-background">
+                <button type="button" onClick={() => chooseProject(project.name)} className="block w-full text-left">
+                  <div className="relative overflow-hidden">
+                    <img src={project.cover} alt={project.name} loading="lazy" className="aspect-[4/3] w-full object-cover transition-transform duration-[1000ms] group-hover:scale-105" />
+                    <div className="absolute left-4 top-4 bg-brand-cream/95 px-3 py-1 text-[10px] uppercase tracking-[0.18em] text-brand-forest font-medium">For Sale · 出售</div>
+                  </div>
+                  <div className={`border border-t-0 p-6 transition-colors ${selectedProject.name === project.name ? "border-brand-forest bg-brand-cream" : "border-border"}`}>
+                    <p className="whitespace-pre-line text-[10px] uppercase tracking-[0.25em] text-brand-clay font-medium">{bilingual(project.area)}</p>
+                    <h3 className="mt-3 font-display text-2xl text-brand-ink leading-tight">{project.name}</h3>
+                    <p className="mt-4 whitespace-pre-line text-sm leading-loose text-foreground/65">{bilingual(project.summary)}</p>
+                    <p className="mt-3 font-serif-tc text-sm leading-loose text-foreground/65">{project.summaryZh}</p>
+                    <p className="mt-5 text-lg font-semibold text-brand-forest">{project.price}</p>
+                    <div className="mt-6 text-[10px] uppercase tracking-[0.22em] text-brand-forest font-medium">View Details · 查看詳情</div>
+                  </div>
+                </button>
+              </article>
+            ))}
+          </div>
+
+          <section id="selected-resell-property" className="mt-12 scroll-mt-24">
+            <div className="overflow-hidden border border-border bg-background">
+              <div className="p-6 md:p-9">
+                <p className="text-[10px] uppercase tracking-[0.32em] text-brand-clay font-medium">Selected Property</p>
+                <h3 className="mt-3 font-display text-4xl md:text-6xl text-brand-ink leading-[1.02]">{selectedProject.name}</h3>
+                <p className="mt-4 text-xl text-brand-forest">For Sale · 3.35M THB</p>
+                <p className="mt-3 max-w-4xl whitespace-pre-line text-sm leading-loose text-foreground/70">{bilingual("Fully furnished 1-bedroom unit near BTS Phra Khanong, suitable for own stay or rental investment. · 鄰近 BTS Phra Khanong 的一房中古物件，家具家電齊全，適合自住或出租收租規劃。")}</p>
               </div>
-            );
-          })}
+              <div className="grid gap-px bg-border lg:grid-cols-3">
+                <div className="bg-background lg:col-span-2">
+                  <img src={gallery[0].image} alt="Wyne by Sansiri" className="h-full max-h-[620px] min-h-[360px] w-full object-cover" />
+                </div>
+                <div className="grid gap-px bg-border">
+                  {gallery.slice(1, 3).map((image) => <img key={image.title} src={image.image} alt={image.title} className="h-full min-h-44 w-full bg-background object-cover" />)}
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-10 grid gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
+              {specs.map(([label, value]) => (
+                <div key={label} className="bg-brand-cream/35 p-5">
+                  <p className="whitespace-pre-line text-[10px] uppercase tracking-[0.18em] text-brand-clay">{bilingual(label)}</p>
+                  <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-brand-ink">{bilingual(value)}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10 border border-border bg-background p-5 md:p-7">
+              <div className="flex items-end justify-between gap-4">
+                <div>
+                  <p className="text-[10px] uppercase tracking-[0.32em] text-brand-clay font-medium">Photo Gallery · 實拍照片</p>
+                  <h4 className="mt-3 whitespace-pre-line font-serif-tc text-3xl text-brand-ink">{bilingual(`${currentImage.title} · ${currentImage.zh}`)}</h4>
+                  <p className="mt-2 text-xs text-foreground/55">{activeImage + 1} / {gallery.length}</p>
+                </div>
+                <div className="flex gap-2">
+                  <button type="button" onClick={() => moveImage(-1)} aria-label="Previous image" className="h-10 w-10 border border-border text-xl text-brand-ink hover:border-brand-forest hover:text-brand-forest">‹</button>
+                  <button type="button" onClick={() => moveImage(1)} aria-label="Next image" className="h-10 w-10 border border-border text-xl text-brand-ink hover:border-brand-forest hover:text-brand-forest">›</button>
+                </div>
+              </div>
+              <figure className="mt-5 overflow-hidden border border-border bg-brand-cream/25">
+                <img src={currentImage.image} alt={currentImage.title} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+              </figure>
+            </div>
+          </section>
         </div>
       </section>
 
-      <section className="bg-white py-14">
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 md:grid-cols-[1fr_0.85fr] md:px-8">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#a46f3c]">Photo Gallery · 實拍照片</p>
-            <h2 className="mt-3 text-3xl font-semibold">{current.title}</h2>
-            <p className="text-[#786d5f]">{current.zh}</p>
-            <div className="mt-6 overflow-hidden rounded-md border border-[#e8ddcf] bg-[#f7f3ec]">
-              <img src={current.image} alt={`${current.title} at Wyne by Sansiri`} className="h-[460px] w-full object-cover" />
-            </div>
-            <div className="mt-5 flex items-center gap-3">
-              <button type="button" onClick={() => move(-1)} className="rounded-md border border-[#2f2a24] p-3" aria-label="Previous photo"><ArrowLeft className="h-4 w-4" /></button>
-              <button type="button" onClick={() => move(1)} className="rounded-md border border-[#2f2a24] p-3" aria-label="Next photo"><ArrowRight className="h-4 w-4" /></button>
-              <span className="text-sm text-[#786d5f]">{active + 1} / {gallery.length}</span>
-            </div>
-          </div>
-          <div className="space-y-4">
-            <div className="rounded-md bg-[#f7f3ec] p-6">
-              <h3 className="text-xl font-semibold">Listing Summary</h3>
-              <p className="mt-3 leading-7 text-[#5f554b]">Fully furnished 1-bedroom unit on the 7th floor with garden view, ready for move-in. Located near BTS Phra Khanong, suitable for own stay or rental investment.</p>
-              <h3 className="mt-6 text-xl font-semibold">物件摘要</h3>
-              <p className="mt-3 leading-7 text-[#5f554b]">Wyne by Sansiri 一房中古物件，7 樓園景，家具與家電齊全，可直接入住。位置鄰近 BTS Phra Khanong，適合自住、出租收租或長期資產配置。</p>
-            </div>
-            <div className="rounded-md bg-[#2f2a24] p-6 text-white">
-              <Wallet className="h-5 w-5 text-[#d8b27a]" />
-              <p className="mt-4 text-2xl font-semibold">3.35 million THB</p>
-              <p className="mt-2 text-sm text-[#dfd3c1]">Transfer fee shared 50/50 between buyer and seller. 過戶費買賣雙方各半。</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto grid max-w-7xl gap-8 px-4 py-14 md:grid-cols-2 md:px-8">
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#a46f3c]">Location · 位置</p>
-          <h2 className="mt-3 text-3xl font-semibold">BTS Phra Khanong Area</h2>
-          <p className="mt-4 leading-7 text-[#5f554b]">Wyne by Sansiri sits in the Phra Khanong lifestyle corridor, with convenient access to Sukhumvit, Ekkamai and Thong Lo.</p>
-          <p className="mt-3 leading-7 text-[#5f554b]">建案位於 Phra Khanong 生活圈，可快速連接 Sukhumvit、Ekkamai 與 Thong Lo，日常採買、通勤與租客需求都相對成熟。</p>
-        </div>
-        <div className="rounded-md bg-white p-6 shadow-sm">
-          <MapPin className="h-5 w-5 text-[#a46f3c]" />
-          <h3 className="mt-4 text-xl font-semibold">Viewing Arrangement · 看屋安排</h3>
-          <p className="mt-3 text-[#5f554b]">Please contact KHANTHAROS PROPERTY to confirm availability, viewing time and ownership documents before making an offer.</p>
-          <p className="mt-3 text-[#5f554b]">請先與 KHANTHAROS PROPERTY 聯繫確認物件狀態、看屋時間與產權文件，再安排出價。</p>
-        </div>
-      </section>
+      <div className="fixed bottom-6 right-5 z-[70] flex flex-col gap-3">
+        <a href={lineUrl} target="_blank" rel="noreferrer" className="bg-[#06C755] px-5 py-3 text-[11px] uppercase tracking-[0.18em] font-semibold text-white shadow-lg transition-colors hover:bg-[#05b34d]">LINE</a>
+        <a href={whatsappUrl} target="_blank" rel="noreferrer" className="bg-brand-forest px-5 py-3 text-[11px] uppercase tracking-[0.18em] font-semibold text-brand-cream shadow-lg transition-colors hover:bg-brand-ink">WhatsApp</a>
+      </div>
     </main>
   );
 }
