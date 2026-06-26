@@ -1,9 +1,9 @@
 import { useMemo, useState } from "react";
 import wyneKitchenImage from "@/assets/resell/wyne-by-sansiri/kitchen-living.jpg";
 import wyneLivingImage from "@/assets/resell/wyne-by-sansiri/living-area.jpg";
+import wyneBedroomImage from "@/assets/resell/wyne-by-sansiri/bedroom-window.jpg";
 import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
-import property3 from "@/assets/property-3.jpg";
 
 const lineUrl = "https://lin.ee/W1y4D20";
 const whatsappUrl = "https://wa.me/66985973849";
@@ -12,8 +12,8 @@ const bilingual = (text: string) => text.split(" · ").join("\n");
 const gallery = [
   { title: "Kitchen and Living Area", zh: "廚房與客廳", image: wyneKitchenImage },
   { title: "Living Area", zh: "客廳與工作區", image: wyneLivingImage },
-  { title: "Bedroom", zh: "臥室", image: property3 },
-  { title: "Bedroom Storage", zh: "臥室收納", image: wyneKitchenImage },
+  { title: "Bedroom", zh: "臥室", image: wyneBedroomImage },
+  { title: "Bedroom Storage", zh: "臥室收納", image: wyneBedroomImage },
   { title: "Bathroom Shower", zh: "衛浴淋浴區", image: property2 },
   { title: "Bathroom Vanity", zh: "衛浴洗手台", image: property1 },
 ];
