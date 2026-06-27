@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { wyneInfoCardImage } from "@/assets/resell/wyne-by-sansiri/wyne-info-card";
 import { okaHausMorePhoto } from "@/assets/resell/oka-haus/more-photo";
 import { resellHeroImage } from "@/assets/resell/resell-hero";
+import { siamese42CardImage } from "@/assets/resell/siamese-exclusive-42/card";
 
 const lineUrl = "https://lin.ee/W1y4D20";
 const whatsappUrl = "https://wa.me/66985973849";
@@ -137,6 +138,61 @@ const resellProjects: ResellProject[] = [
       "Commission included in sale price · 售價已含佣金",
       "Transfer fee: 50/50 · 過戶費買賣雙方各半",
       "Sale or rent availability subject to owner confirmation · 出售 / 出租狀態以屋主確認為準",
+    ],
+  },
+  {
+    name: "Siamese Exclusive Sukhumvit 42",
+    area: "Sukhumvit 42 / Ekkamai · 素坤逸 42 / Ekkamai",
+    price: "40.00M THB · 4,000 萬泰銖",
+    summary: "4 Beds · 4 Baths · 152 sq.m. · 30th Floor",
+    summaryZh: "四房四衛 · 152 平方米 · 30 樓 · 私人車位 · 傭人房",
+    cover: siamese42CardImage,
+    tag: "For Sale · 出售",
+    detailPrice: "For Sale · 40.00M THB",
+    gallery: [
+      { title: "Siamese Exclusive Sukhumvit 42", zh: "四房四衛高樓層住宅", image: siamese42CardImage, contactHref: "#resell-contact-options" },
+    ],
+    specs: [
+      ["Project · 建案", "Siamese Exclusive Sukhumvit 42 · Siamese Exclusive Sukhumvit 42"],
+      ["House No. · 門牌", "19/445 · 19/445"],
+      ["Floor · 樓層", "30th Floor · 30 樓"],
+      ["Size · 面積", "152 sq.m. · 152 平方米"],
+      ["Layout · 格局", "4 Beds, 4 Baths · 四房四衛"],
+      ["Parking · 車位", "Private Parking 1 · 私人車位 1 個"],
+      ["Maid Room · 傭人房", "Maid Room with Maid Bath 1 · 傭人房含衛浴 1 間"],
+      ["Price · 售價", "40.00M THB · 4,000 萬泰銖"],
+    ],
+    overviewEn: [
+      "Siamese Exclusive Sukhumvit 42 is a large private residence in the Ekkamai side of Sukhumvit, with quick access to Sukhumvit Road, Rama 4 and the BTS Ekkamai lifestyle area.",
+      "This 152 sq.m. unit is on the 30th floor and offers four bedrooms, four bathrooms, one private parking space and one maid room with maid bathroom.",
+    ],
+    overviewZh: [
+      "Siamese Exclusive Sukhumvit 42 位於素坤逸 42 / Ekkamai 生活圈，可銜接 Sukhumvit Road、Rama 4 與 BTS Ekkamai 周邊生活機能。",
+      "此戶為 152 平方米高樓層住宅，位於 30 樓，四房四衛，含 1 個私人車位與 1 間傭人房及傭人衛浴。",
+    ],
+    highlights: [
+      "Large 152 sq.m. family-size residence · 152 平方米大坪數家庭型住宅",
+      "4 bedrooms and 4 bathrooms · 四房四衛，空間配置完整",
+      "30th-floor city view position · 30 樓高樓層城市景觀",
+      "Private parking plus maid room with bathroom · 含私人車位與傭人房衛浴",
+    ],
+    nearbyPlaces: [
+      "BTS Ekkamai lifestyle area · BTS Ekkamai 生活圈",
+      "Gateway Ekkamai and Sukhumvit Road · Gateway Ekkamai 與素坤逸主幹道",
+      "Thonglor / Ekkamai dining and cafe zone · Thonglor / Ekkamai 餐飲咖啡生活圈",
+      "Rama 4 connection · 可銜接 Rama 4 主幹道",
+    ],
+    furnishingNotes: [
+      "Large living and dining area · 大尺度客餐廳空間",
+      "Private kitchen and family layout · 私密廚房與家庭型配置",
+      "Maid room with maid bathroom · 傭人房含傭人衛浴",
+      "Viewing and exact condition subject to owner confirmation · 看屋與屋況以屋主確認為準",
+    ],
+    buyerNotes: [
+      "Sale price: 40.00M THB · 售價：4,000 萬泰銖",
+      "House No.: 19/445 · 門牌：19/445",
+      "Private parking: 1 · 私人車位：1 個",
+      "Availability subject to owner confirmation · 物件狀態以屋主確認為準",
     ],
   },
 ];
