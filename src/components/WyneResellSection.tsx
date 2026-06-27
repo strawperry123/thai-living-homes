@@ -6,7 +6,7 @@ import { okaHausMorePhoto } from "@/assets/resell/oka-haus/more-photo";
 
 const lineUrl = "https://lin.ee/W1y4D20";
 const whatsappUrl = "https://wa.me/66985973849";
-const okaHausInstagramUrl = "https://www.instagram.com/p/DaDfRJOAfIy/?img_index=1";
+const okaHausVoomUrl = "https://voom-studio.line.biz/account/@256ttfky/posts/1178253220546675374/voom";
 const bilingual = (text: string) => text.split(" · ").join("\n");
 
 type GalleryImage = { title: string; zh: string; image: string; href?: string };
@@ -97,7 +97,7 @@ const resellProjects: ResellProject[] = [
     tag: "For Sale / Rent · 出售 / 出租",
     detailPrice: "For Sale · 6.90M THB",
     gallery: [
-      { title: "More Photos on Instagram", zh: "點擊查看 IG 更多照片", image: okaHausMorePhoto, href: okaHausInstagramUrl },
+      { title: "More Info", zh: "更多請點", image: okaHausMorePhoto, href: okaHausVoomUrl },
     ],
     specs: [
       ["Layout · 格局", "2 Bedrooms, 2 Bathrooms · 兩房兩衛"],
@@ -149,6 +149,7 @@ export function WyneResellSection() {
   const [activeImage, setActiveImage] = useState(0);
   const selectedProject = useMemo(() => resellProjects.find((project) => project.name === selectedName) || resellProjects[0], [selectedName]);
   const currentImage = selectedProject.gallery[activeImage] || selectedProject.gallery[0];
+  const hasImageSlider = selectedProject.gallery.length > 1;
 
   const chooseProject = (name: string) => {
     setSelectedName(name);
@@ -236,32 +237,42 @@ export function WyneResellSection() {
                 <div>
                   <p className="text-[10px] uppercase tracking-[0.32em] text-brand-clay font-medium">Photo Gallery · 實拍照片</p>
                   <h4 className="mt-3 whitespace-pre-line font-serif-tc text-3xl text-brand-ink">{bilingual(`${currentImage.title} · ${currentImage.zh}`)}</h4>
-                  <p className="mt-2 text-xs text-foreground/55">{activeImage + 1} / {selectedProject.gallery.length}</p>
+                  {hasImageSlider && <p className="mt-2 text-xs text-foreground/55">{activeImage + 1} / {selectedProject.gallery.length}</p>}
                 </div>
-                <div className="flex gap-2">
-                  <button type="button" onClick={() => moveImage(-1)} aria-label="Previous image" className="h-11 w-11 border border-border text-2xl text-brand-ink transition-colors hover:border-brand-forest hover:text-brand-forest">‹</button>
-                  <button type="button" onClick={() => moveImage(1)} aria-label="Next image" className="h-11 w-11 border border-border text-2xl text-brand-ink transition-colors hover:border-brand-forest hover:text-brand-forest">›</button>
-                </div>
+                {hasImageSlider && (
+                  <div className="flex gap-2">
+                    <button type="button" onClick={() => moveImage(-1)} aria-label="Previous image" className="h-11 w-11 border border-border text-2xl text-brand-ink transition-colors hover:border-brand-forest hover:text-brand-forest">‹</button>
+                    <button type="button" onClick={() => moveImage(1)} aria-label="Next image" className="h-11 w-11 border border-border text-2xl text-brand-ink transition-colors hover:border-brand-forest hover:text-brand-forest">›</button>
+                  </div>
+                )}
               </div>
 
-              <figure className="mt-6 flex min-h-[260px] items-center justify-center overflow-hidden border border-border bg-brand-cream/25 p-3 md:min-h-[340px] md:p-5">
+              {currentImage.href && (
+                <a href={currentImage.href} target="_blank" rel="noreferrer" className="mt-6 inline-flex bg-brand-forest px-5 py-3 text-[11px] uppercase tracking-[0.18em] font-semibold text-brand-cream transition-colors hover:bg-brand-ink">
+                  more info click in 更多請點
+                </a>
+              )}
+
+              <figure className="mt-6 flex min-h-[220px] items-center justify-center overflow-hidden border border-border bg-brand-cream/25 p-3 md:min-h-[300px] md:p-5">
                 {currentImage.href ? (
                   <a href={currentImage.href} target="_blank" rel="noreferrer" className="block">
-                    <img src={currentImage.image} alt={currentImage.title} loading="lazy" className="max-h-[320px] w-auto max-w-full object-contain md:max-h-[400px]" />
+                    <img src={currentImage.image} alt={currentImage.title} loading="lazy" className="max-h-[260px] w-auto max-w-full object-contain md:max-h-[340px]" />
                   </a>
                 ) : (
                   <img src={currentImage.image} alt={currentImage.title} loading="lazy" className="max-h-[320px] w-auto max-w-full object-contain md:max-h-[400px]" />
                 )}
               </figure>
 
-              <div className="mt-5 grid grid-cols-3 gap-3">
-                {selectedProject.gallery.map((image, index) => (
-                  <button key={`${image.title}-${index}`} type="button" onClick={() => setActiveImage(index)} aria-label={`Show ${image.title}`} className={`overflow-hidden border bg-background p-1 text-left transition-colors ${activeImage === index ? "border-brand-forest" : "border-border hover:border-brand-clay"}`}>
-                    <img src={image.image} alt={image.title} loading="lazy" className="aspect-[4/3] w-full object-cover" />
-                    <span className="mt-2 block whitespace-pre-line px-1 pb-1 text-[10px] leading-relaxed text-foreground/65">{bilingual(`${image.title} · ${image.zh}`)}</span>
-                  </button>
-                ))}
-              </div>
+              {hasImageSlider && (
+                <div className="mt-5 grid grid-cols-3 gap-3">
+                  {selectedProject.gallery.map((image, index) => (
+                    <button key={`${image.title}-${index}`} type="button" onClick={() => setActiveImage(index)} aria-label={`Show ${image.title}`} className={`overflow-hidden border bg-background p-1 text-left transition-colors ${activeImage === index ? "border-brand-forest" : "border-border hover:border-brand-clay"}`}>
+                      <img src={image.image} alt={image.title} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+                      <span className="mt-2 block whitespace-pre-line px-1 pb-1 text-[10px] leading-relaxed text-foreground/65">{bilingual(`${image.title} · ${image.zh}`)}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div className="mt-10 grid gap-6 lg:grid-cols-2">
