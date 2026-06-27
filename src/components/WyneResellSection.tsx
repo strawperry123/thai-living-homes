@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { wyneInfoCardImage } from "@/assets/resell/wyne-by-sansiri/wyne-info-card";
 import { okaHausMorePhoto } from "@/assets/resell/oka-haus/more-photo";
+import { resellHeroImage } from "@/assets/resell/resell-hero";
 
 const lineUrl = "https://lin.ee/W1y4D20";
 const whatsappUrl = "https://wa.me/66985973849";
@@ -159,15 +160,19 @@ export function WyneResellSection() {
 
   return (
     <main className="min-h-screen bg-background pt-20 text-foreground font-sans">
-      <section className="bg-brand-cream py-24 md:py-32">
-        <div className="mx-auto grid max-w-7xl items-end gap-12 px-6 md:px-10 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <p className="text-[10px] uppercase tracking-[0.45em] text-brand-clay font-medium">Resell · 中古房</p>
-            <h1 className="mt-6 font-display text-5xl md:text-7xl leading-[1.04] tracking-tight text-brand-ink text-balance">Selected Bangkok resale homes.</h1>
+      <section className="bg-brand-cream pt-8 pb-12 md:pt-10 md:pb-16">
+        <div className="mx-auto max-w-7xl px-4 md:px-8">
+          <div className="overflow-hidden border border-border bg-background shadow-sm">
+            <img
+              src={resellHeroImage}
+              alt="KHANTHAROS second-hand property buying and selling service"
+              className="w-full object-contain"
+              loading="eager"
+            />
           </div>
-          <div className="lg:col-span-5">
-            <p className="text-base leading-relaxed text-foreground/70">Resale listings are reorganized into KHANTHAROS advisory pages, so clients can review photos, price and key details directly on our website.</p>
-            <p className="mt-5 font-serif-tc text-xl leading-loose text-brand-forest/85">中古房物件整理成 KHANTHAROS 自己的頁面，客戶可直接在我們網站內看照片、價格與重點資料。</p>
+          <div className="mt-7 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <a href={lineUrl} target="_blank" rel="noreferrer" className="inline-flex min-w-[190px] justify-center bg-[#06C755] px-8 py-4 text-sm uppercase tracking-[0.2em] font-semibold text-white shadow-md transition-colors hover:bg-[#05b34d]">LINE</a>
+            <a href={whatsappUrl} target="_blank" rel="noreferrer" className="inline-flex min-w-[190px] justify-center bg-brand-forest px-8 py-4 text-sm uppercase tracking-[0.2em] font-semibold text-brand-cream shadow-md transition-colors hover:bg-brand-ink">WhatsApp</a>
           </div>
         </div>
       </section>
