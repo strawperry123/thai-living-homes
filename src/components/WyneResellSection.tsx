@@ -1,7 +1,5 @@
 import { useMemo, useState } from "react";
-import wyneKitchenImage from "@/assets/resell/wyne-by-sansiri/kitchen-living.jpg";
-import wyneLivingImage from "@/assets/resell/wyne-by-sansiri/living-area.jpg";
-import wyneBedroomImage from "@/assets/resell/wyne-by-sansiri/bedroom-window.jpg";
+import { wyneInfoCardImage } from "@/assets/resell/wyne-by-sansiri/wyne-info-card";
 import { okaHausMorePhoto } from "@/assets/resell/oka-haus/more-photo";
 
 const lineUrl = "https://lin.ee/W1y4D20";
@@ -9,7 +7,7 @@ const whatsappUrl = "https://wa.me/66985973849";
 const okaHausInstagramUrl = "https://www.instagram.com/p/DaDfRJOAfIy/?img_index=1";
 const bilingual = (text: string) => text.split(" · ").join("\n");
 
-type GalleryImage = { title: string; zh: string; image: string; href?: string };
+type GalleryImage = { title: string; zh: string; image: string; href?: string; contactHref?: string };
 type ResellProject = {
   name: string;
   area: string;
@@ -36,13 +34,11 @@ const resellProjects: ResellProject[] = [
     price: "3.35M THB · 335 萬泰銖",
     summary: "1 Bedroom · 30 sq.m. · 7th Floor Garden View",
     summaryZh: "一房 · 30 平方米 · 7 樓園景 · 家具家電齊全",
-    cover: wyneKitchenImage,
+    cover: wyneInfoCardImage,
     tag: "For Sale · 出售",
     detailPrice: "For Sale · 3.35M THB",
     gallery: [
-      { title: "Kitchen and Living Area", zh: "廚房與客廳", image: wyneKitchenImage },
-      { title: "Living Area", zh: "客廳與工作區", image: wyneLivingImage },
-      { title: "Bedroom", zh: "臥室", image: wyneBedroomImage },
+      { title: "Wyne by Sansiri", zh: "更多照片與物件資訊", image: wyneInfoCardImage, contactHref: "#resell-contact-options" },
     ],
     specs: [
       ["Layout · 格局", "1 Bedroom · 一房"],
@@ -149,6 +145,7 @@ export function WyneResellSection() {
   const [activeImage, setActiveImage] = useState(0);
   const selectedProject = useMemo(() => resellProjects.find((project) => project.name === selectedName) || resellProjects[0], [selectedName]);
   const currentImage = selectedProject.gallery[activeImage] || selectedProject.gallery[0];
+  const hasImageSlider = selectedProject.gallery.length > 1;
 
   const chooseProject = (name: string) => {
     setSelectedName(name);
@@ -236,13 +233,21 @@ export function WyneResellSection() {
                 <div>
                   <p className="text-[10px] uppercase tracking-[0.32em] text-brand-clay font-medium">Photo Gallery · 實拍照片</p>
                   <h4 className="mt-3 whitespace-pre-line font-serif-tc text-3xl text-brand-ink">{bilingual(`${currentImage.title} · ${currentImage.zh}`)}</h4>
-                  <p className="mt-2 text-xs text-foreground/55">{activeImage + 1} / {selectedProject.gallery.length}</p>
+                  {hasImageSlider && <p className="mt-2 text-xs text-foreground/55">{activeImage + 1} / {selectedProject.gallery.length}</p>}
                 </div>
-                <div className="flex gap-2">
-                  <button type="button" onClick={() => moveImage(-1)} aria-label="Previous image" className="h-11 w-11 border border-border text-2xl text-brand-ink transition-colors hover:border-brand-forest hover:text-brand-forest">‹</button>
-                  <button type="button" onClick={() => moveImage(1)} aria-label="Next image" className="h-11 w-11 border border-border text-2xl text-brand-ink transition-colors hover:border-brand-forest hover:text-brand-forest">›</button>
-                </div>
+                {hasImageSlider && (
+                  <div className="flex gap-2">
+                    <button type="button" onClick={() => moveImage(-1)} aria-label="Previous image" className="h-11 w-11 border border-border text-2xl text-brand-ink transition-colors hover:border-brand-forest hover:text-brand-forest">‹</button>
+                    <button type="button" onClick={() => moveImage(1)} aria-label="Next image" className="h-11 w-11 border border-border text-2xl text-brand-ink transition-colors hover:border-brand-forest hover:text-brand-forest">›</button>
+                  </div>
+                )}
               </div>
+
+              {currentImage.contactHref && (
+                <a href={currentImage.contactHref} className="mt-6 inline-flex bg-brand-forest px-5 py-3 text-[11px] uppercase tracking-[0.18em] font-semibold text-brand-cream transition-colors hover:bg-brand-ink">
+                  更多信息
+                </a>
+              )}
 
               <figure className="mt-6 flex min-h-[260px] items-center justify-center overflow-hidden border border-border bg-brand-cream/25 p-3 md:min-h-[340px] md:p-5">
                 {currentImage.href ? (
@@ -254,14 +259,16 @@ export function WyneResellSection() {
                 )}
               </figure>
 
-              <div className="mt-5 grid grid-cols-3 gap-3">
-                {selectedProject.gallery.map((image, index) => (
-                  <button key={`${image.title}-${index}`} type="button" onClick={() => setActiveImage(index)} aria-label={`Show ${image.title}`} className={`overflow-hidden border bg-background p-1 text-left transition-colors ${activeImage === index ? "border-brand-forest" : "border-border hover:border-brand-clay"}`}>
-                    <img src={image.image} alt={image.title} loading="lazy" className="aspect-[4/3] w-full object-cover" />
-                    <span className="mt-2 block whitespace-pre-line px-1 pb-1 text-[10px] leading-relaxed text-foreground/65">{bilingual(`${image.title} · ${image.zh}`)}</span>
-                  </button>
-                ))}
-              </div>
+              {hasImageSlider && (
+                <div className="mt-5 grid grid-cols-3 gap-3">
+                  {selectedProject.gallery.map((image, index) => (
+                    <button key={`${image.title}-${index}`} type="button" onClick={() => setActiveImage(index)} aria-label={`Show ${image.title}`} className={`overflow-hidden border bg-background p-1 text-left transition-colors ${activeImage === index ? "border-brand-forest" : "border-border hover:border-brand-clay"}`}>
+                      <img src={image.image} alt={image.title} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+                      <span className="mt-2 block whitespace-pre-line px-1 pb-1 text-[10px] leading-relaxed text-foreground/65">{bilingual(`${image.title} · ${image.zh}`)}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div className="mt-10 grid gap-6 lg:grid-cols-2">
@@ -286,7 +293,7 @@ export function WyneResellSection() {
                 </ul>
               </section>
 
-              <section className="border border-border bg-brand-forest p-6 text-brand-cream md:p-7">
+              <section id="resell-contact-options" className="border border-border bg-brand-forest p-6 text-brand-cream md:p-7">
                 <p className="text-[10px] uppercase tracking-[0.28em] text-brand-cream/70 font-medium">Buyer Notes · 購買備註</p>
                 <ul className="mt-5 space-y-4 text-sm leading-loose text-brand-cream/90">
                   {selectedProject.buyerNotes.map((item) => <li key={item} className="whitespace-pre-line">{bilingual(item)}</li>)}
