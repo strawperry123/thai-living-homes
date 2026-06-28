@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
-import { wyneInfoCardImage } from "@/assets/resell/wyne-by-sansiri/wyne-info-card";
-import { okaHausCardImage } from "@/assets/resell/oka-haus/card";
-import { resellHeroImage } from "@/assets/resell/resell-hero";
-import { siamese42CardImage } from "@/assets/resell/siamese-exclusive-42/card";
+import resellHeroImage from "@/assets/resell/resell-hero.jpg";
+import wyneInfoCardImage from "@/assets/resell/wyne-by-sansiri.jpg";
+import okaHausCardImage from "@/assets/resell/oka-haus.jpg";
+import siamese42CardImage from "@/assets/resell/siamese-exclusive-42.jpg";
 
 const lineUrl = "https://lin.ee/W1y4D20";
 const whatsappUrl = "https://wa.me/66985973849";
