@@ -46,6 +46,7 @@ const services = [
   { n: "03", en: "Management", tc: "房屋代管", desc: "Complete care for overseas owners." },
   { n: "04", en: "Investment", tc: "投資顧問", desc: "Yield-focused, data-driven advisory." },
   { n: "05", en: "After-Sales", tc: "售後支援", desc: "Long-term local guidance, beyond the signature." },
+  { n: "06", en: "Renovation & Maintenance", tc: "裝潢翻新及維修房源", desc: "Renovation planning, repair coordination and furnishing support for owners." },
 ];
 
 const rentalPrinciples = [
@@ -370,7 +371,7 @@ function Index() {
       </section>
 
       {/* Services */}
-      <section className="py-32 bg-brand-cream">
+      <section id="services" className="scroll-mt-24 py-32 bg-brand-cream">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-20 gap-6">
             <div>
@@ -386,7 +387,7 @@ function Index() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-px bg-border">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
             {services.map((s) => (
               <div
                 key={s.n}
