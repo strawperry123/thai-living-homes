@@ -49,6 +49,86 @@ const services = [
   { n: "06", en: "Renovation & Maintenance", tc: "裝潢翻新及維修房源", desc: "Renovation planning, repair coordination and furnishing support for owners." },
 ];
 
+const storyPromise = "Every Home Has a Story. Every Story Deserves Someone You Can Trust.\n每一個家都有故事，而每一段故事，都值得一位值得信賴的夥伴。";
+
+const journeyStories = [
+  {
+    id: "jason",
+    n: "01",
+    name: "Jason",
+    title: "為了孩子，選擇曼谷",
+    subtitle: "A new school, a new rhythm, a new family life.",
+    location: "Ekkamai · Thong Lo · Phrom Phong",
+    image: "https://source.unsplash.com/1200x900/?bangkok,family,school,home",
+    quote: "如果每天都能在這裡上學就好了。",
+    paragraphs: [
+      "35 歲的 Jason 和太太原本住在台北，經營自己的公司，生活穩定，卻始終覺得孩子的成長環境可以有更多選擇。一次家庭旅行來到曼谷後，他們參觀了幾所國際學校，也走訪了 Ekkamai、Thong Lo 和 Phrom Phong 一帶。孩子一句簡單的話，深深留在他心裡。",
+      "很多仲介介紹的是房價、坪數和投資報酬，但我們花了一整天陪他們走學校、搭 BTS、逛超市、體驗生活。我們相信，真正適合孩子的，不只是學校，而是每天都能從容地一起吃早餐、一起回家的生活。",
+      "如今，他們一家已經在曼谷展開新的生活。每年看到孩子開心穿著校服的照片，我們都提醒自己，我們成交的不是一間房，而是一個家庭未來十幾年的幸福。",
+    ],
+  },
+  {
+    id: "david",
+    n: "02",
+    name: "David",
+    title: "退休，不是人生的終點",
+    subtitle: "A quieter chapter, with more life in every day.",
+    location: "Sathorn · Silom · Riverside",
+    image: "https://source.unsplash.com/1200x900/?bangkok,balcony,sunset,coffee",
+    quote: "你們沒有急著賣房，而是真的陪我找到想過的人生。",
+    paragraphs: [
+      "58 歲的 David，在台灣努力工作了三十多年。退休後，他沒有急著享受，而是開始思考：人生還有沒有另一種可能？",
+      "他不喜歡太安靜的退休生活，也不想每天待在家。他希望住在一個早上可以喝咖啡、下午散步、晚上和朋友聚餐的地方。我們陪著他走遍 Sathorn、Silom 和 Riverside，最後他站在 Sathorn 一棟公寓的陽台，看著夕陽灑在曼谷的天際線，只輕輕說了一句：就是這裡。",
+      "現在的他，每天固定到熟悉的咖啡店，看書、健身、認識新朋友，生活比以前更充實。後來他也把朋友介紹給我們，因為他感受到的不是推銷，而是被理解。",
+    ],
+  },
+  {
+    id: "kevin",
+    n: "03",
+    name: "Kevin",
+    title: "第二個家，不只是投資",
+    subtitle: "Not a yield chart, but a place to breathe.",
+    location: "Thong Lo · Ekkamai · Asok",
+    image: "https://source.unsplash.com/1200x900/?bangkok,apartment,cafe,lifestyle",
+    quote: "我不是來投資泰國，我只是找到另一個讓自己放鬆生活的地方。",
+    paragraphs: [
+      "香港創業家 Kevin 幾乎每個月都會飛到曼谷工作。以前，他總是住飯店，直到有一天他發現，一年有超過一百五十天都待在曼谷。",
+      "他開始問自己：如果我這麼喜歡這座城市，為什麼不擁有一個真正屬於自己的家？我們沒有急著帶他看最新建案，而是陪他慢慢認識 Thong Lo、Ekkamai、Asok 不同街區的生活氛圍。",
+      "他喜歡早晨咖啡香、下班後步行回家的感覺，也喜歡每個週末都能發現新的小店。最後，他選擇了一間不是投資報酬率最高，卻最符合自己生活方式的房子。",
+    ],
+  },
+  {
+    id: "emily",
+    n: "04",
+    name: "Emily",
+    title: "有人出租，卻沒有人照顧",
+    subtitle: "Management begins when someone notices the details.",
+    location: "Bangkok Investment Home",
+    image: "https://source.unsplash.com/1200x900/?condo,cleaning,interior,maintenance",
+    quote: "我不是怕花錢，而是害怕沒有人真的替我照顧我的房子。",
+    paragraphs: [
+      "Emily 五年前在曼谷買了一間投資公寓，原本交給當地代管公司管理。每個月都有收到租金，她一直以為房子一切正常。",
+      "直到租客退租，她親自飛來曼谷。一打開房門，映入眼簾的是發霉的牆壁、漏水的冷氣、受損的家具，甚至房子已經空置了好幾個月，卻從來沒有人主動通知她。",
+      "後來，她找到我們。我們重新整理房屋、安排清潔、維修設備、重新拍攝出租照片，並建立固定巡房和照片回報制度。每一次看房、每一次維修、每一次租客入住，她都能第一時間收到完整報告。",
+    ],
+  },
+  {
+    id: "michael",
+    n: "05",
+    name: "Michael",
+    title: "真正管理的，是信任",
+    subtitle: "A home can be rented out, yet still be unseen.",
+    location: "Bangkok Property Care",
+    image: "https://source.unsplash.com/1200x900/?apartment,inspection,maintenance,home",
+    quote: "以前，我只是擁有一間房子；現在，我擁有一群值得信任的人。",
+    paragraphs: [
+      "Michael 因為工作長期住在台灣，一年只有一兩次機會飛來曼谷。他一直相信，只要房子租得出去，就代表管理沒有問題。",
+      "直到有一次，他臨時來檢查房子，才發現冷氣早已多年沒有保養，陽台堆滿雜物，浴室發霉，家具也因長期缺乏維護而逐漸損壞。原來，房子一直有人住，卻沒有人真正關心它的狀況。",
+      "把房子交給我們後，我們安排固定巡房、設備保養、深度清潔、租客關懷，以及每月照片和影片回報。即使遠在台灣，他也能隨時知道房子的最新狀況。對我們來說，房屋管理從來不只是維修與出租，而是替每一位屋主守護他們在曼谷最重要的資產。",
+    ],
+  },
+];
+
 const rentalPrinciples = [
   {
     en: "Trusted Professional Service",
@@ -238,7 +318,12 @@ const whyUs = [
 function Index() {
   const PAGE_SIZE = 6;
   const [page, setPage] = useState(1);
+  const [selectedStoryId, setSelectedStoryId] = useState(journeyStories[0].id);
   const totalPages = Math.ceil(properties.length / PAGE_SIZE);
+  const selectedStory = useMemo(
+    () => journeyStories.find((story) => story.id === selectedStoryId) || journeyStories[0],
+    [selectedStoryId],
+  );
   const pagedProperties = useMemo(
     () => properties.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE),
     [page],
@@ -331,6 +416,78 @@ function Index() {
           </div>
         </div>
       </header>
+
+      {/* Client Journey */}
+      <section id="client-journey" className="scroll-mt-24 bg-brand-cream py-28 md:py-36">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className="mb-14 grid gap-8 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-7">
+              <span className="text-[10px] tracking-[0.45em] uppercase text-brand-clay font-medium block mb-5">
+                Bangkok Stories · 曼谷故事
+              </span>
+              <h2 className="font-display text-4xl md:text-6xl text-brand-ink tracking-tight leading-[1.05] text-balance">
+                Client Journey
+              </h2>
+              <p className="mt-5 font-serif-tc text-xl md:text-2xl text-brand-forest">
+                每一位客戶尋找的，都不只是一間房子。
+              </p>
+            </div>
+            <p className="lg:col-span-5 text-sm md:text-base text-foreground/65 leading-loose">
+              These are fictional but familiar stories inspired by the questions overseas clients often ask before choosing a life, a second home, or a trusted team in Bangkok.
+              <span className="mt-2 block font-serif-tc">以下人物為虛構故事，但都來自海外買家與屋主真實會遇到的心情與選擇。</span>
+            </p>
+          </div>
+
+          <div className="grid gap-px bg-border md:grid-cols-5">
+            {journeyStories.map((story) => (
+              <button
+                key={story.id}
+                type="button"
+                onClick={() => setSelectedStoryId(story.id)}
+                className={`group bg-background text-left transition-colors ${selectedStory.id === story.id ? "bg-brand-forest text-brand-cream" : "hover:bg-brand-cream"}`}
+              >
+                <img src={story.image} alt={`${story.name} Bangkok story`} loading="lazy" className="aspect-[4/3] w-full object-cover" />
+                <div className="p-5">
+                  <p className={`font-display text-lg ${selectedStory.id === story.id ? "text-brand-sand" : "text-brand-clay"}`}>{story.n}</p>
+                  <h3 className="mt-4 font-display text-2xl leading-tight">{story.name}</h3>
+                  <p className={`mt-2 font-serif-tc text-sm leading-relaxed ${selectedStory.id === story.id ? "text-brand-cream/80" : "text-brand-forest"}`}>{story.title}</p>
+                </div>
+              </button>
+            ))}
+          </div>
+
+          <article className="mt-12 overflow-hidden border border-border bg-background">
+            <div className="grid lg:grid-cols-12">
+              <div className="lg:col-span-5 bg-brand-ink">
+                <img src={selectedStory.image} alt={`${selectedStory.name} client journey`} className="h-full min-h-[420px] w-full object-cover opacity-90" />
+              </div>
+              <div className="lg:col-span-7 p-7 md:p-12">
+                <div className="flex flex-wrap items-center gap-3 text-[10px] uppercase tracking-[0.25em] text-brand-clay font-medium">
+                  <span>{selectedStory.n}</span>
+                  <span>{selectedStory.location}</span>
+                </div>
+                <h3 className="mt-6 font-display text-4xl md:text-5xl text-brand-ink leading-tight">
+                  {selectedStory.name}｜{selectedStory.title}
+                </h3>
+                <p className="mt-4 text-sm uppercase tracking-[0.2em] text-brand-forest/70">
+                  {selectedStory.subtitle}
+                </p>
+                <blockquote className="mt-8 border-l-2 border-brand-clay pl-6 font-serif-tc text-xl leading-loose text-brand-forest">
+                  「{selectedStory.quote}」
+                </blockquote>
+                <div className="mt-8 space-y-5 font-serif-tc text-base leading-loose text-foreground/75">
+                  {selectedStory.paragraphs.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+                <p className="mt-10 whitespace-pre-line border-t border-border pt-7 font-display text-2xl leading-relaxed text-brand-ink">
+                  {storyPromise}
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
 
       {/* Philosophy */}
       <section className="py-32 md:py-40">
