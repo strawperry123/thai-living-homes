@@ -1,12 +1,11 @@
 import { useMemo, useState } from "react";
 import { wyneInfoCardImage } from "@/assets/resell/wyne-by-sansiri/wyne-info-card";
-import { okaHausMorePhoto } from "@/assets/resell/oka-haus/more-photo";
+import { okaHausCardImage } from "@/assets/resell/oka-haus/card";
 import { resellHeroImage } from "@/assets/resell/resell-hero";
 import { siamese42CardImage } from "@/assets/resell/siamese-exclusive-42/card";
 
 const lineUrl = "https://lin.ee/W1y4D20";
 const whatsappUrl = "https://wa.me/66985973849";
-const okaHausInstagramUrl = "https://www.instagram.com/p/DaDfRJOAfIy/?img_index=1";
 const bilingual = (text: string) => text.split(" · ").join("\n");
 
 type GalleryImage = { title: string; zh: string; image: string; href?: string; contactHref?: string };
@@ -91,11 +90,11 @@ const resellProjects: ResellProject[] = [
     price: "6.90M THB · 690 萬泰銖",
     summary: "2 Bedrooms · 2 Bathrooms · 50 sq.m. · High Floor Corner Unit",
     summaryZh: "兩房兩衛 · 50 平方米 · 高樓層邊間 · 浴缸 · 河景",
-    cover: okaHausMorePhoto,
+    cover: okaHausCardImage,
     tag: "For Sale / Rent · 出售 / 出租",
     detailPrice: "For Sale · 6.90M THB",
     gallery: [
-      { title: "More Photos on Instagram", zh: "點擊查看 IG 更多照片", image: okaHausMorePhoto, href: okaHausInstagramUrl },
+      { title: "OKA HAUS Sukhumvit 36", zh: "更多照片與物件資訊", image: okaHausCardImage, contactHref: "#resell-contact-options" },
     ],
     specs: [
       ["Layout · 格局", "2 Bedrooms, 2 Bathrooms · 兩房兩衛"],
