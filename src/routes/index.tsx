@@ -5,6 +5,9 @@ import property1 from "@/assets/property-1.jpg";
 import property2 from "@/assets/property-2.jpg";
 import property3 from "@/assets/property-3.jpg";
 import philosophyImg from "@/assets/philosophy.jpg";
+import wyneResellImage from "@/assets/resell/wyne-by-sansiri.jpg";
+import okaHausResellImage from "@/assets/resell/oka-haus.jpg";
+import siamese42ResellImage from "@/assets/resell/siamese-exclusive-42.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -35,6 +38,7 @@ const navItems = [
 
 const lineAddUrl = "https://line.me/R/ti/p/@256ttfky";
 const whatsAppUrl = "https://wa.me/66985973849";
+const driveImage = (id: string) => `https://drive.google.com/thumbnail?id=${id}&sz=w1600`;
 
 const services = [
   { n: "01", en: "Property Sales", tc: "新案銷售", desc: "Curated access to Thailand's premium new developments." },
@@ -89,124 +93,136 @@ const rentalCategories = [
 
 const properties = [
   {
-    img: property1,
-    location: "Thong Lo, Bangkok",
-    locationTc: "曼谷 通羅",
-    name: "The Marque Penthouse",
-    price: "฿45,000,000",
-    beds: "3 BEDROOMS",
-    size: "240 SQM",
-    tag: "Freehold",
+    img: "https://www.shangherealestate.com/wp-content/uploads/2026/06/flo-by-sansiri-1.jpg",
+    href: "/presell",
+    location: "Khlong San / Chao Phraya",
+    locationTc: "空訕 / 昭披耶河岸",
+    name: "FLO by Sansiri",
+    price: "Pre-sale",
+    beds: "1-2 BEDROOMS",
+    size: "RIVERSIDE",
+    tag: "PreSell",
   },
   {
-    img: property2,
-    location: "Riverside, Bangkok",
-    locationTc: "曼谷 河濱",
-    name: "Chao Phraya Residences",
-    price: "฿42,000,000",
-    beds: "3 BEDROOMS",
-    size: "210 SQM",
-    tag: "Riverfront",
+    img: driveImage("1AL9VvmNKpz3j0pfUSNJmVYRiypmYdYqh"),
+    href: "/presell",
+    location: "Rama 4 / Asoke",
+    locationTc: "拉瑪四 / 阿索克",
+    name: "Life Rama 4 - Asoke",
+    price: "PreSell / New Home",
+    beds: "1-2 BEDROOMS",
+    size: "CBD FRINGE",
+    tag: "PreSell",
   },
   {
-    img: property3,
-    location: "Sathorn, Bangkok",
-    locationTc: "曼谷 沙吞",
-    name: "Sathorn Sky Suite",
-    price: "฿28,500,000",
-    beds: "2 BEDROOMS",
-    size: "165 SQM",
-    tag: "Skyline View",
+    img: driveImage("1qseLwXyGSlASj_jmLBhX6FoyotQdfOFF"),
+    href: "/presell",
+    location: "Sukhumvit 93 / Bang Chak",
+    locationTc: "素坤逸 93 / Bang Chak",
+    name: "Goodday Sukhumvit 93",
+    price: "PreSell / New Home",
+    beds: "1 BEDROOM+",
+    size: "LOW-RISE",
+    tag: "PreSell",
   },
   {
-    img: property1,
-    location: "Phrom Phong, Bangkok",
-    locationTc: "曼谷 鵬蓬",
-    name: "Emporium Garden Suite",
-    price: "฿35,800,000",
-    beds: "2 BEDROOMS",
-    size: "138 SQM",
-    tag: "Branded Residence",
+    img: driveImage("1nulkXgQomOLQ9-lfCULSDTIZawCAgD5v"),
+    href: "/presell",
+    location: "Phra Khanong / Rama 4",
+    locationTc: "帕卡農 / 拉瑪四",
+    name: "Ideo Sukhumvit Rama 4",
+    price: "PreSell / New Home",
+    beds: "STUDIO-2 BED",
+    size: "HIGH-RISE",
+    tag: "PreSell",
   },
   {
-    img: property2,
-    location: "Asoke, Bangkok",
-    locationTc: "曼谷 阿索克",
-    name: "Asoke Grand Tower",
-    price: "฿22,500,000",
-    beds: "2 BEDROOMS",
-    size: "98 SQM",
-    tag: "High Floor",
+    img: driveImage("1QWawt34GCJ38OjqZ6ikJGNIIHPiW3kL8"),
+    href: "/presell",
+    location: "Rama 4 / Phra Khanong",
+    locationTc: "拉瑪四 / 帕卡農",
+    name: "Aspire Sukhumvit - Rama 4",
+    price: "Ready Project",
+    beds: "STUDIO-2 BED",
+    size: "38 STOREYS",
+    tag: "PreSell",
   },
   {
-    img: property3,
-    location: "Ekkamai, Bangkok",
-    locationTc: "曼谷 伊卡邁",
-    name: "Ekkamai Loft Residence",
-    price: "฿18,900,000",
-    beds: "2 BEDROOMS",
-    size: "92 SQM",
-    tag: "Designer Loft",
+    img: driveImage("13xuj7b6diCUNQYfiroRv4ugHQ4jvxXO-"),
+    href: "/presell",
+    location: "Thonglor / Sukhumvit 38",
+    locationTc: "通羅 / 素坤逸 38",
+    name: "The Residences 38",
+    price: "Ultra Luxury",
+    beds: "1-3 BEDROOMS",
+    size: "PRIVATE RESIDENCE",
+    tag: "PreSell",
   },
   {
-    img: property1,
-    location: "Ari, Bangkok",
-    locationTc: "曼谷 阿黎",
-    name: "Ari Hillside Villa",
-    price: "฿52,000,000",
-    beds: "4 BEDROOMS",
-    size: "320 SQM",
-    tag: "Private Pool",
+    img: driveImage("1g5UKQwklHZmd1S4Gju3LPKRmUM01X4Jr"),
+    href: "/presell",
+    location: "Ekkamai 10-12 / Sukhumvit 63",
+    locationTc: "Ekkamai 10-12 / 素坤逸 63",
+    name: "XT 10 Ekkamai",
+    price: "Pre-sale",
+    beds: "1-3 BEDROOMS",
+    size: "933 UNITS",
+    tag: "PreSell",
   },
   {
-    img: property2,
-    location: "Chidlom, Bangkok",
-    locationTc: "曼谷 奇隆",
-    name: "Langsuan Park View",
-    price: "฿38,500,000",
-    beds: "3 BEDROOMS",
-    size: "175 SQM",
-    tag: "Park Frontage",
+    img: driveImage("1TGRyRCT6TVXVWSuTCsIEXC9xCeGYHi58"),
+    href: "/presell",
+    location: "Thonglor / Sukhumvit 38",
+    locationTc: "通羅 / 素坤逸 38",
+    name: "Porsche Design Tower Bangkok",
+    price: "Branded Residence",
+    beds: "DUPLEX / VILLA",
+    size: "22 RESIDENCES",
+    tag: "PreSell",
   },
   {
-    img: property3,
-    location: "Silom, Bangkok",
-    locationTc: "曼谷 是隆",
-    name: "Silom Heritage Suite",
-    price: "฿15,800,000",
+    img: driveImage("1IP1Hz0f82-FDRZp97bGw6qrEOPgse7k8"),
+    href: "/presell",
+    location: "Rama 4 / Khlong Toei",
+    locationTc: "拉瑪四 / Khlong Toei",
+    name: "COCO PARC",
+    price: "Ready Project",
+    beds: "STUDIO-3 BED",
+    size: "PARK FRONT",
+    tag: "PreSell",
+  },
+  {
+    img: wyneResellImage,
+    href: "/resell",
+    location: "Phra Khanong / Sukhumvit",
+    locationTc: "帕卡農 / 素坤逸",
+    name: "Wyne by Sansiri",
+    price: "3.35M THB",
     beds: "1 BEDROOM",
-    size: "72 SQM",
-    tag: "Heritage Building",
+    size: "30 SQ.M.",
+    tag: "Resell",
   },
   {
-    img: property1,
-    location: "Ratchada, Bangkok",
-    locationTc: "曼谷 拉差達",
-    name: "Ratchada Sky Loft",
-    price: "฿9,800,000",
-    beds: "1 BEDROOM",
-    size: "55 SQM",
-    tag: "Investment",
+    img: okaHausResellImage,
+    href: "/resell",
+    location: "Sukhumvit 36 / Rama 4",
+    locationTc: "素坤逸 36 / Rama 4",
+    name: "OKA HAUS Sukhumvit 36",
+    price: "6.90M THB",
+    beds: "2 BEDROOMS",
+    size: "50 SQ.M.",
+    tag: "Resell",
   },
   {
-    img: property2,
-    location: "Sukhumvit 31, Bangkok",
-    locationTc: "曼谷 素坤逸",
-    name: "Sukhumvit Private Mansion",
-    price: "฿68,000,000",
+    img: siamese42ResellImage,
+    href: "/resell",
+    location: "Sukhumvit 42 / Ekkamai",
+    locationTc: "素坤逸 42 / Ekkamai",
+    name: "Siamese Exclusive Sukhumvit 42",
+    price: "40.00M THB",
     beds: "4 BEDROOMS",
-    size: "410 SQM",
-    tag: "Single House",
-  },
-  {
-    img: property3,
-    location: "Sathorn, Bangkok",
-    locationTc: "曼谷 沙吞",
-    name: "Sathorn Riverside Duplex",
-    price: "฿58,000,000",
-    beds: "3 BEDROOMS",
-    size: "265 SQM",
-    tag: "Duplex",
+    size: "152 SQ.M.",
+    tag: "Resell",
   },
 ];
 
@@ -532,7 +548,7 @@ function Index() {
               </h3>
             </div>
             <a
-              href="#"
+              href="/presell"
               className="hidden md:inline-block text-[11px] uppercase tracking-[0.25em] border-b border-brand-clay/40 pb-1 text-brand-ink hover:text-brand-forest hover:border-brand-forest transition-colors"
             >
               View All · 探索更多
@@ -541,36 +557,38 @@ function Index() {
 
           <div className="grid md:grid-cols-3 gap-10">
             {pagedProperties.map((p) => (
-              <article key={p.name} className="group cursor-pointer">
-                <div className="overflow-hidden relative">
-                  <img
-                    src={p.img}
-                    alt={p.name}
-                    width={900}
-                    height={1120}
-                    loading="lazy"
-                    className="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-[1200ms] ease-out"
-                  />
-                  <div className="absolute top-4 left-4 bg-brand-cream/95 backdrop-blur px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-brand-forest font-medium">
-                    {p.tag}
+              <article key={p.name} className="group">
+                <a href={p.href} className="block">
+                  <div className="overflow-hidden relative bg-brand-cream/50">
+                    <img
+                      src={p.img}
+                      alt={p.name}
+                      width={900}
+                      height={1120}
+                      loading="lazy"
+                      className="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-[1200ms] ease-out"
+                    />
+                    <div className="absolute top-4 left-4 bg-brand-cream/95 backdrop-blur px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-brand-forest font-medium">
+                      {p.tag}
+                    </div>
                   </div>
-                </div>
-                <div className="mt-6">
-                  <p className="text-[10px] tracking-[0.3em] uppercase text-brand-clay font-medium">
-                    {p.location}{" "}
-                    <span className="font-serif-tc tracking-normal normal-case text-brand-forest/70">
-                      · {p.locationTc}
-                    </span>
-                  </p>
-                  <div className="flex justify-between items-baseline mt-2">
-                    <h4 className="font-display text-2xl text-brand-ink">{p.name}</h4>
-                    <p className="font-display text-lg text-brand-forest">{p.price}</p>
+                  <div className="mt-6">
+                    <p className="text-[10px] tracking-[0.3em] uppercase text-brand-clay font-medium">
+                      {p.location}{" "}
+                      <span className="font-serif-tc tracking-normal normal-case text-brand-forest/70">
+                        · {p.locationTc}
+                      </span>
+                    </p>
+                    <div className="flex justify-between items-baseline gap-4 mt-2">
+                      <h4 className="font-display text-2xl text-brand-ink">{p.name}</h4>
+                      <p className="font-display text-lg text-brand-forest text-right">{p.price}</p>
+                    </div>
+                    <div className="flex gap-6 mt-4 text-[10px] uppercase tracking-[0.2em] text-foreground/55">
+                      <span>{p.beds}</span>
+                      <span>{p.size}</span>
+                    </div>
                   </div>
-                  <div className="flex gap-6 mt-4 text-[10px] uppercase tracking-[0.2em] text-foreground/55">
-                    <span>{p.beds}</span>
-                    <span>{p.size}</span>
-                  </div>
-                </div>
+                </a>
               </article>
             ))}
           </div>
