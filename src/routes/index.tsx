@@ -59,7 +59,7 @@ const journeyStories = [
     title: "為了孩子，選擇曼谷",
     subtitle: "A new school, a new rhythm, a new family life.",
     location: "Ekkamai · Thong Lo · Phrom Phong",
-    image: "https://source.unsplash.com/1200x900/?bangkok,family,school,home",
+    image: property1,
     quote: "如果每天都能在這裡上學就好了。",
     paragraphs: [
       "35 歲的 Jason 和太太原本住在台北，經營自己的公司，生活穩定，卻始終覺得孩子的成長環境可以有更多選擇。一次家庭旅行來到曼谷後，他們參觀了幾所國際學校，也走訪了 Ekkamai、Thong Lo 和 Phrom Phong 一帶。孩子一句簡單的話，深深留在他心裡。",
@@ -74,7 +74,7 @@ const journeyStories = [
     title: "退休，不是人生的終點",
     subtitle: "A quieter chapter, with more life in every day.",
     location: "Sathorn · Silom · Riverside",
-    image: "https://source.unsplash.com/1200x900/?bangkok,balcony,sunset,coffee",
+    image: property2,
     quote: "你們沒有急著賣房，而是真的陪我找到想過的人生。",
     paragraphs: [
       "58 歲的 David，在台灣努力工作了三十多年。退休後，他沒有急著享受，而是開始思考：人生還有沒有另一種可能？",
@@ -89,7 +89,7 @@ const journeyStories = [
     title: "第二個家，不只是投資",
     subtitle: "Not a yield chart, but a place to breathe.",
     location: "Thong Lo · Ekkamai · Asok",
-    image: "https://source.unsplash.com/1200x900/?bangkok,apartment,cafe,lifestyle",
+    image: property3,
     quote: "我不是來投資泰國，我只是找到另一個讓自己放鬆生活的地方。",
     paragraphs: [
       "香港創業家 Kevin 幾乎每個月都會飛到曼谷工作。以前，他總是住飯店，直到有一天他發現，一年有超過一百五十天都待在曼谷。",
@@ -104,7 +104,7 @@ const journeyStories = [
     title: "有人出租，卻沒有人照顧",
     subtitle: "Management begins when someone notices the details.",
     location: "Bangkok Investment Home",
-    image: "https://source.unsplash.com/1200x900/?condo,cleaning,interior,maintenance",
+    image: wyneResellImage,
     quote: "我不是怕花錢，而是害怕沒有人真的替我照顧我的房子。",
     paragraphs: [
       "Emily 五年前在曼谷買了一間投資公寓，原本交給當地代管公司管理。每個月都有收到租金，她一直以為房子一切正常。",
@@ -119,7 +119,7 @@ const journeyStories = [
     title: "真正管理的，是信任",
     subtitle: "A home can be rented out, yet still be unseen.",
     location: "Bangkok Property Care",
-    image: "https://source.unsplash.com/1200x900/?apartment,inspection,maintenance,home",
+    image: okaHausResellImage,
     quote: "以前，我只是擁有一間房子；現在，我擁有一群值得信任的人。",
     paragraphs: [
       "Michael 因為工作長期住在台灣，一年只有一兩次機會飛來曼谷。他一直相信，只要房子租得出去，就代表管理沒有問題。",
