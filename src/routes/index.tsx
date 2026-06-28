@@ -34,6 +34,7 @@ const navItems = [
 ];
 
 const lineAddUrl = "https://line.me/R/ti/p/@256ttfky";
+const whatsAppUrl = "https://wa.me/66985973849";
 
 const services = [
   { n: "01", en: "Property Sales", tc: "新案銷售", desc: "Curated access to Thailand's premium new developments." },
@@ -41,6 +42,49 @@ const services = [
   { n: "03", en: "Management", tc: "房屋代管", desc: "Complete care for overseas owners." },
   { n: "04", en: "Investment", tc: "投資顧問", desc: "Yield-focused, data-driven advisory." },
   { n: "05", en: "After-Sales", tc: "售後支援", desc: "Long-term local guidance, beyond the signature." },
+];
+
+const rentalPrinciples = [
+  {
+    en: "Trusted Professional Service",
+    tc: "專業可靠的服務",
+    desc: "Clear support from property search, viewing and negotiation to lease terms and handover.",
+  },
+  {
+    en: "Customer Focused",
+    tc: "以客戶為中心",
+    desc: "We match each property to your lifestyle, business needs and investment purpose.",
+  },
+  {
+    en: "Local Expertise You Can Rely On",
+    tc: "在地專業，值得信賴",
+    desc: "Neighborhood insight across Bangkok and Thailand helps you choose with confidence.",
+  },
+  {
+    en: "International Clients Welcome",
+    tc: "歡迎國際客戶",
+    desc: "Bilingual communication and practical guidance for overseas tenants and investors.",
+  },
+];
+
+const rentalConnectivity = [
+  { en: "BTS Connectivity", tc: "BTS 捷運連接" },
+  { en: "MRT Accessibility", tc: "MRT 地鐵連接" },
+  { en: "Walkable Location", tc: "步行可達的便利生活圈" },
+];
+
+const rentalCategories = [
+  { en: "Retail Shops", tc: "零售店舖" },
+  { en: "Commercial Spaces", tc: "商業空間" },
+  { en: "Offices", tc: "辦公室" },
+  { en: "Office Buildings", tc: "辦公大樓" },
+  { en: "Hotels", tc: "飯店" },
+  { en: "Apartments", tc: "宿舍 / 公寓" },
+  { en: "Residential Homes", tc: "住宅" },
+  { en: "Factories & Warehouses", tc: "廠房 / 倉庫" },
+  { en: "Residential Land", tc: "住宅用地" },
+  { en: "Commercial Land", tc: "商業用地" },
+  { en: "Industrial Land", tc: "工業用地" },
 ];
 
 const properties = [
@@ -344,6 +388,137 @@ function Index() {
         </div>
       </section>
 
+      {/* Rental */}
+      <section id="rental" className="scroll-mt-24 bg-background py-28 md:py-36">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
+            <div className="lg:col-span-7">
+              <span className="text-[10px] tracking-[0.45em] uppercase text-brand-clay font-medium block mb-5">
+                Rental Advisory · 出租服務
+              </span>
+              <h3 className="font-display text-4xl md:text-6xl text-brand-ink tracking-tight leading-[1.05] text-balance">
+                Find the Right Property
+              </h3>
+              <p className="mt-3 font-serif-tc text-2xl md:text-3xl text-brand-forest tracking-wide">
+                找到合適的物業
+              </p>
+              <p className="mt-8 max-w-2xl text-base text-foreground/70 leading-relaxed">
+                For living, business & investment in Thailand. We help clients rent residential,
+                commercial and investment properties with local market insight and clear bilingual support.
+              </p>
+              <p className="mt-4 max-w-2xl font-serif-tc text-base text-foreground/70 leading-loose">
+                為生活、商業與投資在泰國尋找合適物業。從住宅、公寓、店鋪、辦公室到土地與倉儲，
+                我們以在地經驗與中英文溝通，協助客戶快速篩選並安心決策。
+              </p>
+              <div className="mt-10 flex flex-col sm:flex-row gap-3">
+                <a
+                  href={lineAddUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center bg-[#06C755] px-8 py-4 text-[11px] uppercase tracking-[0.22em] font-semibold text-white transition-colors hover:bg-[#05b34d]"
+                >
+                  LINE · 立即諮詢
+                </a>
+                <a
+                  href={whatsAppUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center border border-brand-forest/30 px-8 py-4 text-[11px] uppercase tracking-[0.22em] font-semibold text-brand-forest transition-colors hover:bg-brand-forest hover:text-brand-cream"
+                >
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+
+            <div className="lg:col-span-5">
+              <div className="relative overflow-hidden bg-brand-ink">
+                <img
+                  src={property2}
+                  alt="Bangkok property near transit and lifestyle conveniences"
+                  width={900}
+                  height={1120}
+                  loading="lazy"
+                  className="aspect-[5/4] w-full object-cover opacity-85"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-brand-ink/88 p-5 text-brand-cream backdrop-blur-sm">
+                  <p className="text-[10px] uppercase tracking-[0.3em] text-brand-sand mb-4">
+                    Transit Priority · 交通生活圈
+                  </p>
+                  <div className="grid gap-3">
+                    {rentalConnectivity.map((item) => (
+                      <div key={item.en} className="flex items-center justify-between border-t border-brand-cream/15 pt-3">
+                        <span className="text-xs uppercase tracking-[0.18em]">{item.en}</span>
+                        <span className="font-serif-tc text-sm text-brand-sand">{item.tc}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-16 grid gap-px bg-border md:grid-cols-2 lg:grid-cols-4">
+            {rentalPrinciples.map((item, index) => (
+              <div key={item.en} className="bg-background p-8 md:p-9">
+                <div className="font-display text-xl text-brand-clay mb-8">
+                  {String(index + 1).padStart(2, "0")}
+                </div>
+                <h4 className="font-display text-2xl text-brand-ink leading-tight">{item.en}</h4>
+                <p className="mt-2 font-serif-tc text-base text-brand-forest">{item.tc}</p>
+                <p className="mt-5 text-sm text-foreground/65 leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-16 grid gap-10 lg:grid-cols-12 lg:items-start">
+            <div className="lg:col-span-4">
+              <span className="text-[10px] tracking-[0.35em] uppercase text-brand-clay font-medium block mb-4">
+                Property Types · 物件類型
+              </span>
+              <h4 className="font-display text-3xl md:text-4xl text-brand-ink leading-tight text-balance">
+                Residential, commercial and land leasing options.
+              </h4>
+              <p className="mt-5 font-serif-tc text-foreground/65 leading-loose">
+                依照生活、商業營運與投資需求，協助媒合合適的出租物件與區域條件。
+              </p>
+            </div>
+            <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-px bg-border">
+              {rentalCategories.map((item) => (
+                <div key={item.en} className="bg-brand-cream px-5 py-6 min-h-28 flex flex-col justify-between">
+                  <span className="text-xs uppercase tracking-[0.18em] text-brand-ink leading-relaxed">
+                    {item.en}
+                  </span>
+                  <span className="mt-4 font-serif-tc text-sm text-brand-forest">{item.tc}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-14 grid gap-5 md:grid-cols-3">
+            {[
+              { img: property1, en: "Living", tc: "居住生活" },
+              { img: property2, en: "Business", tc: "商業營運" },
+              { img: property3, en: "Investment", tc: "投資配置" },
+            ].map((item) => (
+              <div key={item.en} className="relative overflow-hidden bg-brand-ink">
+                <img
+                  src={item.img}
+                  alt={`${item.en} rental property in Thailand`}
+                  width={900}
+                  height={700}
+                  loading="lazy"
+                  className="aspect-[4/3] w-full object-cover opacity-80 transition-transform duration-[900ms] hover:scale-105"
+                />
+                <div className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-brand-ink/85 to-transparent text-brand-cream">
+                  <p className="font-display text-2xl">{item.en}</p>
+                  <p className="font-serif-tc text-sm text-brand-sand">{item.tc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Properties */}
       <section id="properties" className="py-32 md:py-40">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
@@ -511,7 +686,23 @@ function Index() {
                 與我們開始您的置產之旅
               </p>
               <div className="mt-12 flex flex-wrap gap-3">
-                {["LINE", "WhatsApp", "WeChat", "Messenger"].map((c) => (
+                <a
+                  href={lineAddUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-7 py-3 border border-brand-cream/20 text-[10px] uppercase tracking-[0.25em] font-medium text-brand-cream/85 hover:bg-brand-cream hover:text-brand-ink transition-all"
+                >
+                  LINE
+                </a>
+                <a
+                  href={whatsAppUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-7 py-3 border border-brand-cream/20 text-[10px] uppercase tracking-[0.25em] font-medium text-brand-cream/85 hover:bg-brand-cream hover:text-brand-ink transition-all"
+                >
+                  WhatsApp
+                </a>
+                {["WeChat", "Messenger"].map((c) => (
                   <button
                     key={c}
                     className="px-7 py-3 border border-brand-cream/20 text-[10px] uppercase tracking-[0.25em] font-medium text-brand-cream/85 hover:bg-brand-cream hover:text-brand-ink transition-all"
