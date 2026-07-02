@@ -1,9 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import property1 from "@/assets/property-1.jpg";
-import property2 from "@/assets/property-2.jpg";
-import property3 from "@/assets/property-3.jpg";
-import philosophyImg from "@/assets/philosophy.jpg";
+import renovation3dAp from "@/assets/renovation/3d-ap-project.jpg";
+import renovationLumpiniRiverside from "@/assets/renovation/lumpini-riverside-whole-room-renovation.jpg";
+import renovationBathroom from "@/assets/renovation/lumpini-condo-renovation-bathroom.jpg";
+import renovationStudioBeforeAfter from "@/assets/renovation/chatgpt-image-jun-29-2026-08-00-21-am.jpg";
+import renovationLifeRama4 from "@/assets/renovation/3d-life-sukhunvit-rama4.jpg";
+import renovationAshtonSilom1 from "@/assets/renovation/ashton-silom-whole-room-interior-design1.jpg";
+import renovationAshtonSilom2 from "@/assets/renovation/ashton-silom-whole-room-interior-design-2.jpg";
+import renovationLifeOneWireless from "@/assets/renovation/life-one-wireless-interior.jpg";
 
 export const Route = createFileRoute("/renovation-maintenance")({
   head: () => ({
@@ -24,28 +28,52 @@ const whatsAppUrl = "https://wa.me/66985973849";
 
 const renovationSlides = [
   {
-    title: "Interior Refresh",
-    tc: "室內質感更新",
-    label: "Design & styling",
-    image: property1,
+    title: "3D AP Project",
+    tc: "3D 室內設計規劃",
+    label: "3D design",
+    image: renovation3dAp,
   },
   {
-    title: "Before Leasing",
-    tc: "出租前整理",
-    label: "Rental ready",
-    image: property2,
+    title: "Lumpini Riverside",
+    tc: "全室翻新前後對比",
+    label: "Before & After",
+    image: renovationLumpiniRiverside,
   },
   {
-    title: "Before Resale",
-    tc: "出售前提升",
-    label: "Value upgrade",
-    image: property3,
+    title: "Bathroom Renovation",
+    tc: "浴室翻新前後對比",
+    label: "Bathroom upgrade",
+    image: renovationBathroom,
   },
   {
-    title: "Maintenance Care",
-    tc: "維修保養管理",
-    label: "Owner support",
-    image: philosophyImg,
+    title: "Studio Refresh",
+    tc: "套房裝潢前後對比",
+    label: "Before & After",
+    image: renovationStudioBeforeAfter,
+  },
+  {
+    title: "Life Sukhumvit Rama 4",
+    tc: "3D 室內設計規劃",
+    label: "3D design",
+    image: renovationLifeRama4,
+  },
+  {
+    title: "Ashton Silom",
+    tc: "全室裝潢翻新 01",
+    label: "Before & After",
+    image: renovationAshtonSilom1,
+  },
+  {
+    title: "Ashton Silom",
+    tc: "全室裝潢翻新 02",
+    label: "Before & After",
+    image: renovationAshtonSilom2,
+  },
+  {
+    title: "Life One Wireless",
+    tc: "室內裝潢前後對比",
+    label: "Before & After",
+    image: renovationLifeOneWireless,
   },
 ];
 
@@ -84,12 +112,12 @@ function RenovationMaintenance() {
         <div className="mx-auto grid max-w-7xl gap-10 px-6 md:px-10 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-8">
             <div className="border border-border bg-brand-ink p-4 md:p-5">
-              <div className="relative mx-auto flex min-h-[280px] items-center justify-center bg-brand-ink md:min-h-[380px]">
+              <div className="relative mx-auto flex min-h-[240px] items-center justify-center bg-brand-ink md:min-h-[340px]">
                 <img
                   src={activeSlide.image}
                   alt={`${activeSlide.title} renovation showcase`}
                   loading="lazy"
-                  className="max-h-[500px] w-full object-contain"
+                  className="max-h-[420px] w-full object-contain"
                 />
                 <button
                   type="button"
