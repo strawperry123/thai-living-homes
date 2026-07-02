@@ -112,12 +112,12 @@ function RenovationMaintenance() {
         <div className="mx-auto grid max-w-7xl gap-10 px-6 md:px-10 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-8">
             <div className="border border-border bg-brand-ink p-4 md:p-5">
-              <div className="relative mx-auto flex min-h-[240px] items-center justify-center bg-brand-ink md:min-h-[340px]">
+              <div className="relative mx-auto flex min-h-[220px] items-center justify-center bg-brand-ink md:min-h-[320px]">
                 <img
                   src={activeSlide.image}
                   alt={`${activeSlide.title} renovation showcase`}
                   loading="lazy"
-                  className="max-h-[420px] w-full object-contain"
+                  className="h-auto max-h-[240px] w-auto max-w-[82%] object-contain md:max-h-[320px] md:max-w-[72%]"
                 />
                 <button
                   type="button"
