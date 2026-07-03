@@ -194,6 +194,26 @@
     background-repeat: no-repeat;
   }
 
+  #client-journey > div > div:nth-of-type(2) > button:nth-child(1)::before {
+    background-image: url("./assets/property-1.jpg");
+  }
+
+  #client-journey > div > div:nth-of-type(2) > button:nth-child(2)::before {
+    background-image: url("./assets/property-2.jpg");
+  }
+
+  #client-journey > div > div:nth-of-type(2) > button:nth-child(3)::before {
+    background-image: url("./assets/property-3.jpg");
+  }
+
+  #client-journey > div > div:nth-of-type(2) > button:nth-child(4)::before {
+    background-image: url("./assets/hero.jpg");
+  }
+
+  #client-journey > div > div:nth-of-type(2) > button:nth-child(5)::before {
+    background-image: url("./assets/philosophy.jpg");
+  }
+
   #client-journey > div > div:nth-of-type(2) > button > img {
     display: none !important;
   }
