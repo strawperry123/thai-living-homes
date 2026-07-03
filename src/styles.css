@@ -183,15 +183,19 @@
     box-shadow: 0 12px 28px color-mix(in oklab, var(--brand-ink) 6%, transparent);
   }
 
-  #client-journey > div > div:nth-of-type(2) > button > img {
+  #client-journey > div > div:nth-of-type(2) > button::before {
+    content: "";
     display: block;
-    width: 100% !important;
-    height: auto !important;
-    aspect-ratio: auto !important;
-    max-height: 180px;
-    object-fit: contain !important;
-    object-position: center center !important;
-    background: color-mix(in oklab, var(--brand-sand) 18%, white);
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    background-image: url("./assets/property-3.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  #client-journey > div > div:nth-of-type(2) > button > img {
+    display: none !important;
   }
 
   #client-journey article {
@@ -204,24 +208,16 @@
   }
 
   #client-journey article > div > div:first-child {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: color-mix(in oklab, var(--brand-sand) 16%, white) !important;
-    padding: 1rem;
+    min-height: 420px;
+    background-color: color-mix(in oklab, var(--brand-sand) 16%, white) !important;
+    background-image: url("./assets/property-3.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
   #client-journey article > div > div:first-child img {
-    display: block;
-    width: auto !important;
-    max-width: 100% !important;
-    height: auto !important;
-    min-height: 0 !important;
-    max-height: 440px;
-    object-fit: contain !important;
-    object-position: center center !important;
-    opacity: 1 !important;
-    border-radius: 0.875rem;
+    display: none !important;
   }
 
   #client-journey article > div > div:nth-child(2) {
@@ -229,12 +225,12 @@
   }
 
   @media (max-width: 767px) {
-    #client-journey > div > div:nth-of-type(2) > button > img {
-      max-height: 220px;
+    #client-journey > div > div:nth-of-type(2) > button::before {
+      aspect-ratio: 16 / 10;
     }
 
-    #client-journey article > div > div:first-child img {
-      max-height: 320px;
+    #client-journey article > div > div:first-child {
+      min-height: 280px;
     }
   }
 }
