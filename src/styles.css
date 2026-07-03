@@ -244,6 +244,41 @@
     background: color-mix(in oklab, var(--background) 98%, white);
   }
 
+  #contact > div > div:first-child > div:nth-child(2) > div:first-child > h6 {
+    font-size: 0 !important;
+    letter-spacing: 0 !important;
+    line-height: 0 !important;
+    margin-bottom: 2rem !important;
+  }
+
+  #contact > div > div:first-child > div:nth-child(2) > div:first-child > h6::before {
+    content: "Bangkok Office\A曼谷辦公室";
+    display: block;
+    white-space: pre-line;
+    font-family: var(--font-display);
+    font-size: clamp(2.75rem, 5vw, 4rem);
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.25;
+    text-transform: none;
+    color: var(--brand-cream);
+  }
+
+  #contact > div > div:first-child > div:nth-child(2) > div:first-child > address {
+    font-size: 0 !important;
+    line-height: 0 !important;
+  }
+
+  #contact > div > div:first-child > div:nth-child(2) > div:first-child > address::before {
+    content: "ADDRESS\A2823/3 Rama IV Rd, Khlong Tan, Khlong Toei, Bangkok 10110\A地址：2823/3 Rama IV Rd, Khlong Tan, Khlong Toei, Bangkok 10110\A\A APPOINTMENT\AProperty viewing is by appointment only.\A實地看屋請提前預約。\A\A CONSULTATION LINE\A+66 985973849 / +66 624892930\A諮詢專線：+66 985973849 / +66 624892930\A\A VIEWING HOURS\AMonday to Saturday, 10:00-18:00\A實地看屋：週一至週六 10:00-18:00\A\A EMAIL\Akhantharos.adm@gmail.com\A洽詢信箱：khantharos.adm@gmail.com";
+    display: block;
+    white-space: pre-line;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.85;
+    color: color-mix(in oklab, var(--brand-cream) 72%, transparent);
+  }
+
   @media (max-width: 767px) {
     #client-journey > div > div:nth-of-type(2) > button::before {
       aspect-ratio: 16 / 10;
@@ -251,6 +286,15 @@
 
     #client-journey article > div > div:first-child {
       min-height: 280px;
+    }
+
+    #contact > div > div:first-child > div:nth-child(2) > div:first-child > h6::before {
+      font-size: 2.4rem;
+    }
+
+    #contact > div > div:first-child > div:nth-child(2) > div:first-child > address::before {
+      font-size: 0.95rem;
+      line-height: 1.8;
     }
   }
 }
