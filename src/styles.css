@@ -239,8 +239,8 @@
 
   #client-journey article > div > div:first-child img {
     display: block;
-    width: 100% !important;
-    max-width: 760px;
+    width: auto !important;
+    max-width: 100%;
     height: auto !important;
     min-height: 0 !important;
     max-height: 520px;
