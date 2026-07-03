@@ -166,30 +166,26 @@
 
 @layer components {
   #client-journey {
-    background:
-      linear-gradient(180deg, color-mix(in oklab, var(--brand-cream) 92%, white) 0%, var(--brand-cream) 100%);
+    background: linear-gradient(180deg, color-mix(in oklab, var(--brand-cream) 92%, white) 0%, var(--brand-cream) 100%);
   }
 
   #client-journey > div > div:nth-of-type(2) {
     display: grid;
-    gap: 1.25rem;
+    gap: 1rem;
     background: transparent;
   }
 
   #client-journey > div > div:nth-of-type(2) > button {
     overflow: hidden;
-    border: 1px solid color-mix(in oklab, var(--brand-clay) 18%, transparent);
-    border-radius: 1.5rem;
+    border: 1px solid color-mix(in oklab, var(--brand-clay) 16%, transparent);
+    border-radius: 1.25rem;
     background: color-mix(in oklab, var(--background) 96%, white);
-    padding: 0.5rem;
-    box-shadow: 0 18px 50px color-mix(in oklab, var(--brand-ink) 8%, transparent);
-    transition: transform 260ms ease, border-color 260ms ease, box-shadow 260ms ease, background 260ms ease;
+    padding: 0.45rem;
+    box-shadow: 0 14px 38px color-mix(in oklab, var(--brand-ink) 7%, transparent);
   }
 
   #client-journey > div > div:nth-of-type(2) > button:hover {
-    transform: translateY(-3px);
-    border-color: color-mix(in oklab, var(--brand-clay) 34%, transparent);
-    box-shadow: 0 24px 60px color-mix(in oklab, var(--brand-ink) 12%, transparent);
+    border-color: color-mix(in oklab, var(--brand-clay) 32%, transparent);
   }
 
   #client-journey > div > div:nth-of-type(2) > button[class*="bg-brand-forest"] {
@@ -200,137 +196,100 @@
   #client-journey > div > div:nth-of-type(2) > button > img {
     display: block;
     width: 100%;
-    height: auto;
-    aspect-ratio: 3 / 2 !important;
-    border-radius: 1.125rem;
-    object-fit: cover;
-    object-position: center center;
+    height: auto !important;
+    max-height: 170px;
+    aspect-ratio: auto !important;
+    border-radius: 0.95rem;
+    object-fit: contain !important;
+    object-position: center center !important;
+    background: color-mix(in oklab, var(--brand-sand) 24%, white);
   }
 
-  #client-journey > div > div:nth-of-type(2) > button:nth-child(1) > img {
-    object-position: center center;
-  }
-
-  #client-journey > div > div:nth-of-type(2) > button:nth-child(2) > img {
-    object-position: center 48%;
-  }
-
-  #client-journey > div > div:nth-of-type(2) > button:nth-child(3) > img {
-    object-position: center 48%;
-  }
-
-  #client-journey > div > div:nth-of-type(2) > button:nth-child(4) > img,
-  #client-journey > div > div:nth-of-type(2) > button:nth-child(5) > img {
-    object-position: center 54%;
+  #client-journey img[src*="property-3"] {
+    content: url("/assets/property-2-DxWIJDnM.jpg");
   }
 
   #client-journey > div > div:nth-of-type(2) > button > div {
-    padding: 1.25rem 1rem 1rem;
+    padding: 1rem 0.85rem 0.8rem;
   }
 
   #client-journey article {
-    margin-top: 3.5rem;
+    margin-top: 2.5rem;
     overflow: hidden;
-    border: 1px solid color-mix(in oklab, var(--brand-clay) 20%, transparent);
-    border-radius: 2rem;
+    border: 1px solid color-mix(in oklab, var(--brand-clay) 18%, transparent);
+    border-radius: 1.5rem;
     background: color-mix(in oklab, var(--background) 96%, white);
-    padding: 0.75rem;
-    box-shadow: 0 26px 80px color-mix(in oklab, var(--brand-ink) 10%, transparent);
+    padding: 0.65rem;
+    box-shadow: 0 22px 58px color-mix(in oklab, var(--brand-ink) 8%, transparent);
   }
 
   #client-journey article > div {
     overflow: hidden;
-    border-radius: 1.5rem;
+    border-radius: 1.1rem;
     background: color-mix(in oklab, var(--brand-cream) 70%, white);
   }
 
   #client-journey article > div > div:first-child {
-    background: color-mix(in oklab, var(--brand-sand) 26%, white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: color-mix(in oklab, var(--brand-sand) 24%, white);
     padding: 0.5rem;
   }
 
   #client-journey article > div > div:first-child img {
-    width: 100%;
-    height: clamp(300px, 58vw, 460px) !important;
-    min-height: 300px !important;
-    border-radius: 1.25rem;
-    object-fit: cover;
-    object-position: center center;
+    display: block;
+    width: 100% !important;
+    max-width: 760px;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: 520px;
+    border-radius: 1rem;
+    object-fit: contain !important;
+    object-position: center center !important;
     opacity: 1 !important;
+    background: color-mix(in oklab, var(--brand-sand) 24%, white);
   }
 
   #client-journey article > div > div:nth-child(2) {
-    background:
-      linear-gradient(135deg, color-mix(in oklab, var(--background) 96%, white), color-mix(in oklab, var(--brand-cream) 92%, white));
+    background: linear-gradient(135deg, color-mix(in oklab, var(--background) 96%, white), color-mix(in oklab, var(--brand-cream) 92%, white));
   }
 
   @media (min-width: 768px) {
     #client-journey > div > div:nth-of-type(2) {
       grid-template-columns: repeat(5, minmax(0, 1fr));
     }
-
-    #client-journey article > div > div:first-child img {
-      height: clamp(420px, 48vw, 560px) !important;
-      min-height: 420px !important;
-    }
   }
 
   @media (min-width: 1024px) {
-    #client-journey article > div {
-      align-items: stretch;
-    }
-
     #client-journey article > div > div:first-child {
-      grid-column: span 7 / span 7 !important;
-      padding: 0.75rem;
+      grid-column: span 6 / span 6 !important;
     }
 
     #client-journey article > div > div:nth-child(2) {
-      grid-column: span 5 / span 5 !important;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 3.5rem !important;
-    }
-
-    #client-journey article > div > div:first-child img {
-      height: 100% !important;
-      min-height: 640px !important;
+      grid-column: span 6 / span 6 !important;
+      padding: 3rem !important;
     }
   }
 
   @media (max-width: 767px) {
     #client-journey {
-      padding-top: 6rem;
-      padding-bottom: 6rem;
-    }
-
-    #client-journey > div > div:nth-of-type(2) {
-      gap: 1rem;
-    }
-
-    #client-journey > div > div:nth-of-type(2) > button {
-      border-radius: 1.25rem;
+      padding-top: 5.5rem;
+      padding-bottom: 5.5rem;
     }
 
     #client-journey > div > div:nth-of-type(2) > button > img {
-      border-radius: 0.9rem;
+      max-height: 240px;
     }
 
     #client-journey article {
       margin-top: 2rem;
-      border-radius: 1.5rem;
+      border-radius: 1.25rem;
       padding: 0.5rem;
     }
 
-    #client-journey article > div {
-      border-radius: 1.1rem;
-    }
-
     #client-journey article > div > div:first-child img {
-      height: clamp(300px, 78vw, 340px) !important;
-      min-height: 300px !important;
-      border-radius: 1rem;
+      max-height: 340px;
     }
   }
 }
