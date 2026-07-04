@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import renovation3dAp from "@/assets/renovation/3d-ap-project.jpg";
 import renovationLumpiniRiverside from "@/assets/renovation/lumpini-riverside-whole-room-renovation.jpg";
 import renovationBathroom from "@/assets/renovation/lumpini-condo-renovation-bathroom.jpg";
@@ -25,6 +25,10 @@ export const Route = createFileRoute("/renovation-maintenance")({
 
 const lineAddUrl = "https://line.me/R/ti/p/@256ttfky";
 const whatsAppUrl = "https://wa.me/66985973849";
+const leadWebhookUrl =
+  import.meta.env.VITE_GOOGLE_SHEET_WEBHOOK_URL || import.meta.env.VITE_MANDATE_SHEET_WEBHOOK_URL || "";
+const successMessage = "Thank you. We have received your request and will contact you soon.";
+const successMessageTc = "謝謝您，我們已收到您的委託，將盡快與您聯繫。";
 
 const renovationSlides = [
   {
@@ -79,9 +83,40 @@ const renovationSlides = [
 
 function RenovationMaintenance() {
   const [slideIndex, setSlideIndex] = useState(0);
+  const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error" | "setup-needed">("idle");
   const activeSlide = renovationSlides[slideIndex];
   const goSlide = (direction: number) => {
     setSlideIndex((current) => (current + direction + renovationSlides.length) % renovationSlides.length);
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!leadWebhookUrl) {
+      setFormStatus("setup-needed");
+      return;
+    }
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    formData.set("submittedAt", new Date().toISOString());
+    formData.set("sourcePage", "Renovation & Maintenance page / 裝潢翻新及維修頁");
+    formData.set("requestType", "Renovation & Maintenance 裝潢翻新及維修");
+    formData.set("status", "New / 已收到");
+
+    try {
+      setFormStatus("submitting");
+      await fetch(leadWebhookUrl, {
+        method: "POST",
+        mode: "no-cors",
+        body: formData,
+      });
+      form.reset();
+      setFormStatus("success");
+    } catch (error) {
+      console.error("Renovation form submission failed", error);
+      setFormStatus("error");
+    }
   };
 
   return (
@@ -162,35 +197,68 @@ function RenovationMaintenance() {
             </div>
           </div>
 
-          <form action={lineAddUrl} target="_blank" className="border border-border bg-brand-cream p-7 md:p-8 lg:col-span-4">
+          <form onSubmit={handleSubmit} className="border border-border bg-brand-cream p-7 md:p-8 lg:col-span-4">
             <span className="mb-4 block text-[10px] font-medium uppercase tracking-[0.35em] text-brand-clay">
               Mandate Form · 委託表格
             </span>
             <h2 className="font-display text-3xl leading-tight text-brand-ink">Renovation Request</h2>
             <p className="mt-3 font-serif-tc text-sm leading-loose text-foreground/65">
-              填寫需求後可直接透過 LINE 與我們確認細節。
+              填寫需求後，資料會直接進入我們的委託表格，方便團隊盡快與您聯繫。
             </p>
             <div className="mt-7 space-y-4">
-              <input name="name" placeholder="Name · 姓名" className="w-full border border-border bg-background px-4 py-3 text-sm outline-none focus:border-brand-forest" />
-              <input name="contact" placeholder="Contact · 聯絡方式" className="w-full border border-border bg-background px-4 py-3 text-sm outline-none focus:border-brand-forest" />
-              <select name="location" className="w-full border border-border bg-background px-4 py-3 text-sm outline-none focus:border-brand-forest">
+              <input name="name" placeholder="Name · 姓名" required className="w-full border border-border bg-background px-4 py-3 text-sm outline-none focus:border-brand-forest" />
+              <input name="phone" placeholder="Phone · 電話" required className="w-full border border-border bg-background px-4 py-3 text-sm outline-none focus:border-brand-forest" />
+              <input name="lineId" placeholder="LINE ID · Line" className="w-full border border-border bg-background px-4 py-3 text-sm outline-none focus:border-brand-forest" />
+              <input name="email" type="email" placeholder="Email" className="w-full border border-border bg-background px-4 py-3 text-sm outline-none focus:border-brand-forest" />
+              <select name="preferredContactMethod" defaultValue="LINE" className="w-full border border-border bg-background px-4 py-3 text-sm outline-none focus:border-brand-forest">
+                <option>LINE</option>
+                <option>WhatsApp</option>
+                <option>Phone 電話</option>
+                <option>Email</option>
+                <option>Any 任一方式</option>
+              </select>
+              <select name="locationInterest" defaultValue="Bangkok" className="w-full border border-border bg-background px-4 py-3 text-sm outline-none focus:border-brand-forest">
                 <option>Bangkok</option>
                 <option>Phuket</option>
                 <option>Others</option>
               </select>
-              <select name="service" className="w-full border border-border bg-background px-4 py-3 text-sm outline-none focus:border-brand-forest">
+              <select name="propertyType" defaultValue="Interior Renovation · 室內翻新" className="w-full border border-border bg-background px-4 py-3 text-sm outline-none focus:border-brand-forest">
                 <option>Interior Renovation · 室內翻新</option>
                 <option>Maintenance · 維修保養</option>
                 <option>Furnishing · 家具軟裝</option>
                 <option>Inspection Before Rent/Sale · 出租出售前整理</option>
               </select>
-              <textarea name="message" rows={4} placeholder="Property condition / budget / timeline · 房況、預算、時間" className="w-full resize-none border border-border bg-background px-4 py-3 text-sm outline-none focus:border-brand-forest" />
-              <button type="submit" className="w-full bg-brand-forest px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-cream transition-colors hover:bg-brand-ink">
-                Submit via LINE · 送出委託
+              <input name="budget" placeholder="Budget · 預算" className="w-full border border-border bg-background px-4 py-3 text-sm outline-none focus:border-brand-forest" />
+              <textarea name="message" rows={4} placeholder="Property condition / timeline · 房況、時間、備註" className="w-full resize-none border border-border bg-background px-4 py-3 text-sm outline-none focus:border-brand-forest" />
+              <button type="submit" disabled={formStatus === "submitting"} className="w-full bg-brand-forest px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-cream transition-colors hover:bg-brand-ink disabled:cursor-not-allowed disabled:opacity-70">
+                {formStatus === "submitting" ? "Sending... · 送出中" : "Submit Request · 送出委託"}
               </button>
-              <a href={whatsAppUrl} target="_blank" rel="noreferrer" className="flex w-full items-center justify-center border border-brand-forest/30 px-6 py-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-brand-forest transition-colors hover:bg-brand-forest hover:text-brand-cream">
-                WhatsApp
-              </a>
+              {formStatus === "success" && (
+                <p className="border border-brand-forest/20 bg-background px-4 py-3 text-sm leading-relaxed text-brand-forest">
+                  {successMessage}
+                  <span className="mt-1 block font-serif-tc">{successMessageTc}</span>
+                </p>
+              )}
+              {formStatus === "setup-needed" && (
+                <p className="border border-brand-clay/25 bg-background px-4 py-3 text-sm leading-relaxed text-brand-clay">
+                  Google Sheet webhook is not connected yet. Please contact us by LINE or WhatsApp.
+                  <span className="mt-1 block font-serif-tc">Google Sheet 尚未連接，請先用 LINE 或 WhatsApp 聯繫我們。</span>
+                </p>
+              )}
+              {formStatus === "error" && (
+                <p className="border border-brand-clay/25 bg-background px-4 py-3 text-sm leading-relaxed text-brand-clay">
+                  Submission failed. Please try again later or contact us directly.
+                  <span className="mt-1 block font-serif-tc">送出失敗，請稍後再試，或直接聯繫我們。</span>
+                </p>
+              )}
+              <div className="grid gap-3 sm:grid-cols-2">
+                <a href={lineAddUrl} target="_blank" rel="noreferrer" className="flex items-center justify-center border border-brand-forest/30 px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-forest transition-colors hover:bg-brand-forest hover:text-brand-cream">
+                  LINE
+                </a>
+                <a href={whatsAppUrl} target="_blank" rel="noreferrer" className="flex items-center justify-center border border-brand-forest/30 px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-forest transition-colors hover:bg-brand-forest hover:text-brand-cream">
+                  WhatsApp
+                </a>
+              </div>
             </div>
           </form>
         </div>
