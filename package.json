@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
-    "build:github": "vite build && cp dist/client/index.html dist/client/404.html",
+    "build:github": "vite build && cp .output/public/index.html .output/public/404.html",
     "build:dev": "vite build --mode development",
     "preview": "vite preview",
     "lint": "eslint .",
