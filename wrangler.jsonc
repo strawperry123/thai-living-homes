@@ -2,5 +2,6 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "khantharos-property",
   "compatibility_date": "2026-07-08",
+  // Vite builds the static website into this folder for Cloudflare Pages.
   "pages_build_output_dir": "dist/client"
 }
