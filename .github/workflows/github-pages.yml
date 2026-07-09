@@ -33,8 +33,6 @@ jobs:
 
       - name: Build static site
         run: npm run build:github
-        env:
-          VITE_GOOGLE_SHEET_WEBHOOK_URL: ${{ secrets.VITE_GOOGLE_SHEET_WEBHOOK_URL }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
