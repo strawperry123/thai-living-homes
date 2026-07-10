@@ -7,7 +7,7 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -147,6 +147,9 @@ function RootShell({ children }: { children: ReactNode }) {
 }
 
 function SiteNavigation() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const closeMenu = () => setIsMenuOpen(false);
+
   return (
     <nav className="fixed top-0 inset-x-0 z-[60] bg-background/95 backdrop-blur-xl border-b border-border/60">
       <div className="max-w-7xl mx-auto px-5 md:px-8 h-20 flex items-center justify-between gap-4">
@@ -159,7 +162,7 @@ function SiteNavigation() {
           </span>
         </a>
 
-        <div className="hidden xl:flex items-center gap-5 text-[10px] uppercase tracking-[0.16em] font-medium">
+        <div className="hidden min-[1180px]:flex items-center gap-4 text-[10px] uppercase tracking-[0.14em] font-medium">
           {mainNavItems.slice(0, 2).map((item) => (
             <a key={item.en} href={item.href} className="text-brand-ink/80 hover:text-brand-forest transition-colors whitespace-nowrap">
               {item.en}
@@ -195,12 +198,15 @@ function SiteNavigation() {
         </div>
 
         <div className="flex items-center gap-2 shrink-0">
-          <a
-            href="/#services"
-            className="hidden sm:inline-flex xl:hidden text-[10px] uppercase tracking-[0.18em] text-brand-ink/80 hover:text-brand-forest transition-colors"
+          <button
+            type="button"
+            onClick={() => setIsMenuOpen((open) => !open)}
+            aria-expanded={isMenuOpen}
+            aria-controls="site-mobile-menu"
+            className="inline-flex min-[1180px]:hidden h-10 items-center justify-center border border-border px-4 text-[10px] uppercase tracking-[0.18em] font-semibold text-brand-ink transition-colors hover:border-brand-forest hover:text-brand-forest"
           >
             Menu
-          </a>
+          </button>
           {topSocialLinks.map((item) => (
             <a
               key={item.label}
@@ -217,6 +223,67 @@ function SiteNavigation() {
               {item.label}
             </a>
           ))}
+        </div>
+      </div>
+
+      <div
+        id="site-mobile-menu"
+        className={`min-[1180px]:hidden border-t border-border/60 bg-background/98 shadow-[0_18px_40px_rgba(31,44,36,0.10)] transition-all duration-200 ${
+          isMenuOpen ? "max-h-[80vh] overflow-y-auto opacity-100" : "max-h-0 overflow-hidden opacity-0"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-5 md:px-8 py-5">
+          <div className="grid gap-2 sm:grid-cols-2">
+            {mainNavItems.slice(0, 2).map((item) => (
+              <a
+                key={item.en}
+                href={item.href}
+                onClick={closeMenu}
+                className="border border-border/70 bg-background px-4 py-3 text-brand-ink transition-colors hover:border-brand-forest hover:text-brand-forest"
+              >
+                <span className="block text-[11px] uppercase tracking-[0.2em] font-semibold">{item.en}</span>
+                <span className="mt-1 block font-serif-tc text-sm tracking-normal text-brand-clay">{item.tc}</span>
+              </a>
+            ))}
+
+            <a
+              href="/#services"
+              onClick={closeMenu}
+              className="border border-border/70 bg-background px-4 py-3 text-brand-ink transition-colors hover:border-brand-forest hover:text-brand-forest"
+            >
+              <span className="block text-[11px] uppercase tracking-[0.2em] font-semibold">Service</span>
+              <span className="mt-1 block font-serif-tc text-sm tracking-normal text-brand-clay">服務項目</span>
+            </a>
+
+            {mainNavItems.slice(2).map((item) => (
+              <a
+                key={item.en}
+                href={item.href}
+                onClick={closeMenu}
+                className="border border-border/70 bg-background px-4 py-3 text-brand-ink transition-colors hover:border-brand-forest hover:text-brand-forest"
+              >
+                <span className="block text-[11px] uppercase tracking-[0.2em] font-semibold">{item.en}</span>
+                <span className="mt-1 block font-serif-tc text-sm tracking-normal text-brand-clay">{item.tc}</span>
+              </a>
+            ))}
+          </div>
+
+          <div className="mt-4 border-t border-border/60 pt-4">
+            <p className="text-[10px] uppercase tracking-[0.24em] text-brand-clay">Service Pages · 服務分頁</p>
+            <div className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+              {serviceNavItems.map((item) => (
+                <a
+                  key={item.en}
+                  href={item.href}
+                  onClick={closeMenu}
+                  className="px-3 py-2 text-sm text-brand-ink/80 transition-colors hover:bg-brand-cream hover:text-brand-forest"
+                >
+                  <span className="font-medium">{item.en}</span>
+                  <span className="ml-2 font-serif-tc text-brand-clay">{item.tc}</span>
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </nav>
